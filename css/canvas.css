@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
+body {
+  margin: 0px;
+  overflow: hidden;
+  background-color: #111;
+  min-height: 100%;
+}
+html {
+  height: 100%;
+}
+#div {
+  position: relative;
+}
+#score {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  color: white;
+  font-size: 3rem;
+  font-family: Roboto;
+  margin: 0px
+}

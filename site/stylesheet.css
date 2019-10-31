@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
+body {
+  margin: 0px;
+  font-family: Roboto;
+  min-height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-image: url(/img/background2.jpg);
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+}
+html {
+  height: 100%;
+}
+.divimg {
+  /* background-image: url(/img/background2.jpg);
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed; */
+  height: calc(100vh);
+  width: 100%;
+  color: white;
+}
+.titlediv {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-left: -157px;
+  color: white;
+  transition: top 3s;
+  transition-timing-function: ease;
+  /* transition:  4s; */
+  animation-name: fadein;
+  animation-duration: 3s;
+  animation-timing-function: ease-out;
+  /* border: 1px red dashed; */
+}
+.fadein {
+  animation-name: fadein;
+  animation-duration: 3s;
+  animation-timing-function: ease-out;
+  top: 30%!important;
+  opacity: 1!important;
+}
+.fadeout {
+  opacity: 0;
+  animation-name: fadeout;
+  animation-duration: 2s;
+}
+.goup {
+  top: 10%!important;
+  opacity: 1;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+#cards {
+  height: 1200px;
+}
+.cards {
+  position: absolute;
+  top: 60%;
+  transition: top 3s, opacity 3s, width 1s, left 1s;
+  opacity: 0;
+}
+.cards.c1 {
+  left: 50%;
+  margin-left: -144px;
+}
+.cards.c2 {
+  left: calc(50% - 144px - 30vw);
+}
+.cards.c3 {
+  left: calc(50% - 144px + 30vw);
+}
+
+@media only screen and (max-width: 1000px) {
+  .card {
+    width: 15rem!important;
+  }
+}
+@media only screen and (max-width: 860px) {
+  body {
+    overflow-y: scroll;
+  }
+  .card {
+    width: 20rem!important;
+    margin-left: -9rem;
+  }
+  .cards {
+    position: relative!important;
+    margin-left: 0px!important;
+    left: 50%!important;
+    top: 100px!important;
+    margin-top: 50px;
+  }
+  .titlediv {
+    top: 30%!important;
+  }
+  /* .cards.c1 {
+    top: 0px!important;
+  }
+  .cards.c2 {
+    top: 20rem!important;
+  }
+  .cards.c3 {
+    top: 40rem!important;
+  } */
+}
+.card {
+  width: 18rem;
+}
+.hidden {
+  display: none;
+}
+.htcsjs {
+  width: 100px;
+  position: relative;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: 10px;
+}
+
+.btn-default {
+  background: #2BBBAD;
+  color: white;
+}
+.btn-default:hover {
+  color: white;
+  background: #009688;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112766652-2"></script>
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-112766652-2');
+    </script>
+  <title>Defend</title>
+  <meta name="description" content="Defend shit van koopas">
+  <link rel="stylesheet" href="css.css">
+  <link href='font.ttf'>
+  <link rel="stylesheet" href="/css/000webhostapp.css">
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <h1 id="loading">Loading...</h1>
+  <div id="hacksMenu">
+    <div id="up">
+      <h1 id="title">Hacks</h1>
+      <a align="right" href="#" id="x"><i class="fas fa-times"></i></a>
+    </div>
+    <div id="content" class="visible">
+      <p>
+        <a href="#" onclick="hacks.autoCollect()">A : Pakt goud automatisch op.</a><br>
+        <a href="#" onclick="hacks.giveMoney()">G : Geeft je oneindig geld.</a> <br>
+        <a href="#" onclick="hacks.clear()">C : Cleared alle koopa's.</a> <br>
+        <a href="#" onclick="hacks.damage()">K : Kannonen doen 10 keer zoveel damage.</a> <br>
+        <a href="#" onclick="hacks.goldSpeed()">L : Goudmijnen geven je snel geld.</a> <br>
+        <a href="#" onclick="hacks.skip()">S : Skipt de wachttijd.</a> <br>
+        <a href="#" onclick="hacks.attack()">T : 5 groene koopa's vallen je aan.</a> <br>
+        <a href="#" onclick="hacks.typeFullDef()">F : Volledige defense van *</a> <br>
+        <a href="#" onclick="toggleMenu()">H : Dit menu.</a>
+      </p>
+    </div>
+    <div id="fullDef">
+      <p id="defenseList">Fout... Zeg tegen Sam.</p>
+      <button onclick="hacks.typeFullDef()">Terug</button>
+    </div>
+  </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+<script src="ez.js"></script>
+<script src="vars.js"></script>
+<script src="side.js"></script>
+<script src="koopa.js"></script>
+<script src="hacks.js"></script>
+<script src="defense.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script src="excan.js"></script>
+</body>
+</html>

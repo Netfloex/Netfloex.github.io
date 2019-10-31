@@ -1,0 +1,38 @@
+body {
+  color: white;
+  background-color: #444!important;
+}
+.btn-default {
+  background: #26a89b;
+  color: white;
+}
+.btn-default:hover {
+  color: white;
+  background: #009688;
+}
+#btnDiv {
+  position: relative;
+  top: 50%;
+  margin-top: calc(50vh - 150px);
+  height: 100px;
+  /* margin-top: -50px; */
+}
+#button {
+  height: 100px;
+  transition: padding .1s, font-size .1s, height .1s, margin-top .1s;
+  padding: .375rem .75rem;
+  font-size: 3rem;
+  line-height: 0px;
+}
+#button:active {
+  padding: calc(.375rem + 40px) calc(.75rem + 40px);
+  height: 140px;
+  margin-top: -20px;
+  font-size: calc(3rem + 20px);
+}
+#canvas {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}

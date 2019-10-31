@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
+
+body {
+  margin: 0px;
+  font-family: Roboto;
+  min-height: 100%;
+  overflow-y: hidden;
+  /* background-color: #111; */
+  /* background-image: url(/img/background2.small.jpg); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+html {
+  height: 100%;
+}
+.iframe {
+  border: 0px;
+  width: 100%;
+}

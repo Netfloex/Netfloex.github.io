@@ -1,0 +1,63 @@
+#headertitleshort, #headerLinksNavMenu, #headertitleshorter {
+  display: none;
+}
+#headerLinksNavMenu {
+  width: 100%;
+}
+#headerLinksNavMenu .headertitle {
+  position: absolute;
+  right: 40px;
+  margin-top: -2px;
+}
+#menuBox {
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  position: relative;
+}
+#menuBox i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -16px;
+  margin-left: -14px;
+}
+#menuBox:hover + #headerLinksNav {
+  display: block!important;
+}
+@media only screen and (max-width: 770px) {
+  #headertitle {
+    display: none;
+  }
+  #headertitleshort {
+    display: block;
+  }
+  #headerLinksNav {
+    position: absolute!important;
+    /* width: 100%; */
+    right: 10px!important;
+    left: auto!important;
+  }
+}
+@media only screen and (max-width: 430px) {
+  #headertitle, #headertitleshort {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  #headertitle, #headertitleshort, #headerLinksNav {
+    display: none;
+  }
+  #headerLinksNavMenu {
+    display: block;
+  }
+}
+@media only screen and (max-width: 250px) {
+  #headertitlesemi {
+    display: none;
+  }
+  #headertitleshorter {
+    display: block;
+  }
+}

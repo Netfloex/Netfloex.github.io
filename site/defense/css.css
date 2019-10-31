@@ -1,0 +1,76 @@
+body {
+	margin: 0px;
+	overflow: hidden;
+}
+@font-face {
+    font-family: 'font';
+    src: url('font.ttf');
+}
+.font {
+	font-family: font;
+}
+#loading {
+	position: fixed;
+	top: 50%;
+	z-index: -1;
+	text-align: center;
+	width: 100%;
+}
+#hacksMenu {
+  display: none;
+  position: fixed;
+  background: #555;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  height: 330px;
+  margin-left: -200px;
+  margin-top: -165px;
+  color: white;
+  font-family: font;
+}
+.visible {
+  display: block!important;
+}
+#up {
+  width: 100%;
+  height: 50px;
+  background: #11f;
+}
+#x {
+  margin: 5px 5px 0px 0px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-decoration: none;
+  color: black;
+  background: #fff;
+  padding: 5px 10px;
+}
+#x:hover {
+  color: white;
+  background: #000;
+}
+#title {
+  margin: 0px;
+  display: inline-block;
+  line-height: 50px;
+  margin-left: 2px;
+}
+#content {
+	margin-left: 5px;
+	font-size: 20px;
+}
+a {
+	color: white;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+#fullDef {
+	display: none;
+}
+#content {
+	display: none;
+}

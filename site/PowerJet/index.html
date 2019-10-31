@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" initial-scale="1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Power Jet</title>
+  <meta name="description" content="Leuk spel?">
+  <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/000webhostapp.css">
+  <style>
+    body {
+      margin: 0px;
+      overflow: hidden;
+      font-family: "Gloria Hallelujah";
+      user-select: none;
+      background-color: #202124;
+    }
+  #wrap {
+    position: absolute;
+    top:50%;
+    left:50%;
+  }
+  #canvas {
+    width: 100%;
+    height: 100%;
+    cursor:none;
+  }
+  .fa-bolt {
+    font-size: 0.7rem;
+  }
+  .swal2-popup {
+    padding:0px!important;
+  }
+  .b {
+    font-size: 2rem;
+  }
+  #overlay {
+    position: absolute;
+    top:20px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    width: 100px;
+    text-align: right;
+    text-shadow: 2px 2px black;
+  }
+  .hidden {
+    display: none;
+  }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="canvas"></canvas>
+    <div id="overlay">
+      <div id="cashOverlay">
+        <i class="fas b fa-bolt"></i> <b id="power">0</b> <br>
+
+      </div>
+      <div id="gameOverlay">
+        <i class="fas fa-car"></i> <b id="meters">0</b>
+      </div>
+      <i class="fas fa-dollar-sign"></i> <b id="cash">0</b>
+    </div>
+  </div>
+<script src="https://kit.fontawesome.com/23f315703b.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+<script src="compressed.js" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+#header {
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  height: 100px;
+  transition: height .5s;
+  background-image: linear-gradient(135deg, #667eea, #764ba2);
+  animation: gradientHeader 10s ease infinite;
+  background-size: 400% 400%;
+  z-index: 400;
+  color: white;
+  text-shadow: 0 1px 1px #111111;
+  box-shadow: 1px 1px 1px #111111;
+}
+h6.headertitle {
+  margin-top: 10px;
+}
+.headertitle {
+  position: absolute;
+  top: 20%;
+  font-size: 2rem!important;
+}
+.muli {
+  font-family: Muli!important;
+}
+@keyframes gradientHeader {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+#headerLinksNav {
+  position: absolute;
+  right: 10%;
+  top: 20%;
+  /* vertical-align: middle; */
+  height: 50px;
+  float: left;
+}
+.ali button.btn-primary {
+  width: 100%;
+  background-color: #009688!important;
+  border-radius: 0px;
+}
+.ali button.btn-primary:hover {
+  background: #2BBBAD;
+}
+#header button:focus {
+  outline: none;
+  box-shadow: none;
+}
+#header button {
+  border: none;
+  /* overflow: auto; */
+  text-overflow: clip;
+}
+.bul {
+  margin: 0px;
+  padding: 0px;
+}
+.ali {
+  list-style: none;
+  height: 50px;
+  width: 128px;
+  margin-right: 1rem;
+  float: left;
+  /* background-color: rgba(20, 200, 0, 0.2); */
+}
+.btn-default {
+  background: #2BBBAD;
+  color: white;
+}
+.btn-default:hover {
+  color: white;
+  background: #009688;
+}
+.bli button {
+  height: 100%;
+  width: 100%;
+  border-radius: 0px;
+}
+.bli {
+  display: none;
+  height: 40px;
+}
+.ali:focus .bli {
+  display: block;
+}
+.ali:hover .bli {
+  display: block;
+}
+.noa {
+  color: white;
+}
+.noa:hover {
+  color: rgba(255, 255, 255, 0.9);
+}

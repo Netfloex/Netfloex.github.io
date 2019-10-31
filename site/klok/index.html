@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/canvas.css">
+  <script src="/js/google-tag.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/css/000webhostapp.css">
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Roboto:100&display=swap');
+  body {
+    background-color: #fff!important;
+    font-family: Roboto;
+    background-image: linear-gradient(135deg, #667eea, #764ba2);
+    animation: gradientHeader 10s ease infinite, fadein 6s ;
+    background-size: 400% 400%;
+    color: white;
+
+
+  }
+  @keyframes gradientHeader {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  #time {
+    font-size: 25vw;
+    margin: auto;
+  }
+  #textTime {
+    font-size: 5vw;
+    text-align: center;
+    margin-top: -5vw;
+  }
+  p {
+    text-shadow: 0 1px 1px #111111;
+  }
+  .switch {
+    opacity: 0;
+  }
+  k {
+    transition: opacity .3s;
+    opacity: 1;
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  </style>
+</head>
+<body>
+  <p id="time"><k id="hours"></k><k class="dot">:</k><k id="minutes"></k><k class="dot">:</k><k id="seconds"></k></p>
+  <p id="textTime"><k id="tminutes"></k> <k id="text"></k> <k id="thours"></k></p>
+  <script src="/js\zingtouch-1.0.0.min.js" charset="utf-8"></script>
+  <script src="/js/ez.js" charset="utf-8"></script>
+  <script src="time.js" charset="utf-8"></script>
+</body>
+</html>
