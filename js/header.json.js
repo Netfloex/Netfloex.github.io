@@ -36,6 +36,11 @@ Header = [
         title: "Klok",
         link: "#klok",
         desc: "Voor als je de tijd wil zien"
+      },
+      {
+        title: "Messager",
+        link: "#messager",
+        desc: "Stuur berichten naar mensen. "
       }
     ]
   }

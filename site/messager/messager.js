@@ -14,6 +14,7 @@ function updateMessages(c) {
   d("#messages").innerHTML = ""
   c.docs.forEach(doc => {
     var d = doc.data()
+    // Messages.doc(doc.id).delete()
     if (!d.msg||!d.user||!d.date) {
       return
     }
@@ -35,8 +36,11 @@ function typeBalk(e) {
   }
 }
 function sendMessage(msg) {
-  var me = Messages.doc("_"+random(0,1000))
-  me.set({
+  if (msg=="/clear") {
+    deleteAllMessages()
+    return
+  }
+  Messages.add({
     msg: msg,
     user: id,
     date: firebase.firestore.Timestamp.fromDate(new Date())
@@ -44,6 +48,7 @@ function sendMessage(msg) {
 }
 function createHTMLmessage(msg, user, date) {
   if (msg) {
+    msg = htmlEncode(msg)
     var html = c("div")
     var msgBox = c("div")
     msgBox.innerHTML = msg
@@ -59,13 +64,25 @@ function createHTMLmessage(msg, user, date) {
     if (user == id) {
       html.classList.add("msg-you")
       html.align = "right"
+    } else {
     }
+    msgBox.style.backgroundColor = `hsl(${user%360}, 50%, 50%)`
     d("#messages").appendChild(html)
     d("#messages").scroll(0,1000000)
   }
 }
 
-
+function deleteAllMessages() {
+  Messages.get().then(d=>{
+    d.docs.forEach(d=>{
+      Messages.doc(d.id).delete()
+    })
+  })
+}
+function htmlEncode(value){
+  // return value
+  return $('<div/>').text(value).html();
+}
 // Adapted from https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
 function compareValues(key, order='asc') {
   return function(a, b) {
