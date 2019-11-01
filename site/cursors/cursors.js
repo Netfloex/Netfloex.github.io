@@ -11,7 +11,8 @@ addEventListener("resize", resize)
 var cursors = {}
 
 var cur = db.collection("cursors")
-var me = cur.doc("_"+random(0,1000))
+var id = random(0,1000)
+var me = cur.doc("_"+id)
 
 cur.onSnapshot(updateCursors)
 
@@ -35,7 +36,8 @@ function loop() {
   // clear()
   var keys = Object.keys(cursors)
   keys.forEach(k => {
-    arc(cursors[k].x, cursors[k].y, 10, "green")
+    console.log(k);
+    arc(cursors[k].x, cursors[k].y, 10, `hsl(${k%360}, 50%, 50%)`)
   })
   // cur.get().then(d=>{updateCursors(d)})
   requestAnimationFrame(loop)
