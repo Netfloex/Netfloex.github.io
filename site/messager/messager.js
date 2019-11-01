@@ -57,7 +57,7 @@ function createHTMLmessage(msg, user, date) {
     html.title = user
     var time = c("span")
     // var date = new Date()
-    time.innerHTML = date.getHours() + ":" + date.getMinutes()
+    time.innerHTML = zero(date.getHours()) + ":" + zero(date.getMinutes())
     time.classList.add("msgTime")
     html.appendChild(msgBox)
     msgBox.appendChild(time)

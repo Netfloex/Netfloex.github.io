@@ -38,6 +38,9 @@
     right: 10px!important;
     left: auto!important;
   }
+  #fullScreenBox {
+    display: none;
+  }
 }
 @media only screen and (max-width: 430px) {
   #headertitle, #headertitleshort {

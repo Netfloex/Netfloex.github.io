@@ -9,7 +9,7 @@ function headerHeight() {
 }
 
 var create = {}
-
+var page = "none"
 create.Title = function (text) {
   var title = c("h1")
   title.className = "display-3 "
@@ -52,7 +52,7 @@ function insertSite() {
     location.pathname = ""
     location.hash = location.pathname.replace("/","")
   }
-  var page = Pages.filter(a=>a.href==l)
+  page = Pages.filter(a=>a.href==l)
   if (page.length>0) {
     // d("main").appendChild(create.Title("Found"))
     d("main").appendChild(create.Iframe(`/site${l}`))

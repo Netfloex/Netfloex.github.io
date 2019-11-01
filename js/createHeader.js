@@ -33,3 +33,29 @@ Header.forEach(i=>{
     ali.appendChild(ul)
   d("headerUl").appendChild(ali)
 })
+
+d("fullScreenBox").addEventListener("click", function (e) {
+  if (e.ctrlKey) {
+    if (page[0]) {
+      location.pathname = `site${page[0].href}`
+    } else {
+      location.hash = 404
+    }
+    return
+  }
+  toggleFullscreen()
+  d("fullScreenIcon").classList.toggle("fa-compress")
+  d("fullScreenIcon").classList.toggle("fa-expand")
+})
+
+// Adapted from https://gist.github.com/demonixis/5188326
+function toggleFullscreen(event) {
+  var element = document.body;
+
+	var isFullscreen = document.webkitIsFullScreen || document.mozFullScreen || false;
+
+	element.requestFullScreen = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || function () { return false; };
+	document.cancelFullScreen = document.cancelFullScreen || document.webkitCancelFullScreen || document.mozCancelFullScreen || function () { return false; };
+
+	isFullscreen ? document.cancelFullScreen() : element.requestFullScreen();
+}

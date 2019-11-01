@@ -18,7 +18,6 @@ cur.onSnapshot(updateCursors)
 function updateCursors(c) {
   cursors = {}
   c.docs.forEach(doc => {
-    console.log(doc.id, doc.data());
     var t = doc.data().lastUpdate
     if (t) {
       var time = new Date()/1000 - t.seconds
@@ -26,7 +25,6 @@ function updateCursors(c) {
       if (time>30) {
         cur.doc(doc.id).delete()
         delete cursors[doc.id]
-        console.log(doc.id);
       }
     }
     cursors[doc.id] = doc.data()
@@ -39,7 +37,7 @@ function loop() {
   keys.forEach(k => {
     arc(cursors[k].x, cursors[k].y, 10, "green")
   })
-  cur.get().then(d=>{updateCursors(d)})
+  // cur.get().then(d=>{updateCursors(d)})
   requestAnimationFrame(loop)
 }
 loop()
