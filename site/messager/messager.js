@@ -27,6 +27,8 @@ function updateMessages(c) {
 
 }
 
+var prefix = "/"
+
 function typeBalk(e) {
   if (e.key=="Enter") {
     var v = this.value
@@ -49,6 +51,32 @@ function sendMessage(msg) {
 function createHTMLmessage(msg, user, date) {
   if (msg) {
     msg = htmlEncode(msg)
+    var copyMsg = msg
+    if (msg.startsWith(prefix)) {
+      var args = msg.slice(prefix.length).trim().split(/ +/g);
+      var command = args.shift().toLowerCase();
+      msg = args.join(" ")
+      if (command == "script") {
+        if (args[0] == "hidden") {
+          args.shift()
+          msg = args.join(" ")
+          var hidden = true
+        }
+        try {
+          eval(msg)
+        } catch (e) {
+          console.error("Gebruiker heeft een error gemaakt: \n", e);
+        }
+      }
+      else if (command == "big") {
+        msg = `<h1 class="display=3">${args}</h1>`
+      } else {
+        msg = copyMsg
+      }
+      if (hidden) {
+        return
+      }
+    }
     var html = c("div")
     var msgBox = c("div")
     msgBox.innerHTML = msg
@@ -67,6 +95,10 @@ function createHTMLmessage(msg, user, date) {
     } else {
     }
     msgBox.style.backgroundColor = `hsl(${user%360}, 50%, 50%)`
+    if (command == "script") {
+      msgBox.style.color = "white"
+      msgBox.style.backgroundColor = "black"
+    }
     d("#messages").appendChild(html)
     d("#messages").scroll(0,1000000)
   }

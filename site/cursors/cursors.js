@@ -32,7 +32,7 @@ function updateCursors(c) {
 }
 
 function loop() {
-  clear()
+  // clear()
   var keys = Object.keys(cursors)
   keys.forEach(k => {
     arc(cursors[k].x, cursors[k].y, 10, "green")
