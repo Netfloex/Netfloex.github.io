@@ -36,8 +36,10 @@ function loop() {
   // clear()
   var keys = Object.keys(cursors)
   keys.forEach(k => {
-    console.log(k);
-    arc(cursors[k].x, cursors[k].y, 10, `hsl(${k%360}, 50%, 50%)`)
+    if (k.startsWith("_")) {
+      var v = k.replace("_", "")
+      arc(cursors[k].x, cursors[k].y, 10, `hsl(${v%360}, 50%, 50%)`)
+    }
   })
   // cur.get().then(d=>{updateCursors(d)})
   requestAnimationFrame(loop)
