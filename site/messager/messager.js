@@ -3,6 +3,14 @@ d("#sendbalk").addEventListener("keyup", typeBalk)
 
 var id = random(0,1000)
 
+var ls = localStorage
+
+if (ls.getItem("uid")) {
+  id = ls.getItem("uid")
+} else {
+  ls.setItem("uid", id)
+}
+
 var messages = []
 
 var Messages = db.collection("messages")
@@ -69,7 +77,7 @@ function createHTMLmessage(msg, user, date) {
         }
       }
       else if (command == "big") {
-        msg = `<h1 class="display=3">${args}</h1>`
+        msg = `<h1 class="display=3">${msg}</h1>`
       } else {
         msg = copyMsg
       }
