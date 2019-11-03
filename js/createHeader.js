@@ -44,8 +44,6 @@ d("fullScreenBox").addEventListener("click", function (e) {
     return
   }
   toggleFullscreen()
-  d("fullScreenIcon").classList.toggle("fa-compress")
-  d("fullScreenIcon").classList.toggle("fa-expand")
 })
 
 // Adapted from https://gist.github.com/demonixis/5188326

@@ -95,23 +95,21 @@ h6.headertitle {
   color: rgba(255, 255, 255, 0.9);
 }
 #fullScreenBox {
-  width: 60px;
-  height: 60px;
-  align-items: center;
   position: absolute;
   right: calc(10% - 6%);
-  top: calc(20% - 10px);
+  top: calc(20% - 5px);
+  background-image: url("/font-awesome/expand.svg");
 }
-#fullScreenBox i {
-  font-size: 2rem;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  margin-top: -16px;
-  margin-left: -14px;
+:-webkit-full-screen #fullScreenBox {
+  background-image: url("/font-awesome/compress.svg");
 }
-#fullScreenBox:hover i {
-  font-size: calc(2rem + 10px)!important;
-  /* margin-top: calc(-16px + 5px); */
-  margin-left: calc(-14px - 5px)
+.fac {
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: 2rem;
+  background-position: center;
+}
+.fac:hover {
+  background-size: calc(2rem + 10px);
 }
