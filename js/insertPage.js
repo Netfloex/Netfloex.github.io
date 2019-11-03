@@ -60,7 +60,7 @@ function insertSite() {
     if (page[0].name) {
       document.title = `Sam Taen - ${page[0].name}`
     }
-    incr(page[0].href)
+    // incr(page[0].href)
   } else {
     d("main").appendChild(create.Title("404, Not Found"))
     document.title = `Sam Taen - 404`
