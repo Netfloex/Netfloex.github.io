@@ -45,7 +45,11 @@ d("fullScreenBox").addEventListener("click", function (e) {
   }
   toggleFullscreen()
 })
-
+d("menuBox").addEventListener("click", function () {
+  d("headerLinksNav").style.display = "block"
+  d("headertitlesemi").style.display = "none"
+  this.style.display = "none"
+})
 // Adapted from https://gist.github.com/demonixis/5188326
 function toggleFullscreen(event) {
   var element = document.body;
