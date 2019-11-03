@@ -5,6 +5,10 @@ body {
   background-size: 400% 400%;
   font-family: Roboto;
   color: white;
+  min-height: 100%;
+}
+html {
+  height: 100%;
 }
 @keyframes gradientHeader {
   0%{background-position:0% 50%}
@@ -14,10 +18,14 @@ body {
 .small {
   font-size: 2rem;
 }
+.container {
+  height: 100vh;
+}
 #box {
-  position: relative;
-  width: 100%;
-  height: 600px;
+  height: calc(100% - 100px);
+  width: calc(80%);
+  position: fixed;
+  bottom: 5px;
   border: 1px black dotted;
 }
 #messages {
@@ -30,6 +38,7 @@ body {
   width: 100%;
   height: 40px;
   bottom: 0px;
+  padding: 0px;
 }
 #sendbalk {
   height: 100%!important;
