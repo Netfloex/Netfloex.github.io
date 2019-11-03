@@ -8,15 +8,3 @@ body {
 html {
   height: 100%;
 }
-#div {
-  position: relative;
-}
-#score {
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  color: white;
-  font-size: 3rem;
-  font-family: Roboto;
-  margin: 0px
-}
