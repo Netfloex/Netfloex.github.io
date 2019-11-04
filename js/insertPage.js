@@ -66,6 +66,7 @@ function insertSite() {
     document.title = `Sam Taen - 404`
   }
 
+  d("iframe").addEventListener("load", resize)
 }
 function resize() {
   if (d("iframe")) {
