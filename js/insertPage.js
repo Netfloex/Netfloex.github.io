@@ -67,12 +67,14 @@ function insertSite() {
   }
 
   d("iframe").addEventListener("load", resize)
-  scroll(0,0)
 }
 function resize() {
   if (d("iframe")) {
     d("iframe").height= innerHeight + headerHeight()
   }
+
+  scroll(0,0)
+  console.log(scroll);
 }
 insertSite()
 addEventListener("resize", resize)

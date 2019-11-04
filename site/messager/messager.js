@@ -116,6 +116,7 @@ function createHTMLmessage(msg, user, date) {
       msgBox.appendChild(time)
     } else {
       msgBox.classList.add("broadcast")
+      html.align = "center"
     }
     if (user == id) {
       html.classList.add("msg-you")
