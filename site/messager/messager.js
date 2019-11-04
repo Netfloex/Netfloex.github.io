@@ -23,6 +23,11 @@ function updateMessages(c) {
   c.docs.forEach(doc => {
     var d = doc.data()
     // Messages.doc(doc.id).delete()
+    if (doc.id=="cleared") {
+      q = new Date(d.time.seconds * 1000)
+      console.log(q);
+      createHTMLmessage(`Cleared on: ${q.getHours()}:${q.getMinutes()}`, `BROADCAST`, q)
+    }
     if (!d.msg||!d.user||!d.date) {
       return
     }
@@ -107,7 +112,11 @@ function createHTMLmessage(msg, user, date) {
     time.innerHTML = zero(date.getHours()) + ":" + zero(date.getMinutes())
     time.classList.add("msgTime")
     html.appendChild(msgBox)
-    msgBox.appendChild(time)
+    if (user !== "BROADCAST") {
+      msgBox.appendChild(time)
+    } else {
+      msgBox.classList.add("broadcast")
+    }
     if (user == id) {
       html.classList.add("msg-you")
       html.align = "right"
@@ -127,6 +136,10 @@ function deleteAllMessages() {
   Messages.get().then(d=>{
     d.docs.forEach(d=>{
       Messages.doc(d.id).delete()
+    })
+    Messages.doc("cleared").set({
+      time: firebase.firestore.Timestamp.fromDate(new Date()),
+      user: id
     })
   })
 }
