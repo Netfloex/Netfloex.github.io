@@ -36,10 +36,17 @@ function updateMessages(c) {
 }
 
 var prefix = "/"
+var lastSend = new Date()
 
 function typeBalk(e) {
   if (e.key=="Enter") {
     var v = this.value
+    if (v.length<1) {
+      return
+    }
+    if (new Date()-lastSend<1000) {
+      return
+    }
     this.value = ""
     // createHTMLmessage(v, "You")
     sendMessage(v)
@@ -50,6 +57,10 @@ function sendMessage(msg) {
     deleteAllMessages()
     return
   }
+  if (msg.length<1) {
+    return
+  }
+  lastSend = new Date()
   Messages.add({
     msg: msg,
     user: id,

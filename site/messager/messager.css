@@ -27,7 +27,7 @@ html {
   height: calc(100% - 100px);
   width: calc(80%);
   position: fixed;
-  bottom: 5px;
+  bottom: 200px;
   border: 1px black dotted;
 }
 #messages {
@@ -76,6 +76,7 @@ html {
     width: 100%;
     height: 100%;
     border: 0px;
+    bottom: 5px;
   }
   #title {
     padding: .5rem 0px .5rem .5rem;
