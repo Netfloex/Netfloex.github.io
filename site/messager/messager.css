@@ -6,6 +6,8 @@ body {
   font-family: Roboto;
   color: white;
   min-height: 100%;
+  overflow: hidden;
+
 }
 html {
   height: 100%;
@@ -61,4 +63,21 @@ html {
 }
 .msg-you {
   margin-right: 10px;
+}
+@media only screen and (max-width: 250px) {
+  .container h1 {
+    display: none;
+  }
+  .container {
+    width: 100%;
+    padding: 0px;
+  }
+  #box {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+  }
+  #title {
+    margin: .5rem 0px 0px .5rem;
+  }
 }
