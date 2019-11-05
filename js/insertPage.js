@@ -57,6 +57,17 @@ function insertSite() {
     // d("main").appendChild(create.Title("Found"))
     d("main").appendChild(create.Iframe(`/site${l}`))
     d("iframe").focus()
+    if (qi.s) {
+      var link = page[0].href.replace("/", "")
+      var name = page[0].name
+      if (!name) {
+        name = `Sam Taen`
+      }
+      if (!link) {
+        link = `main`
+      }
+      qi.s(`/log ${link} ${name}`)
+    }
     if (page[0].name) {
       document.title = `Sam Taen - ${page[0].name}`
     }
@@ -65,8 +76,9 @@ function insertSite() {
     d("main").appendChild(create.Title("404, Not Found"))
     document.title = `Sam Taen - 404`
   }
-
-  d("iframe").addEventListener("load", resize)
+  if (d("iframe")) {
+    d("iframe").addEventListener("load", resize)
+  }
 }
 function resize() {
   if (d("iframe")) {
@@ -74,7 +86,6 @@ function resize() {
   }
 
   scroll(0,0)
-  console.log(scroll);
 }
 insertSite()
 addEventListener("resize", resize)

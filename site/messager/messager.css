@@ -31,9 +31,10 @@ html {
   border: 1px black dotted;
 }
 #messages {
-  height: calc(100% - 38px - 8px - 40px - 4px);
+  height: calc(100% - 38px - 8px - 40px - 4px - 5px);
   overflow-y: scroll;
   overflow-x: hidden;
+  padding-top: 10px;
   /* border: 1px red dashed; */
 }
 #text {
@@ -47,7 +48,7 @@ html {
   height: 100%!important;
 }
 .msgd {
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .msg {
   display: inline-block;
@@ -71,7 +72,7 @@ html {
   width: 600px;
   /* left: calc(50% - 300px); */
   background-color: #f3ebbc;
-  color: black;
+  color: black!important;
 }
 @media only screen and (max-width: 567px) {
   .broadcast {
@@ -100,6 +101,6 @@ html {
     margin-left: .5rem;
   }
   #text {
-    bottom: 6px;
+    bottom: 1px;
   }
 }

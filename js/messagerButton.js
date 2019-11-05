@@ -2,6 +2,7 @@ var qi = {}
 qi.b = d("messagerButton")
 qi.c = d("closeButton")
 qi.w = d("messager")
+qi.i = d("messagerIframe")
 
 qi.b.addEventListener("click", function () {
   toggleMessager()
@@ -23,3 +24,9 @@ function toggleMessager() {
   qi.b.classList.toggle("closeIcon")
   qi.b.classList.toggle("appear")
 }
+
+qi.i.addEventListener("load", function () {
+  qi.g = qi.i.contentWindow
+  qi.s = qi.g.sendMessage
+
+})

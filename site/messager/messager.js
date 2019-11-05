@@ -25,7 +25,6 @@ function updateMessages(c) {
     // Messages.doc(doc.id).delete()
     if (doc.id=="cleared") {
       q = new Date(d.time.seconds * 1000)
-      console.log(q);
       createHTMLmessage(`Cleared on: ${q.getHours()}:${q.getMinutes()}`, `BROADCAST`, q)
     }
     if (!d.msg||!d.user||!d.date) {
@@ -75,6 +74,7 @@ function sendMessage(msg) {
 function createHTMLmessage(msg, user, date) {
   if (msg) {
     msg = htmlEncode(msg)
+    var opacity = 1
     var copyMsg = msg
     if (msg.startsWith(prefix)) {
       var args = msg.slice(prefix.length).trim().split(/ +/g);
@@ -94,7 +94,13 @@ function createHTMLmessage(msg, user, date) {
       }
       else if (command == "big") {
         msg = `<h1 class="display=3">${msg}</h1>`
-      } else {
+      } else if (command == "log") {
+        if (args[0]=="main") {
+          args[0] = ""
+        }
+        msg = `Traveled to <a href="/#${args.shift()}" target="_top">${args.join(" ")}</a>`
+        opacity = .5
+      }  else {
         msg = copyMsg
       }
       if (hidden) {
@@ -123,9 +129,9 @@ function createHTMLmessage(msg, user, date) {
       html.align = "right"
     } else {
     }
-    msgBox.style.backgroundColor = `hsl(${user%360}, 50%, 50%)`
+    msgBox.style.backgroundColor = `hsla(${user%360}, 50%, 50%, ${opacity})`
+    msgBox.style.color = `rgba(255, 255, 255, ${opacity})`
     if (command == "script") {
-      msgBox.style.color = "white"
       msgBox.style.backgroundColor = "black"
     }
     d("#messages").appendChild(html)
