@@ -34,5 +34,9 @@ Pages = [
   {
     href: "/messager",
     name: "Messager"
+  },
+  {
+    href: "/timer",
+    name: "Timer"
   }
 ]

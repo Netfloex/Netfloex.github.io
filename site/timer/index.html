@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Timer</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/canvas.css">
   <script src="/js/google-tag.js" charset="utf-8"></script>
@@ -12,8 +12,14 @@
   <link rel="stylesheet" href="/css/clock.css">
 </head>
 <body>
-  <p id="time"><k id="hours"></k><k class="dot">:</k><k id="minutes"></k><k class="dot">:</k><k id="seconds"></k></p>
-  <p id="textTime"><k id="tminutes"></k> <k id="text"></k> <k id="thours"></k></p>
+  <p id="time">
+    <k id="hours"></k><k class="dot"> <span>:</span></k><k id="minutes"></k><k class="dot"> <span class="secondDot">:</span></k><k id="seconds"></k>
+  </p>
+  <p id="textTime">
+    <k id="ttime"></k> <k id="text"></k>
+    <k id="and"></k>
+    <k id="ttime2"></k> <k id="text2"></k>
+  </p>
   <script src="/js\zingtouch-1.0.0.min.js" charset="utf-8"></script>
   <script src="/js/ez.js" charset="utf-8"></script>
   <script src="time.js" charset="utf-8"></script>

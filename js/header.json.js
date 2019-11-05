@@ -27,7 +27,11 @@ Header = [
         link: "#klok",
         desc: "Voor als je de tijd wil zien"
       },
-
+      {
+        title: "Timer",
+        link: "#timer",
+        desc: "Stopwatch, meet de tijd ofzo weet ik veel."
+      }
     ]
   },
   {
