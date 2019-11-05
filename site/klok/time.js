@@ -21,7 +21,7 @@ function time(d) {
 
   h = amPM(h)
 
-  if (m>=45) {
+  if (m>15) {
     changeHTML(thours, h+1, true)
   } else {
     changeHTML(thours, h, true)
@@ -35,15 +35,20 @@ function time(d) {
   } else if (m>=30) {
     changeHTML(text, "Over Half")
     changeHTML(tminutes, m-30, true)
-  } else if (m>=15) {
+  } else if (m>15) {
     changeHTML(tminutes, 30-m, true)
-    changeHTML(text, "Voor")
+    changeHTML(text, "Voor half")
   } else if (m==15) {
     changeHTML(text, "Over")
     changeHTML(tminutes, "Kwart")
   } else if (m<15) {
     changeHTML(tminutes, m, true)
     changeHTML(text, "Over")
+  }
+  if (m==0) {
+    tminutes.innerHTML = ""
+    text.innerHTML = ""
+    changeHTML(thours, `${h} Uur`)
   }
   var dotss = document.querySelectorAll(".dot")
   dotss.forEach(c=> {
