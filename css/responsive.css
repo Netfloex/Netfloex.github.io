@@ -28,7 +28,7 @@
   }
   #headerLinksNav {
     position: absolute!important;
-    width: 100%;
+
     right: 10px!important;
     left: auto!important;
   }
@@ -48,6 +48,9 @@
   }
   #headerLinksNavMenu {
     display: block;
+  }
+  #headerLinksNav {
+    width: 100%;
   }
   .ali {
     width: 100px!important;
