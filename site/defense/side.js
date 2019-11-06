@@ -18,8 +18,11 @@
 	})
 
 function mousecords(e) {
-	x = e.clientX
-	y = e.clientY
+	var rect = can.getBoundingClientRect(),
+  scaleX = can.width / rect.width
+  scaleY = can.height / rect.height
+  x = (e.clientX - rect.left) * scaleX
+  y = (e.clientY - rect.top) * scaleY
 }
 	function buy(e) {
 
@@ -132,7 +135,7 @@ function showLevel() {
 	c.font= '30px font';
 	fillStyle('white')
 	var x = can.width
-	var y = height
+	var y = height - 10
 	if (can.width>1300) {
 		x=1300
 	}

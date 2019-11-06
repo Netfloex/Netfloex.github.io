@@ -2,13 +2,36 @@
 var can = document.getElementById('canvas')
 var c   = can.getContext('2d')
 
-var width = 1100
-var height= 660
+var width = 1300
+var height= 700
+
+can.width = width
+can.height = height
+
+var d = document.querySelector.bind(document)
+
 addEventListener('load', function () {
+	d("#loading").outerHTML = ""
 	addEventListener('resize', onresize)
 	function onresize() {
-		can.width = innerWidth
-		can.height= innerHeight
+		var gameArea = d('#wrap');
+	  var widthToHeight = innerWidth/innerHeight
+	  var newWidth = innerWidth;
+	  var newHeight = innerHeight;
+	  var newWidthToHeight = newWidth / newHeight;
+
+	  if (newWidthToHeight > widthToHeight) {
+	      newWidth = newHeight * widthToHeight;
+	      gameArea.style.height = newHeight + 'px';
+	      gameArea.style.width = newWidth + 'px';
+	  } else {
+	      newHeight = newWidth / widthToHeight;
+	      gameArea.style.width = newWidth + 'px';
+	      gameArea.style.height = newHeight + 'px';
+	  }
+
+	  gameArea.style.marginTop = (-newHeight / 2) + 'px';
+	  gameArea.style.marginLeft = (-newWidth / 2) + 'px';
 		draw()
 	}
 	onresize()
@@ -174,7 +197,7 @@ var defenses = [
 
 var currentLevel = 0;
 var level = []
-level[0] = 
+level[0] =
 [
 	{
 		'after':1000,
@@ -207,7 +230,7 @@ level[0] =
 		'amount':3
 	}
 ]
-level[1] = 
+level[1] =
 [
 	{
 		'after':2000,
@@ -230,7 +253,7 @@ level[1] =
 		'amount':50
 	}
 ]
-level[2] = 
+level[2] =
 [
 	{
 		'after':2000,

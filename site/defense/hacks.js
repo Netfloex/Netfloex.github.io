@@ -65,7 +65,7 @@ hacks.goldSpeed = function() {
         if (index > -1) {
             hacksOn.splice(index, 1);
         }
-        
+
     }
 }
 hacks.damage = function() {
@@ -78,7 +78,7 @@ hacks.damage = function() {
         var index = hacksOn.indexOf(hackIcons[2]);
         if (index > -1) {
             hacksOn.splice(index, 1);
-        } 
+        }
     }
 }
 hacks.jonarhap = function() {
@@ -156,7 +156,7 @@ function showHacks() {
         image(hacksOn[i],1230,80+i*60,50,50)
     }
     var x = 30
-    var y = height+30
+    var y = height-30
     var wh = 100
     image(useHacks, x, y-wh/2,wh,wh)
 }

@@ -2,14 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112766652-2"></script>
-   <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-112766652-2');
-    </script>
   <title>Defend</title>
   <meta name="description" content="Defend shit van koopas">
   <link rel="stylesheet" href="css.css">
@@ -17,7 +9,9 @@
   <link rel="stylesheet" href="/css/000webhostapp.css">
 </head>
 <body>
-  <canvas id="canvas"></canvas>
+  <div id="wrap">
+    <canvas id="canvas"></canvas>
+  </div>
   <h1 id="loading">Loading...</h1>
   <div id="hacksMenu">
     <div id="up">
@@ -51,5 +45,6 @@
 <script src="defense.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 <script src="excan.js"></script>
+<script src="/js/google-tag.js" charset="utf-8"></script>
 </body>
 </html>
