@@ -2,7 +2,7 @@ var can = d("#canvas")
 var c = can.getContext("2d")
 
 can.width = 1920
-can.height= 969
+can.height= 869
 
 function resize() {
   var wrap = d("#wrap")
