@@ -82,7 +82,7 @@ function insertSite() {
 }
 function resize() {
   if (d("iframe")) {
-    d("iframe").height= innerHeight + headerHeight()
+    d("iframe").height= innerHeight - headerHeight()
   }
 
   scroll(0,0)
