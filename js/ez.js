@@ -56,3 +56,57 @@ function zero(hms) {
         }
         return hms;
     }
+function timeSpent(d, full) {
+  if (!d.getDate||d=="Invalid Date") {
+    console.error("Ja maar godver, deze functie moet een tijd dinges krijgen, niet wat jij nu voorschoteld.");
+    return
+  }
+  if ((new Date() - d)<0) {
+    console.error("Toekomst doe ik niet aan. Dat doe ik wel in de toekomst.")
+    return "Its a trap"
+  }
+  var d = new Date(new Date() - d)
+  var jj = d.getFullYear() - 1970
+  var mm = d.getMonth()
+  var dd = d.getDate() -1
+  var h = d.getHours() -1
+  var m = d.getMinutes()
+  var s = d.getSeconds()
+  var timeTable = {
+    s : ["Seconde", "Seconden"],
+    m : ["Minuut", "Minuten"],
+    h : ["Uur", "Uur"],
+    dd : ["Dag", "Dagen"],
+    mm : ["Maand", "Maanden"],
+    jj : ["Jaar", "Jaar"],
+  }
+  function num(t) {
+    if (t==1) {
+      return 0
+    } else {
+      return 1
+    }
+  }
+  function hide(m) {
+    if (!full) {
+      return ""
+    } else {
+      return m
+    }
+  }
+  if (s==0&&m<1&&h<1&&dd<1&&mm<1) {
+    return "Nu"
+  } else if (m<1&&h<1&&dd<1&&mm<1) {
+    return `${s} ${timeTable.s[num(s)]}`
+  } else if (h<1&&dd<1&&mm<1) {
+    return `${m} ${timeTable.m[num(m)]}` +  hide(` en ${s} ${timeTable.s[num(s)]}`)
+  } else if (dd<1&&mm<1) {
+    return `${h} ${timeTable.h[num(h)]}` + hide(` en ${m} ${timeTable.m[num(m)]}`)
+  } else if (mm<1) {
+    return `${dd} ${timeTable.dd[num(dd)]}` + hide(` en ${h} ${timeTable.h[num(h)]}`)
+  } else if (jj<1) {
+    return `${mm} ${timeTable.mm[num(mm)]}` + hide(` en ${dd} ${timeTable.dd[num(dd)]}`)
+  } else {
+    return `${jj} ${timeTable.jj[num(jj)]}` + hide(` en ${mm} ${timeTable.mm[num(mm)]}`)
+  }
+}

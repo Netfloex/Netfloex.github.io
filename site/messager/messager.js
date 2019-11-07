@@ -25,7 +25,7 @@ function updateMessages(c) {
     // Messages.doc(doc.id).delete()
     if (doc.id=="cleared") {
       q = new Date(d.time.seconds * 1000)
-      createHTMLmessage(`Cleared on: ${q.getHours()}:${q.getMinutes()}`, `BROADCAST`, q)
+      createHTMLmessage(`Gewist: ${timeSpent(q)} geleden.`, `BROADCAST`, q)
     }
     if (!d.msg||!d.user||!d.date) {
       return

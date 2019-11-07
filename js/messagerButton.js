@@ -11,9 +11,6 @@ qi.c.addEventListener("click", function () {
   closeMessager()
 })
 
-function openMessager() {
-  qi.w.classList.remove("hiddenMessager")
-}
 function closeMessager() {
   qi.w.classList.add("hiddenMessager")
   qi.b.classList.remove("closeIcon")
@@ -23,6 +20,10 @@ function toggleMessager() {
   qi.w.classList.toggle("hiddenMessager")
   qi.b.classList.toggle("closeIcon")
   qi.b.classList.toggle("appear")
+  var src = new URL(qi.i.src)
+  if (src.pathname.length<2) {
+    qi.i.src = "/site/messager"
+  }
 }
 
 qi.i.addEventListener("load", function () {
