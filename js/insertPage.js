@@ -10,38 +10,30 @@ function headerHeight() {
 
 var create = {}
 var page = "none"
-create.Title = function (text) {
-  var title = c("h1")
-  title.className = "display-3 "
-  title.innerHTML = text
-  return title
+create.fourOfour = function () {
+  var o44 = d("fourOfour")
+  o44.classList.remove("hidden")
+  var src = new URL(d("iframe").src)
+  if (src.pathname.length>1) {
+    var gb = d("goback")
+    gb.classList.remove("hidden")
+    gb.href = current.href.replace("/","#")
+  }
 }
 create.Iframe = function (link) {
-  var iframe = c("iframe")
+  var iframe = d("iframe")
   var lc = location
-  iframe.src = lc.protocol + "//" + lc.host  + link
-  // iframe.src = link
+  var src = lc.protocol + "//" + lc.host  + link
+  if (iframe.src!==src) {
+    iframe.src = lc.protocol + "//" + lc.host  + link
+  }
   iframe.className = "iframe"
   iframe.id = "iframe"
   iframe.height = innerHeight - headerHeight()
-  // iframe.onload = function () {
-  //   var g = iframe.contentWindow
-  //
-  //   g.addEventListener("wheel", function (e) {
-  //     var e = g.scroll
-  //     if (e>0) {
-  //       d("header").style.height = `75px`
-  //     }
-  //     if (e==0) {
-  //       d("header").style.height = `100px`
-  //     }
-  //   })
-  // }
-  return iframe
 }
 
 function insertSite() {
-  d("main").innerHTML = ""
+  // d("main").innerHTML = ""
   document.title = `Sam Taen`
   if (location.hash) {
     l = location.hash.replace("#", "/")
@@ -54,12 +46,15 @@ function insertSite() {
   }
   page = Pages.filter(a=>a.href==l)
   if (page.length>0) {
+    current = page[0]
     // d("main").appendChild(create.Title("Found"))
-    d("main").appendChild(create.Iframe(`/site${l}`))
+    create.Iframe(`/site${l}`)
+    d("fourOfour").classList.add("hidden")
+
     d("iframe").focus()
     if (qi.s) {
-      var link = page[0].href.replace("/", "")
-      var name = page[0].name
+      var link = current.href.replace("/", "")
+      var name = current.name
       if (!name) {
         name = `Sam Taen`
       }
@@ -68,12 +63,13 @@ function insertSite() {
       }
       qi.s(`/log ${link} ${name}`)
     }
-    if (page[0].name) {
-      document.title = `Sam Taen - ${page[0].name}`
+    if (current.name) {
+      document.title = `Sam Taen - ${current.name}`
     }
     // incr(page[0].href)
   } else {
-    d("main").appendChild(create.Title("404, Not Found"))
+    create.fourOfour()
+    d("iframe").className="hidden"
     document.title = `Sam Taen - 404`
   }
   if (d("iframe")) {

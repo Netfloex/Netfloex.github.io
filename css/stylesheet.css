@@ -108,3 +108,9 @@ html {
     transform: scale(1);
   }
 }
+.hidden {
+  display: none;
+}
+#fourOfour {
+  font-size: 3rem;
+}
