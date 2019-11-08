@@ -38,5 +38,9 @@ Pages = [
   {
     href: "/timer",
     name: "Timer"
+  },
+  {
+    href: "/teken",
+    name: "Tekenen"
   }
 ]

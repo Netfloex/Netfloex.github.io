@@ -16,6 +16,11 @@ Header = [
         title: "PowerJet",
         link: "#PowerJet",
         desc: "Maak stroom met windmolens. Rij vervolgens in een dikke waggie om muntjes te verzamelen."
+      },
+      {
+        title: "Tekenen",
+        link: "#teken",
+        desc: "Teken gewoon iets, ziet er vast wel mooi uit!"
       }
     ]
   },
