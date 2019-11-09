@@ -56,6 +56,15 @@ function zero(hms) {
         }
         return hms;
     }
+function dist(x1,y1,x2,y2) {
+    var x=x1-x2
+    var y=y1-y2
+    var ans = Math.sqrt(Math.pow(x,2)+Math.pow(y,2))
+    if (ans<0) {
+        ans=-ans
+    }
+    return ans
+}
 function timeSpent(d, full) {
   if (!d.getDate||d=="Invalid Date") {
     console.error("Ja maar godver, deze functie moet een tijd dinges krijgen, niet wat jij nu voorschoteld.");

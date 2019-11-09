@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/canvas.css">
   <link rel="stylesheet" href="/css/000webhostapp.css">
+  <link rel="stylesheet" href="draw.css">
 </head>
 <body>
   <canvas id="canvas"></canvas>
@@ -17,8 +18,33 @@
   <script src="/js/ez.js" charset="utf-8"></script>
 
 
-  <!-- <script src="/js/warpspeed.min.js" charset="utf-8"></script>
-  <script src="background.js" charset="utf-8"></script> -->
+  <div id="overlay">
+    <h1 class="big titleOverlay">Draw</h1>
+    <div id="chooseColor">
+      <h1 class="titleOverlay">Choose a Color</h1>
+      <div align="center" id="colorSelection">
+        <div class="color gradient"></div>
+        <div class="color red"></div>
+        <div class="color green"></div>
+        <div class="color blue"></div>
+        <div class="color picker"><input type="color" id="picker"></div>
+      </div>
+    </div>
+    <div align="center" id="undo">
+      <h1 class="titleOverlay">Edit</h1>
+      <button id="undoBtn" class="btn btn-lg btn-default">Undo</button>
+      <button id="redoBtn" class="btn btn-lg btn-default">Redo</button>
+      <button id="clearBtn" class="btn btn-lg btn-default">Clear</button>
+    </div>
+    <div id="options">
+      <h1 class="titleOverlay">Draw Mode</h1>
+      <select id="drawMode" class="form-control" name="">
+        <option value="both">Both</option>
+        <option value="line">Line</option>
+        <option value="arc">Circle</option>
+      </select>
+    </div>
+  </div>
 
   <script src="/js\zingtouch-1.0.0.min.js" charset="utf-8"></script>
   <script src="draw.js" charset="utf-8"></script>
