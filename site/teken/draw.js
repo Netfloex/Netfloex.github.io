@@ -46,12 +46,14 @@ function loop() {
       c.lineTo(d.x, d.y)
       c.stroke()
     }
-    if (dist(d.x,d.y,can.width, 400)<500) {
+    if (dist(d.x,d.y,can.width, 200)<500) {
       overlayClass.add("hidden")
     } else {
       overlayClass.remove("hidden")
     }
-
+    if (drawing.length>2) {
+      drawing.shift()
+    }
   })
   // c.closePath()
 }
@@ -77,10 +79,6 @@ function undo() {
   }
   c.putImageData(undoImage.pop(), 0, 0);
 }
-can.addEventListener("mouseup", function (e) {
-  drawing = []
-  overlayClass.remove("hidden")
-})
 can.addEventListener("mousedown", saveForUndo)
 function saveForUndo() {
   undoImage.push(c.getImageData(0, 0, can.width, can.height))
@@ -111,8 +109,17 @@ colors.forEach(c=>{
   })
 })
 console.log(colors);
-var zt = new ZingTouch.Region(can, false, false);
-zt.bind(can, "pan", function(e){
+var customPan = new ZingTouch.Pan({
+  threshold: 1
+});
+customPan.end = function (e) {
+  var pos = e[0].current
+  arc(pos.x,pos.y,20, drawColor)
+  drawing = []
+  overlayClass.remove("hidden")
+}
+var zt = new ZingTouch.Region(document.body);
+zt.bind(can, customPan, function(e){
   var pos = e.detail.events[0]
   if (pos.x&&pos.y) {
     var cursor = {
@@ -122,4 +129,4 @@ zt.bind(can, "pan", function(e){
     }
     drawing.push(cursor)
   }
-}, false);
+});
