@@ -80,7 +80,7 @@ function createHTMLmessage(msg, user, date) {
       var args = msg.slice(prefix.length).trim().split(/ +/g);
       var command = args.shift().toLowerCase();
       msg = args.join(" ")
-      if (command == "script") {
+      if (command == "script"&&false) {
         if (args[0] == "hidden") {
           args.shift()
           msg = args.join(" ")
@@ -131,7 +131,7 @@ function createHTMLmessage(msg, user, date) {
     }
     msgBox.style.backgroundColor = `hsla(${user%360}, 50%, 50%, ${opacity})`
     msgBox.style.color = `rgba(255, 255, 255, ${opacity})`
-    if (command == "script") {
+    if (command == "script"&&false) {
       msgBox.style.backgroundColor = "black"
     }
     d("#messages").appendChild(html)
