@@ -93,7 +93,7 @@ function createHTMLmessage(msg, user, date) {
         }
       }
       else if (command == "big") {
-        msg = `<h1 class="display=3">${msg}</h1>`
+        msg = `<h1 class="display-3">${args.join(" ")}</h1>`
       } else if (command == "log") {
         if (args[0]=="main") {
           args[0] = ""
@@ -133,6 +133,9 @@ function createHTMLmessage(msg, user, date) {
     msgBox.style.color = `rgba(255, 255, 255, ${opacity})`
     if (command == "script"&&false) {
       msgBox.style.backgroundColor = "black"
+    }
+    if (user=="Sam") {
+      msgBox.style.backgroundImage=   `linear-gradient(135deg, #009688, #2bbbad)`
     }
     d("#messages").appendChild(html)
     d("#messages").scroll(0,1000000)

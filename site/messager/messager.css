@@ -79,7 +79,7 @@ html {
     width: 200px;
     /* left: calc(50% - 100px); */
   }
-  h1 {
+  #mainTitle {
     display: none;
   }
   .container {
