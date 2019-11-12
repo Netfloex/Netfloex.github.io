@@ -20,7 +20,15 @@ var gradient = c.createLinearGradient(0, 0, can.width, 0);
 var drawColor = gradient
 gradient.addColorStop("0", "#667eea");
 gradient.addColorStop("1.0", "#764ba2");
+var gradientColor = c.createLinearGradient(0, 0, can.width, 0);
 
+gradientColor.addColorStop("0", "red");
+gradientColor.addColorStop("0.17", "#ff0");
+gradientColor.addColorStop("0.33", "lime");
+gradientColor.addColorStop("0.50", "cyan");
+gradientColor.addColorStop("0.66", "blue");
+gradientColor.addColorStop("0.83", "#ff0");
+gradientColor.addColorStop("1", "red");
 
 var i = 0
 var last = new Date()
@@ -81,6 +89,7 @@ function undo() {
 }
 can.addEventListener("mousedown", saveForUndo)
 function saveForUndo() {
+  console.log("save");
   undoImage.push(c.getImageData(0, 0, can.width, can.height))
 }
 
@@ -90,9 +99,11 @@ d("#picker").addEventListener("change", function (e) {
 })
 var colorMap = {
   gradient: gradient,
+  colors: gradientColor,
   red: "#f44336",
   blue: "#2196f3",
   green: "#009688"
+
 }
 colors.forEach(c=>{
   Object.keys(colorMap).forEach(cm=>{
@@ -108,7 +119,6 @@ colors.forEach(c=>{
     })
   })
 })
-console.log(colors);
 var customPan = new ZingTouch.Pan({
   threshold: 1
 });
