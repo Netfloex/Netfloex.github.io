@@ -12,6 +12,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore()
+var functions = firebase.functions()
 var pageViews = db.collection("pageviews")
 var total = pageViews.doc("counts")
 

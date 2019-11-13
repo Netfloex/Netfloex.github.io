@@ -15,6 +15,7 @@ addEventListener("resize", resize)
 var drawing = []
 
 var drawMode = d("#drawMode")
+// Als je resized doet dit kut
 
 var gradient = c.createLinearGradient(0, 0, can.width, 0);
 var drawColor = gradient
@@ -87,6 +88,7 @@ function undo() {
   }
   c.putImageData(undoImage.pop(), 0, 0);
 }
+// Dit werkt niet goed door ZingTouch
 can.addEventListener("mousedown", saveForUndo)
 function saveForUndo() {
   console.log("save");
@@ -124,6 +126,7 @@ var customPan = new ZingTouch.Pan({
 });
 customPan.end = function (e) {
   var pos = e[0].current
+  // Als je op menuutje klikt moet hij niet teken e.target
   arc(pos.x,pos.y,20, drawColor)
   drawing = []
   overlayClass.remove("hidden")
