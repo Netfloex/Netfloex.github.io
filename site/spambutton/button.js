@@ -1,30 +1,19 @@
-var Counters = db.collection("counters")
-var counts = Counters.doc("spamButton")
-
 var count = 0
-
-function update(c) {
+function add(c) {
   var data = c.data()
   d("#button").innerHTML = data.total
+  count++
 }
-counts.onSnapshot(update)
-var inc = {
-  total: firebase.firestore.FieldValue.increment(1)
-}
+db.collection("counters").doc("spamButton").onSnapshot(add)
 
-function add() {
-  counts.update(inc)
-}
-
-var zt = new ZingTouch.Region(document.body);
-
-
-var tap = new ZingTouch.Tap({
+new ZingTouch.Region(document.body).bind(d("button"), new ZingTouch.Tap({
     maxDelay: 1000,
     tolerance: 50
-})
-
-zt.bind(d("button"), tap, function(e){
-  add()
-  updateBackground()
+}), function(e){
+  if (e) {
+    db.collection("counters").doc("spamButton").update({
+      total: firebase.firestore.FieldValue.increment(1)
+    })
+    updateBackground()
+  }
 }, false);
