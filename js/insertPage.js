@@ -48,6 +48,9 @@ function insertSite() {
   if (page.length>0) {
     current = page[0]
     // d("main").appendChild(create.Title("Found"))
+    d("main").classList.add("headerGradient")
+    d("loading").classList.remove("hidden")
+    d("iframe").classList.add("hidden")
     create.Iframe(`/site${l}`)
     d("fourOfour").classList.add("hidden")
 
@@ -79,6 +82,8 @@ function insertSite() {
 function resize() {
   if (d("iframe")) {
     d("iframe").height= innerHeight - headerHeight()
+    d("loading").classList.add("hidden")
+    d("iframe").classList.remove("hidden")
   }
 
   scroll(0,0)

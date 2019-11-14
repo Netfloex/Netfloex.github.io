@@ -17,7 +17,7 @@
   <meta name="description" content="Site met allemaal verschillende dingen. Gemaakt door Sam Taen.">
 </head>
 <body>
-  <div id="header">
+  <div class="headerGradient" id="header">
     <div class="container">
       <a class="noa" href="#">
         <h6 id="headertitle" class="display-3 muli headertitle">Sam Taen</h6>
@@ -45,7 +45,15 @@
       <p>This item can not be found.</p>
       <a id="goback" class="btn btn-default hidden">Click here to go back</a>
     </div>
-    <iframe src="" frameborder="0" id="iframe"></iframe>
+    <div id="loading" class="hidden">
+      <div align="center" class="lds-ripple">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <iframe class="hidden" src="" frameborder="0" id="iframe"></iframe>
   </div>
   <div id="messagerOverlay">
     <div class="hiddenMessager" id="messager">
