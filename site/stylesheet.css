@@ -18,9 +18,35 @@ html {
   background-size: cover;
   background-position: bottom;
   background-attachment: fixed; */
+  position: fixed;
+  top: 0px;
   height: calc(100vh);
   width: 100%;
   color: white;
+  z-index: 0;
+}
+#info {
+  background-image: url(/img/background3.jpg);
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+  left: 100%;
+  transition: left 1s;
+}
+.moreinfo {
+  position: fixed;
+  top: 30%;
+  width: 100%;
+}
+.moreinfo p {
+  text-align: left;
+  display: inline-block;
+}
+.larger {
+  font-size: 2rem;
+}
+.infoVisible {
+  left: 0px!important;
 }
 .titlediv {
   position: absolute;
@@ -32,9 +58,13 @@ html {
   transition-timing-function: ease;
   /* transition:  4s; */
   animation-name: fadein;
-  animation-duration: 3s;
+  animation-duration: 6s;
   animation-timing-function: ease-out;
   /* border: 1px red dashed; */
+
+}
+.titlediv h1 {
+  z-index: 100;
 }
 .fadein {
   animation-name: fadein;

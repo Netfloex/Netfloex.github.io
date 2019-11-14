@@ -15,7 +15,7 @@ function wheel(e) {
     e = Math.sign(e.deltaY)
     scroll += e
     var min = 0
-    var max = 2
+    var max = 3
     // console.log(scroll);
     if (scroll<0) {
       scroll= 0
@@ -57,7 +57,7 @@ function wheel(e) {
         c.add("fadein")
       },10)
     })
-  } else {
+  } else if(scroll<2) {
     cards.forEach(c=>{
       if (c==cards[0]) {
         return
@@ -65,6 +65,11 @@ function wheel(e) {
       c.remove("fadein")
       c.add("fadeout")
     })
+  }
+  if (scroll == 3) {
+    d("#info").classList.add("infoVisible")
+  } else {
+    d("#info").classList.remove("infoVisible")
   }
 }
 if (innerWidth>860) {
