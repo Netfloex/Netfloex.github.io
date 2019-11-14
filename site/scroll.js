@@ -1,6 +1,8 @@
 
 
 var scroll = 0
+var min = 0
+var max = 3
 
 wheel()
 function wheel(e) {
@@ -14,8 +16,6 @@ function wheel(e) {
   if (e) {
     e = Math.sign(e.deltaY)
     scroll += e
-    var min = 0
-    var max = 3
     // console.log(scroll);
     if (scroll<0) {
       scroll= 0
@@ -72,24 +72,21 @@ function wheel(e) {
     d("#info").classList.remove("infoVisible")
   }
 }
+var region = new ZingTouch.Region(document.body);
 if (innerWidth>860) {
-  var parentTouchArea = document.body
-  var touchArea = document.getElementById("yeet")
-  var myRegion = new ZingTouch.Region(parentTouchArea);
 
   var gesture = new ZingTouch.Swipe({
       numInputs: 1,
       maxRestTime: 1000,
   });
 
-  myRegion.bind(touchArea, gesture, function(e){
+  region.bind(document.body, gesture, function(e){
     var ev = e.detail.data[0]
     if (ev.distanceFromOrigin<100) {
       return
     }
       // console.log(ev);
       // touchArea.innerHTML = (ev.currentDirection) + "<br>"
-      var touchArea = d(".title")
     var r = ev.currentDirection
     if (r>315||r<=45) {
       // >
@@ -104,6 +101,14 @@ if (innerWidth>860) {
     }
   });
 }
+var inc = 1
+region.bind(document.body, "tap", function (e) {
+  if (scroll>=max||scroll<=min) {
+    inc = -inc
+  }
+  wheel({deltaY:inc})
+  console.log("Wheel", inc);
+})
 addEventListener("wheel", wheel)
 addEventListener("resize", function () {
   if (innerWidth>860) {

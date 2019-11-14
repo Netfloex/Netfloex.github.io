@@ -51,6 +51,7 @@ function insertSite() {
     d("main").classList.add("headerGradient")
     d("loading").classList.remove("hidden")
     d("iframe").classList.add("hidden")
+    d("iframe").classList.remove("appear")
     create.Iframe(`/site${l}`)
     d("fourOfour").classList.add("hidden")
 
@@ -84,6 +85,10 @@ function resize() {
     d("iframe").height= innerHeight - headerHeight()
     d("loading").classList.add("hidden")
     d("iframe").classList.remove("hidden")
+    d("iframe").classList.add("appear")
+    setTimeout(function () {
+      d("main").classList.remove("headerGradient")
+    },1000)
   }
 
   scroll(0,0)
