@@ -8,6 +8,15 @@
   color: white;
   text-shadow: 0 1px 1px #111111;
   box-shadow: 1px 1px 1px #111111;
+  animation: fadeInHeader .5s ease, gradientHeader 10s ease infinite;
+}
+@keyframes fadeInHeader {
+  0% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 .headerGradient {
   background-image: linear-gradient(135deg, #667eea, #764ba2);
