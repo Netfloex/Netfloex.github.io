@@ -25,6 +25,7 @@ html {
   border: 0px;
   width: 100%;
   position: absolute;
+  opacity: 0;
 }
 #messagerOverlay {
   z-index: 1;
@@ -87,6 +88,7 @@ html {
 }
 .appear {
   animation: icon-appear .25s ease;
+  opacity: 1;
 }
 .closeIcon {
   background-image: url("/font-awesome/close.svg")!important;
