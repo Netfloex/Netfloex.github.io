@@ -28,7 +28,7 @@ html {
 }
 #messagerOverlay {
   z-index: 1;
-  position: absolute;
+  position: fixed;
   bottom: 10px;
   right: 10px;
 
@@ -126,6 +126,10 @@ html {
   top: 0px;
   margin-top: calc(50% - 500px);
   width: 100%;
+}
+.noverflow {
+  overflow: hidden;
+  position: relative;
 }
 /* Adapted from https://loading.io/css/ */
 .lds-ripple {
