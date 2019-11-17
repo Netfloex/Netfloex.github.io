@@ -16,6 +16,28 @@ body {
   padding: 1rem;
   user-select: none;
   transition: right .5s, bottom .5s, transform 1s ;
+  animation: show 2s ease;
+  /* animation-delay: 2s; */
+}
+@keyframes show {
+  0% {
+    right: -400px;
+    -webkit-transform: scale(.1);
+    transform: scale(.1);
+  }
+  30% {
+    right: -400px;
+    -webkit-transform: scale(.1);
+    transform: scale(.1);
+  }
+  75% {
+    right: 10px;
+  }
+  100% {
+    right: 10px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
 }
 .hidden {
   right: -400px!important;
