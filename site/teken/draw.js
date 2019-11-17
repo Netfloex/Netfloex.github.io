@@ -88,8 +88,6 @@ function undo() {
   }
   c.putImageData(undoImage.pop(), 0, 0);
 }
-// Dit werkt niet goed door ZingTouch
-can.addEventListener("mousedown", saveForUndo)
 function saveForUndo() {
   console.log("save");
   undoImage.push(c.getImageData(0, 0, can.width, can.height))
@@ -124,10 +122,20 @@ colors.forEach(c=>{
 var customPan = new ZingTouch.Pan({
   threshold: 1
 });
+var startPan = customPan.start
+
+customPan.start = function (inputs) {
+  if (inputs[0].initial.originalEvent.target==can) {
+    saveForUndo()
+  }
+  return startPan.call(this, inputs)
+}
 customPan.end = function (e) {
-  var pos = e[0].current
   // Als je op menuutje klikt moet hij niet teken e.target
-  arc(pos.x,pos.y,20, drawColor)
+  if (e[0].current.originalEvent.target==can) {
+    var pos = e[0].current
+    arc(pos.x,pos.y,20, drawColor)
+  }
   drawing = []
   overlayClass.remove("hidden")
 }
