@@ -42,5 +42,9 @@ Pages = [
   {
     href: "/teken",
     name: "Tekenen"
+  },
+  {
+    href: "/walker",
+    name: "Walker"
   }
 ]
