@@ -7,6 +7,12 @@ can.height= 869
 function resize() {
   var wrap = d("#wrap")
   var gameArea = d('#wrap');
+  if (!wrap) {
+    can.width = innerWidth
+    can.height= innerHeight
+    return
+  }
+
   var widthToHeight = innerWidth/innerHeight
   var newWidth = innerWidth;
   var newHeight = innerHeight;
