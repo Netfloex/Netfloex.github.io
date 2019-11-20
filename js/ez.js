@@ -65,6 +65,21 @@ function dist(x1,y1,x2,y2) {
     }
     return ans
 }
+function isHitbox(point,obj) {
+  // console.log(obj);
+  // rect(obj.x,obj.y,obj.width,obj.height,"aqua")
+  // arc(point.x,point.y,100)
+  if (point.x>obj.x) {
+    if (point.y>obj.y) {
+      if (point.x<obj.x+obj.width) {
+        if (point.y<obj.y+obj.height) {
+          return true
+        }
+      }
+    }
+  }
+  return false
+}
 function timeSpent(d, full) {
   if (!d.getDate||d=="Invalid Date") {
     console.error("Ja maar godver, deze functie moet een tijd dinges krijgen, niet wat jij nu voorschoteld.");

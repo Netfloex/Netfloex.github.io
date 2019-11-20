@@ -11,6 +11,7 @@ function Player() {
     x: 0,
     y: 0
   }
+  this.rotation = 0
   this.applyForce = function (mot) {
     var motX = mot.x || 0
     var motY = mot.y || 0
@@ -46,4 +47,47 @@ function Player() {
     this.motion.y *= .9
   }
   this.speed = 1
+}
+function Tree() {
+  var x = random(0,ter.width)
+  this.type = "tree"
+  this.img = img.tree
+  this.color = `hsl(${x*10}, 50%, 50%)`
+  this.bgColor = `hsl(${x*10}, 50%, 50%)`
+  this.opacity = 1;
+  this.hp = 10
+  this.x = x
+  this.y = random(0,ter.height)
+}
+function Cow() {
+  this.x = random(100, ww-100)
+  this.y = random(100, ww-100)
+  this.rotation = random(0,360)
+  this.hp = 5
+  this.img = img.cow
+  this.ai = {
+    rotateSpeed: random(-10,10)/10,
+    time: new Date(),
+    speed : {
+      x: 0,
+      y: 0
+    }
+  }
+  this.randomAi = function () {
+    var idle = random(0,1)
+    if (!idle) {
+      this.ai.speed = {
+        x: random(-2, 2),
+        y: random(-2, 2)
+      }
+    } else {
+      this.ai.speed = {
+        x: 0,
+        y: 0
+      }
+      this.ai.rotateSpeed = random(-100,100)/100
+      this.rotation = random(0,360)
+    }
+    this.ai.time = new Date()
+  }
 }
