@@ -25,7 +25,7 @@ Header = [
       {
         title: "Walker",
         link: "#walker",
-        desc: "Zo beta, dat ik zelf nog niet eens precies weet wat het plan wordt."
+        desc: "Walker, sla koeien in elkaar en hak bomen. NIEUW"
       }
     ]
   },
