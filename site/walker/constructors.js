@@ -66,12 +66,26 @@ function Cow() {
   this.hp = 5
   this.img = img.cow
   this.ai = {
+    runFromPlayer : false,
     rotateSpeed: random(-10,10)/10,
     time: new Date(),
     speed : {
       x: 0,
       y: 0
     }
+  }
+  this.getAngle = function(){
+    var angle = Math.atan2(this.ai.speed.y, this.ai.speed.x);
+    var degrees = 180*angle/Math.PI;
+    return (360+Math.round(degrees))%360 + 90;
+  }
+  this.setAngle = function(degree){
+    var l = 5
+    degree-=90
+    var angle = degree*Math.PI/180;
+    this.ai.speed.x=Math.cos(angle)*l;
+    this.ai.speed.y=Math.sin(angle)*l;
+    return;
   }
   this.randomAi = function () {
     var idle = random(0,1)
@@ -80,13 +94,13 @@ function Cow() {
         x: random(-2, 2),
         y: random(-2, 2)
       }
+      this.rotation = this.getAngle()
     } else {
       this.ai.speed = {
         x: 0,
         y: 0
       }
       this.ai.rotateSpeed = random(-100,100)/100
-      this.rotation = random(0,360)
     }
     this.ai.time = new Date()
   }

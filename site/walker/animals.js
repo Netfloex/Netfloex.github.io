@@ -19,7 +19,15 @@ Create.animals = function () {
       an.x = can.width/2
       an.y = can.height/2
     }
-    if (!an.ai.speed.x&&!an.ai.speed.x) {
+    if (an.ai.runFromPlayer) {
+      var x = Math.atan2(((player.rpos.y+can.height/2- player.pos.y)-an.y),
+                        ((player.rpos.x+can.width/2 - player.pos.x)-an.x))*180/Math.PI
+      x+=90
+      x+=180
+      an.rotation = x
+      an.setAngle(x)
+    }
+    if (!an.ai.speed.x&&!an.ai.speed.y&&!x) {
 
       an.rotation+=an.ai.rotateSpeed
     }

@@ -68,11 +68,15 @@ function terrainClick() {
     }
   }
 }
-function animalsClick() {
+function animalsClick(e) {
   animals.forEach((an, i)=>{
     if (dist(mouse.x,mouse.y,an.x,an.y)<100) {
-      an.rotation-=10
-      an.y-=10
+      an.ai.runFromPlayer = true
+      an.ai.speed = {
+        x: 5,
+        y: 5
+      }
+      an.ai.time = new Date()
       an.hp--
       if (an.hp<=0) {
         animals.splice(i, 1)
