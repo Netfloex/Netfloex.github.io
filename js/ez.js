@@ -1,4 +1,5 @@
 var d = document.querySelector.bind(document)
+var crEL = document.createElement.bind(document)
 var aEL = addEventListener
 function random(e, t) {
     return t++, Math.floor(Math.random() * (t - e)) + e
