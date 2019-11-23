@@ -3,6 +3,11 @@ for (var x = 0; x < ter.width; x++) {
   for (var y = 0; y < ter.height; y++) {
     terrain[x][y] = x+y + x*4
     terrain[x][y] = `hsl(${x*10}, 50%, 50%)`
+    if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
+      terrain[x][y] = {
+        img: img.cobble
+      }
+    }
   }
 }
 var objects = [

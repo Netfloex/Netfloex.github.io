@@ -47,17 +47,24 @@ function Player() {
     this.motion.y *= .9
   }
   this.speed = 1
+
+  this.selected = false
 }
 function Tree() {
-  var x = random(0,ter.width)
+  var x = random(1,ter.width-2)
   this.type = "tree"
   this.img = img.tree
   this.color = `hsl(${x*10}, 50%, 50%)`
-  this.bgColor = `hsl(${x*10}, 50%, 50%)`
   this.opacity = 1;
   this.hp = 10
   this.x = x
-  this.y = random(0,ter.height)
+  this.y = random(1,ter.height -2)
+}
+function Tile(type) {
+  this.hp = 4
+  this.type = type
+  this.img = img[type]
+
 }
 function Cow() {
   this.x = random(100, ww-100)

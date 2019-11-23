@@ -16,8 +16,12 @@ Create.animals = function () {
       height: ww
     }
     if (!isHitbox(an, obj)) {
-      an.x = can.width/2
-      an.y = can.height/2
+      // an.x = can.width/2
+      // an.y = can.height/2
+      an.ai.speed.x *= -1
+      an.ai.speed.y *= -1
+      an.rotation = an.getAngle()
+      an.ai.runFromPlayer = false
     }
     if (an.ai.runFromPlayer) {
       var x = Math.atan2(((player.rpos.y+can.height/2- player.pos.y)-an.y),

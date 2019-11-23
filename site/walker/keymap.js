@@ -23,6 +23,7 @@ aEL("mousedown",mouseClick)
 aEL("mousemove", mouseClick)
 
 aEL("mouseup", terrainClick)
+aEL("contextmenu", terrainClick)
 aEL("mouseup", animalsClick)
 function keydown(e) {
   keymap[e.key] = e.key
@@ -31,7 +32,7 @@ function keyup(e) {
   delete keymap[e.key]
 }
 function mouseClick(e) {
-  if (!player) {
+  if (typeof player == "undefined") {
     return
   }
   var x = Math.atan((e.clientY-(player.rpos.y+can.height/2))/
@@ -51,21 +52,47 @@ function mouseClick(e) {
     }
   }
 }
-function terrainClick() {
+function terrainClick(e) {
+  e.preventDefault()
   if (mouse.select) {
     var ter = terrain[mouse.select.x][mouse.select.y]
-    if (typeof ter !=="object") {
-      return
+
+    if (typeof ter == "string") { // Als het gewoon grond is
+      if (mouse.which !== 3) {
+        return
+      }
+      var ps = player.selected
+      if (ps) {
+
+        if (game[ps]) {
+          if (game[ps]>0) {
+            game[ps]--
+            terrain[mouse.select.x][mouse.select.y] = new Tile(ps)
+          }
+        }
+      }
     }
-    ter.hp-=1
-    ter.opacity = ter.hp/10
-    ter.color =  `hsl(${ter.hp*10}, 50%, 50%)`
-    if (ter.hp>=0) {
-      game.wood++
+
+
+    if (typeof ter =="object") { // Hak bomen
+      if (mouse.which !== 1) {
+        return
+      }
+
+      ter.hp-=1
+      ter.opacity = ter.hp/10
+      ter.color =  `hsl(${ter.hp*10}, 50%, 50%)`
+      if (ter.hp<=0) {
+        terrain[mouse.select.x][mouse.select.y] = `hsl(${mouse.select.x*10}, 50%, 50%)`
+        if (ter.type == "wood") {
+          game.wood++
+        }
+      }
+      if (ter.hp>=0&&ter.type=="tree") {
+        game.wood++
+      }
     }
-    if (ter.hp<=0) {
-      terrain[mouse.select.x][mouse.select.y] = ter.bgColor
-    }
+
   }
 }
 function animalsClick(e) {

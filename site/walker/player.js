@@ -67,20 +67,4 @@ Create.player = function () {
     x: -(player.pos.x-player.rpos.x-can.width/2),
     y: -(player.pos.y-player.rpos.y-can.height/2),
   }
-  var distb = dist(
-    mouse.x + player.pos.x,
-    mouse.y + player.pos.y,
-    player.rpos.x + can.width/2,
-    player.rpos.y + can.height/2,
-  )
-  // console.log(distb);
-  if (distb<100&&mouse.ago()<100) {
-
-    arc(
-      mouse.x + player.pos.x,
-      mouse.y + player.pos.y,
-      10,
-      "blue"
-    )
-  }
 }
