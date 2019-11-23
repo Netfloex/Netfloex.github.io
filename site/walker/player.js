@@ -64,7 +64,7 @@ Create.player = function () {
   )
   c.restore()
   player.absPos = {
-    x: -(player.pos.x-player.rpos.x-can.width/2),
-    y: -(player.pos.y-player.rpos.y-can.height/2),
+    x: player.pos.x + (can.width/2)+player.rpos.x,
+    y: player.pos.y + (can.height/2)+player.rpos.y,
   }
 }

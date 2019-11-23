@@ -64,7 +64,42 @@ function Tile(type) {
   this.hp = 4
   this.type = type
   this.img = img[type]
+}
+function Item(x, y, type) {
+  this.x = x
+  this.y = y
+  this.type = type
+  if (type == "wood") {
+    type = "log"
+  }
+  this.img = img[type]
+  this.rotation = 0
+  this.collect = function () {
+    var diz = this
+    var div = crEL("div")
+    div.className = "item"
+    div.style.left = `${this.x + player.pos.x  - 50}px`
+    div.style.top = `${this.y + player.pos.y  - 50}px`
+    div.style.backgroundImage = `url(img/${type}.png)`
+    d("#items").appendChild(div)
+    setTimeout(function () {
+      div.classList.add("toHotbar")
+      if (diz.type == "wood") {
+        div.style.left = `calc(50% - 150px)`
+      }
+      if (diz.type == "cow") {
+        div.style.left = `calc(50% - 50px)`
+        div.style.marginTop = `-1rem`
+      }
+    })
+    setTimeout(function () {
+      game[diz.type]++
 
+    },900)
+    setTimeout(function () {
+      div.remove()
+    },1000)
+  }
 }
 function Cow() {
   this.x = random(100, ww-100)

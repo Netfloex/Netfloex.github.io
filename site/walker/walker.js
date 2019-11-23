@@ -8,8 +8,9 @@ var game = {
 var animals = [
   new Cow(),new Cow(),new Cow(),new Cow(),new Cow(),new Cow()
 ]
+var items = []
 function loop() {
-  if (Object.keys(Create).length<4) {
+  if (Object.keys(Create).length<5) {
     return requestAnimationFrame(loop)
   }
   clear()
@@ -17,6 +18,7 @@ function loop() {
   Create.player()
   Create.overlay()
   Create.animals()
+  Create.items()
   requestAnimationFrame(loop)
 }
 loop()

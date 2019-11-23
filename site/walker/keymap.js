@@ -85,11 +85,11 @@ function terrainClick(e) {
       if (ter.hp<=0) {
         terrain[mouse.select.x][mouse.select.y] = `hsl(${mouse.select.x*10}, 50%, 50%)`
         if (ter.type == "wood") {
-          game.wood++
+          addItem("wood")
         }
       }
       if (ter.hp>=0&&ter.type=="tree") {
-        game.wood++
+        addItem("wood")
       }
     }
 
@@ -107,7 +107,7 @@ function animalsClick(e) {
       an.hp--
       if (an.hp<=0) {
         animals.splice(i, 1)
-        game.cow++
+        addItem("cow")
       }
     }
   })

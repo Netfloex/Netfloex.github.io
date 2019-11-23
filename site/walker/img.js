@@ -4,4 +4,5 @@ var img = {
   player: newImage("img/player"),
   cobble: newImage("img/cobble"),
   wood: newImage("img/wood"),
+  log: newImage("img/log"),
 }
