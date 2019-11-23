@@ -66,8 +66,8 @@ function Tile(type) {
   this.img = img[type]
 }
 function Item(x, y, type) {
-  this.x = x
-  this.y = y
+  this.x = x + random(-25, 25) 
+  this.y = y + random(-25, 25)
   this.type = type
   if (type == "wood") {
     type = "log"
