@@ -12,7 +12,6 @@ Create.items = function () {
       items.splice(index, 1)
       i.collect()
     }
-    arc(player.absPos.x - player.pos.x, player.absPos.y - player.pos.y, 10 , "black")
   })
 }
 function addItem(type) {

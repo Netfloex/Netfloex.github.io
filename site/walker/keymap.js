@@ -53,7 +53,9 @@ function mouseClick(e) {
   }
 }
 function terrainClick(e) {
-  e.preventDefault()
+  if (e) {
+    e.preventDefault()
+  }
   if (mouse.select) {
     var ter = terrain[mouse.select.x][mouse.select.y]
 
@@ -93,6 +95,13 @@ function terrainClick(e) {
       }
     }
 
+  }
+}
+var lastHold = new Date()
+function mousehold() {
+  if (new Date() - lastHold>100) {
+    terrainClick()
+    lastHold = new Date()
   }
 }
 function animalsClick(e) {

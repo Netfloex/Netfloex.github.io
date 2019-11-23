@@ -19,6 +19,11 @@ function loop() {
   Create.overlay()
   Create.animals()
   Create.items()
+
+
+  if (mouse.which) {
+    mousehold()
+  }
   requestAnimationFrame(loop)
 }
 loop()
