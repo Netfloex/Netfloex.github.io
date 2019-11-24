@@ -2,7 +2,7 @@ var terrain = createArray(ter.width, ter.height)
 for (var x = 0; x < ter.width; x++) {
   for (var y = 0; y < ter.height; y++) {
     terrain[x][y] = x+y + x*4
-    terrain[x][y] = `hsl(${x*10}, 50%, 50%)`
+    terrain[x][y] = new Grass()
     if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
       terrain[x][y] = {
         img: img.cobble
@@ -13,6 +13,30 @@ for (var x = 0; x < ter.width; x++) {
 var objects = [
   new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),
 ]
+
+var riverStart = random(5, ter.width-6)
+var riverOffset = 0
+for (var i = 1; i < ter.height-1; i++) {
+  var r = random(1,10)
+  if (r==1) {
+    riverOffset += random(-1,1)
+  }
+  objects.push({
+    x: riverStart + riverOffset,
+    y: i,
+    img: img.water
+  })
+  objects.push({
+    x: riverStart + riverOffset -1 ,
+    y: i,
+    img: img.water
+  })
+  objects.push({
+    x: riverStart + riverOffset +1 ,
+    y: i,
+    img: img.water
+  })
+}
 objects.forEach(obj=>{
   if (terrain[obj.x]) {
 
@@ -36,27 +60,17 @@ Create.terrain = function () {
       if (typeof y == "number") {
         return
       }
-      var col = y
-      if (typeof y == "object") {
-        var col = y.color
-      }
       var pos = {
         x: xi*(ter.block.width)+player.pos.x + ter.x,
         y: yi*(ter.block.width)+player.pos.y + ter.y
       }
-      rect(
-        pos.x, // X
-        pos.y, // Y
-        ter.block.width, // Width
-        ter.block.width, // Height
-        col // Color
-      )
       var obj = {
         x: pos.x,
         y: pos.y,
         width: ter.block.width,
         height: ter.block.width
       }
+      image(img.grass, pos.x, pos.y, 100, 100)
       if (isHitbox({
         x: mouse.x + player.pos.x,
         y: mouse.y + player.pos.y

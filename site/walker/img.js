@@ -5,4 +5,6 @@ var img = {
   cobble: newImage("img/cobble"),
   wood: newImage("img/wood"),
   log: newImage("img/log"),
+  grass: newImage("img/grass"),
+  water: newImage("img/water"),
 }

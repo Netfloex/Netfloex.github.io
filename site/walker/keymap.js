@@ -83,11 +83,10 @@ function terrainClick(e) {
 
       ter.hp-=1
       ter.opacity = ter.hp/10
-      ter.color =  `hsl(${ter.hp*10}, 50%, 50%)`
       if (ter.hp<=0) {
-        terrain[mouse.select.x][mouse.select.y] = `hsl(${mouse.select.x*10}, 50%, 50%)`
-        if (ter.type == "wood") {
-          addItem("wood")
+        terrain[mouse.select.x][mouse.select.y] = new Grass()
+        if (ter.type !== "tree") {
+          addItem(ter.type)
         }
       }
       if (ter.hp>=0&&ter.type=="tree") {

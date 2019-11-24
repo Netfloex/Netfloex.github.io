@@ -54,11 +54,14 @@ function Tree() {
   var x = random(1,ter.width-2)
   this.type = "tree"
   this.img = img.tree
-  this.color = `hsl(${x*10}, 50%, 50%)`
   this.opacity = 1;
   this.hp = 10
   this.x = x
   this.y = random(1,ter.height -2)
+}
+function Grass() {
+  this.img = img.grass
+  this.type = "grass"
 }
 function Tile(type) {
   this.hp = 4
@@ -66,7 +69,7 @@ function Tile(type) {
   this.img = img[type]
 }
 function Item(x, y, type) {
-  this.x = x + random(-25, 25) 
+  this.x = x + random(-25, 25)
   this.y = y + random(-25, 25)
   this.type = type
   if (type == "wood") {
