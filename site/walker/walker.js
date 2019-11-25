@@ -5,10 +5,11 @@ var game = {
   cow: 0
 }
 
-var animals = [
-  new Cow(),new Cow(),new Cow(),new Cow(),new Cow(),new Cow(),
-  new Cow(),new Cow(),new Cow(),new Cow(),new Cow(),new Cow()
-]
+var animals = []
+for (var i = 0; i < 10; i++) {
+  animals.push(new Animal("sheep"))
+  animals.push(new Animal("cow"))
+}
 var items = []
 var bubbles = []
 function loop() {

@@ -50,31 +50,7 @@ Create.terrain = function () {
         x: xi*(ter.block.width)+player.pos.x + ter.x,
         y: yi*(ter.block.width)+player.pos.y + ter.y
       }
-      var obj = {
-        x: pos.x,
-        y: pos.y,
-        width: ter.block.width,
-        height: ter.block.width
-      }
       image(img.grass, pos.x, pos.y, 100, 100)
-      if (isHitbox({
-        x: mouse.x + player.pos.x,
-        y: mouse.y + player.pos.y
-      }, obj)) {
-        mouse.select = {
-          x: xi,
-          y: yi
-        }
-        c.lineWidth = 1;
-        rect(
-          pos.x, // X
-          pos.y, // Y
-          ter.block.width-1, // Width
-          ter.block.width -1, // Height
-          "black",
-          true
-        )
-      }
       if (typeof y == "object") {
         c.globalAlpha = y.opacity
         image(
@@ -85,6 +61,31 @@ Create.terrain = function () {
           100
         )
         c.globalAlpha = 1
+      }
+      var obj = {
+        x: pos.x,
+        y: pos.y,
+        width: ter.block.width,
+        height: ter.block.width
+      }
+      if (isHitbox({
+        x: mouse.x + player.pos.x,
+        y: mouse.y + player.pos.y
+      }, obj)) {
+        mouse.select = {
+          x: xi,
+          y: yi
+        }
+        var ww = 3
+        c.lineWidth = ww;
+        rect(
+          pos.x, // X
+          pos.y, // Y
+          ter.block.width-ww, // Width
+          ter.block.width -ww, // Height
+          "black",
+          true
+        )
       }
     })
   })

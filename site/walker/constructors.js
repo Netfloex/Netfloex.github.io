@@ -108,16 +108,17 @@ function Item(x, y, type) {
     },1000)
   }
 }
-function Cow() {
+function Animal(type) {
   this.x = random(100, ww-100)
   this.y = random(100, ww-100)
   this.rotation = random(0,360)
   this.hp = 5
-  this.img = img.cow
+  this.type = type
+  this.img = img[type]
   this.ai = {
     runFromPlayer : false,
     rotateSpeed: random(-10,10)/10,
-    time: new Date(),
+    time: new Date() -(random(0,10000)),
     speed : {
       x: 0,
       y: 0
