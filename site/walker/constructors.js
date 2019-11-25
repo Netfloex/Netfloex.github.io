@@ -47,7 +47,7 @@ function Player() {
     this.motion.y *= .9
   }
   this.speed = 1
-
+  this.normalSpeed = 1
   this.selected = false
 }
 function Tree() {
@@ -59,12 +59,16 @@ function Tree() {
   this.x = x
   this.y = random(1,ter.height -2)
 }
-function Grass() {
-  this.img = img.grass
-  this.type = "grass"
+function Water(x, y) {
+  this.x = x
+  this.y = y
+  this.type = "water"
+  this.img = img["water"]
 }
-function Tile(type) {
-  this.hp = 4
+function Tile(type, hp) {
+  if (!hp) {
+    this.hp = 4
+  }
   this.type = type
   this.img = img[type]
 }
@@ -148,5 +152,24 @@ function Cow() {
       this.ai.rotateSpeed = random(-100,100)/100
     }
     this.ai.time = new Date()
+  }
+}
+function Bubble() {
+  this.rotation = 0
+  this.size = random(10, 100)
+  this.addX = random(-30,30)
+  this.random = random(0,50)
+  this.rer = random(0,1)
+  this.rer2 = random(0,1)
+  this.draw = function () {
+    this.rotation++
+    c.save()
+    c.translate(
+      player.rpos.x + (can.width/2) + this.addX +Math.cos(this.rotation/10)*this.random * this.rer,
+      player.rpos.y + (can.height/2) + Math.sin(this.rotation/10)*this.random * this.rer2
+    )
+    rotate(this.rotation)
+    image(img.bubble,-this.size/2,-this.size/2 , this.size, this.size)
+    c.restore()
   }
 }

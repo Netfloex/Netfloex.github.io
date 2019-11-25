@@ -21,6 +21,34 @@ Create.player = function () {
 
     }
   })
+  if (player.absPos) {
+    var px = -player.pos.x + player.rpos.x + (can.width/2)
+    var py = -player.pos.y + player.rpos.y + (can.height/2)
+
+    player.tile = {
+      x: Math.round(px/ter.width),
+      y: Math.round(py/ter.height)
+    }
+    var x = Math.floor((px/100))
+    var y = Math.floor((py/100))
+    if (terrain[x]) {
+      if (terrain[x][y]) {
+        if (terrain[x][y].type=="water") {
+          if (bubbles.length<20) {
+            bubbles.push(new Bubble)
+          }
+          player.speed *= .96
+          if (player.speed<.5) {
+            player.speed=.5
+          }
+        } else {
+          bubbles = []
+          player.speed = player.normalSpeed
+        }
+
+      }
+    }
+  }
   player.applyMotion()
   if (player.pos.x>-ter.x) {
     player.rpos.x-=player.pos.x-ter.x

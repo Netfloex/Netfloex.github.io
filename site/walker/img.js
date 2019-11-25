@@ -7,4 +7,5 @@ var img = {
   log: newImage("img/log"),
   grass: newImage("img/grass"),
   water: newImage("img/water"),
+  bubble: newImage("img/bubble"),
 }

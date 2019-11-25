@@ -59,7 +59,7 @@ function terrainClick(e) {
   if (mouse.select) {
     var ter = terrain[mouse.select.x][mouse.select.y]
 
-    if (typeof ter == "string") { // Als het gewoon grond is
+    if (!ter.hp) { // Als het gewoon grond is
       if (mouse.which !== 3) {
         return
       }
@@ -84,7 +84,7 @@ function terrainClick(e) {
       ter.hp-=1
       ter.opacity = ter.hp/10
       if (ter.hp<=0) {
-        terrain[mouse.select.x][mouse.select.y] = new Grass()
+        terrain[mouse.select.x][mouse.select.y] = new Tile("grass", true)
         if (ter.type !== "tree") {
           addItem(ter.type)
         }
@@ -104,6 +104,9 @@ function mousehold() {
   }
 }
 function animalsClick(e) {
+  if (mouse.which !== 1) {
+    return
+  }
   animals.forEach((an, i)=>{
     if (dist(mouse.x,mouse.y,an.x,an.y)<100) {
       an.ai.runFromPlayer = true

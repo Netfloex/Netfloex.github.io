@@ -2,11 +2,9 @@ var terrain = createArray(ter.width, ter.height)
 for (var x = 0; x < ter.width; x++) {
   for (var y = 0; y < ter.height; y++) {
     terrain[x][y] = x+y + x*4
-    terrain[x][y] = new Grass()
+    terrain[x][y] = new Tile("grass", true)
     if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
-      terrain[x][y] = {
-        img: img.cobble
-      }
+      terrain[x][y] = new Tile("cobble", true)
     }
   }
 }
@@ -17,25 +15,13 @@ var objects = [
 var riverStart = random(5, ter.width-6)
 var riverOffset = 0
 for (var i = 1; i < ter.height-1; i++) {
-  var r = random(1,10)
+  var r = random(1,3)
   if (r==1) {
     riverOffset += random(-1,1)
   }
-  objects.push({
-    x: riverStart + riverOffset,
-    y: i,
-    img: img.water
-  })
-  objects.push({
-    x: riverStart + riverOffset -1 ,
-    y: i,
-    img: img.water
-  })
-  objects.push({
-    x: riverStart + riverOffset +1 ,
-    y: i,
-    img: img.water
-  })
+  objects.push(new Water(riverStart + riverOffset, i))
+  objects.push(new Water(riverStart + riverOffset-1, i))
+  objects.push(new Water(riverStart + riverOffset+1, i))
 }
 objects.forEach(obj=>{
   if (terrain[obj.x]) {
@@ -103,7 +89,11 @@ Create.terrain = function () {
     })
   })
 }
-
+Create.bubbles = function () {
+  bubbles.forEach(bub => {
+    bub.draw()
+  })
+}
 
 function createArray(length) {
     var arr = new Array(length || 0),
