@@ -7,5 +7,12 @@ if (location.host=="samtaen.ml") {
 
   ga('create', 'UA-149926670-1', 'auto');
   ga('send', 'pageview');
-  (function(b,o,n,g,s,r,c){if(b[s])return;b[s]={};b[s].scriptToken="Xy0xNjAzNjg0NTcw";b[s].callsQueue=[];b[s].api=function(){b[s].callsQueue.push(arguments);};r=o.createElement(n);c=o.getElementsByTagName(n)[0];r.async=1;r.src=g;r.id=s+n;c.parentNode.insertBefore(r,c);})(window,document,"script","//cdn.oribi.io/Xy0xNjAzNjg0NTcw/oribi.js","ORIBI");
+  (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1586920,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 }
