@@ -92,10 +92,14 @@ function Item(x, y, type) {
     setTimeout(function () {
       div.classList.add("toHotbar")
       if (diz.type == "wood") {
-        div.style.left = `calc(50% - 150px)`
+        div.style.left = `calc(50% - 200px)`
       }
       if (diz.type == "cow") {
-        div.style.left = `calc(50% - 50px)`
+        div.style.left = `calc(50% - 100px)`
+        div.style.marginTop = `-1rem`
+      }
+      if (diz.type == "sheep") {
+        div.style.left = `calc(50% - 0px)`
         div.style.marginTop = `-1rem`
       }
     })
@@ -153,6 +157,10 @@ function Animal(type) {
       this.ai.rotateSpeed = random(-100,100)/100
     }
     this.ai.time = new Date()
+  }
+  this.kill = function () {
+    animals[animals.indexOf(this)] = new Animal(this.type)
+    addItem(this.type)
   }
 }
 function Bubble() {

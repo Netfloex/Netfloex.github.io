@@ -87,7 +87,11 @@ function terrainClick(e) {
         terrain[mouse.select.x][mouse.select.y] = new Tile("grass", true)
         if (ter.type !== "tree") {
           addItem(ter.type)
+        } else {
+          var oter = window["ter"]
+          terrain[random(1, oter.width-2)][random(1, oter.height-2)] = new Tree()
         }
+
       }
       if (ter.hp>=0&&ter.type=="tree") {
         addItem("wood")
@@ -117,8 +121,7 @@ function animalsClick(e) {
       an.ai.time = new Date()
       an.hp--
       if (an.hp<=0) {
-        animals.splice(i, 1)
-        addItem("cow")
+        an.kill()
       }
     }
   })
