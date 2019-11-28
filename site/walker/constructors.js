@@ -165,9 +165,9 @@ function Animal(type) {
 }
 function Bubble() {
   this.rotation = 0
-  this.size = random(10, 100)
-  this.addX = random(-30,30)
-  this.random = random(0,50)
+  this.size = random(10, 100) * ter.block.width/100
+  this.addX = random(-30,30) * ter.block.width/100
+  this.random = random(0,50) * ter.block.width/100
   this.rer = random(0,1)
   this.rer2 = random(0,1)
   this.draw = function () {

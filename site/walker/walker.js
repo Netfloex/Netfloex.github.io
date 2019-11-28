@@ -13,6 +13,12 @@ for (var i = 0; i < 4; i++) {
 }
 var items = []
 var bubbles = []
+
+aEL("resize", function () {
+  ter.block.width = can.width/13
+  player.rpos = {x:0,y:0}
+  ww = (blocks)*ter.block.width
+})
 function loop() {
   if (Object.keys(Create).length<6) {
     return requestAnimationFrame(loop)

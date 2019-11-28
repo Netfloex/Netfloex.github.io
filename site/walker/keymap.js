@@ -89,7 +89,9 @@ function terrainClick(e) {
           addItem(ter.type)
         } else {
           var oter = window["ter"]
-          terrain[random(1, oter.width-2)][random(1, oter.height-2)] = new Tree()
+          var boom = new Tree()
+          objects.push(boom)
+          terrain[boom.x][boom.y] = boom
         }
 
       }
@@ -112,7 +114,7 @@ function animalsClick(e) {
     return
   }
   animals.forEach((an, i)=>{
-    if (dist(mouse.x,mouse.y,an.x,an.y)<100) {
+    if (dist(mouse.x,mouse.y,an.x,an.y)<ter.block.width) {
       an.ai.runFromPlayer = true
       an.ai.speed = {
         x: 5,

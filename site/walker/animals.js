@@ -1,5 +1,5 @@
 Create.animals = function () {
-  var w = 150
+  var w = ter.block.width * 1.5
   animals.forEach(an=>{
     c.save()
     c.globalAlpha= an.hp/10 + .5
@@ -7,8 +7,8 @@ Create.animals = function () {
     rotate(an.rotation)
     image(an.img, -w/2, -w/2, w, w)
     c.restore()
-    an.x+=an.ai.speed.x
-    an.y+=an.ai.speed.y
+    an.x+=an.ai.speed.x * ter.block.width/100
+    an.y+=an.ai.speed.y * ter.block.width/100
     var obj = {
       x: 0,
       y: 0,

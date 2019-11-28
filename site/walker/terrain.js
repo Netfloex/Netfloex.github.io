@@ -25,7 +25,6 @@ for (var i = 1; i < ter.height-1; i++) {
 }
 objects.forEach(obj=>{
   if (terrain[obj.x]) {
-
     terrain[obj.x][obj.y] = obj
   }
 })
@@ -50,16 +49,20 @@ Create.terrain = function () {
         x: xi*(ter.block.width)+player.pos.x + ter.x,
         y: yi*(ter.block.width)+player.pos.y + ter.y
       }
-      image(img.grass, pos.x, pos.y, 100, 100)
+      image(img.grass, pos.x, pos.y, ter.block.width, ter.block.width)
       if (typeof y == "object") {
         c.globalAlpha = y.opacity
-        image(
-          y.img,
-          xi*(ter.block.width)+player.pos.x + ter.x,
-          yi*(ter.block.width)+player.pos.y + ter.y,
-          100,
-          100
-        )
+        var w = ter.block.width
+        if (y.type !== "tree") {
+
+          image(
+            y.img,
+            pos.x,
+            pos.y,
+            w,
+            w
+          )
+        }
         c.globalAlpha = 1
       }
       var obj = {
@@ -88,6 +91,19 @@ Create.terrain = function () {
         )
       }
     })
+  })
+  objects.forEach((obj, i)=>{
+    if (obj.type=="tree") {
+      objects[i] = terrain[obj.x][obj.y]
+      var pos = {
+        x: obj.x*(ter.block.width)+player.pos.x + ter.x,
+        y: obj.y*(ter.block.width)+player.pos.y + ter.y
+      }
+      var w = ter.block.width*2
+      c.globalAlpha = obj.opacity
+      image(img.tree, pos.x -w/2 + ter.block.width/2, pos.y -w/2 + ter.block.width/2, w, w)
+      c.globalAlpha = 1
+    }
   })
 }
 Create.bubbles = function () {

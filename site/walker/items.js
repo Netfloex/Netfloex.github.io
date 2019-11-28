@@ -8,7 +8,7 @@ Create.items = function () {
     c.restore()
     i.rotation++
     var dista = dist(player.absPos.x - player.pos.x, player.absPos.y - player.pos.y, i.x + player.pos.x, i.y + player.pos.y)
-    if (dista<100) {
+    if (dista<ter.block.width) {
       items.splice(index, 1)
       i.collect()
     }

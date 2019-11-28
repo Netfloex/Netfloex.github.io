@@ -29,8 +29,8 @@ Create.player = function () {
       x: Math.round(px/ter.width),
       y: Math.round(py/ter.height)
     }
-    var x = Math.floor((px/100))
-    var y = Math.floor((py/100))
+    var x = Math.floor((px/ter.block.width))
+    var y = Math.floor((py/ter.block.width))
     if (terrain[x]) {
       if (terrain[x][y]) {
         if (terrain[x][y].type=="water") {
@@ -38,12 +38,12 @@ Create.player = function () {
             bubbles.push(new Bubble)
           }
           player.speed *= .96
-          if (player.speed<.5) {
-            player.speed=.5
+          if (player.speed<ter.block.width/200) {
+            player.speed=ter.block.width/200
           }
         } else {
           bubbles = []
-          player.speed = player.normalSpeed
+          player.speed = ter.block.width/100
         }
 
       }
@@ -84,11 +84,12 @@ Create.player = function () {
     player.rpos.y+can.height/2
   )
   rotate(player.rotation)
+  var w = ter.block.width
   image(img.player,
-    -100/2, // X
-    -100/2, // Y
-    100,
-    100
+    -w/2, // X
+    -w/2, // Y
+    w,
+    w
   )
   c.restore()
   player.absPos = {
