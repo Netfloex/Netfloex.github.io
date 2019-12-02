@@ -1,6 +1,7 @@
 var player = new Player()
 var Create = {}
-var game = {
+var game = {}
+game.inventory = {
   wood: 0,
   cow: 0,
   sheep: 0

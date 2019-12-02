@@ -13,10 +13,14 @@ var keyCodes = {
   ArrowLeft: `left`,
   ArrowDown: `down`,
   ArrowRight: `right`,
+
+
+  e: `inventory`,
 }
 
 aEL("keydown", keydown)
 aEL("keyup", keyup)
+aEL("blur", offScreen)
 
 aEL("mouseup",mouseClick)
 aEL("mousedown",mouseClick)
@@ -30,6 +34,10 @@ function keydown(e) {
 }
 function keyup(e) {
   delete keymap[e.key]
+}
+function offScreen() {
+  keymap = []
+  mouse = {}
 }
 function mouseClick(e) {
   if (typeof player == "undefined") {
@@ -66,9 +74,9 @@ function terrainClick(e) {
       var ps = player.selected
       if (ps) {
 
-        if (game[ps]) {
-          if (game[ps]>0) {
-            game[ps]--
+        if (game.inventory[ps]) {
+          if (game.inventory[ps]>0) {
+            game.inventory[ps]--
             terrain[mouse.select.x][mouse.select.y] = new Tile(ps)
           }
         }

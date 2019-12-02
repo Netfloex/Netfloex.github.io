@@ -16,12 +16,27 @@ var riverStart = random(5, ter.width-6)
 var riverOffset = 0
 for (var i = 1; i < ter.height-1; i++) {
   var r = random(1,3)
+  var corner = {}
   if (r==1) {
-    riverOffset += random(-1,1)
+    var change = random(-1,1)
+    riverOffset += change
+    if (change==-1) {
+      corner.l = true
+    }
+    if (change==1) {
+      corner.r = "right"
+    }
+
+  } else {
+    var change = undefined
+  }
+  if (!change) {
+    corner.l = "side"
+    corner.r = "sideR"
   }
   objects.push(new Water(riverStart + riverOffset, i))
-  objects.push(new Water(riverStart + riverOffset-1, i))
-  objects.push(new Water(riverStart + riverOffset+1, i))
+  objects.push(new Water(riverStart + riverOffset-1, i, corner.l))
+  objects.push(new Water(riverStart + riverOffset+1, i, corner.r))
 }
 objects.forEach(obj=>{
   if (terrain[obj.x]) {
@@ -51,7 +66,7 @@ Create.terrain = function () {
       }
       image(img.grass, pos.x, pos.y, ter.block.width, ter.block.width)
       if (typeof y == "object") {
-        c.globalAlpha = y.opacity
+        c.globalAlpha = y.opacity +.5
         var w = ter.block.width
         if (y.type !== "tree") {
 
@@ -100,7 +115,7 @@ Create.terrain = function () {
         y: obj.y*(ter.block.width)+player.pos.y + ter.y
       }
       var w = ter.block.width*2
-      c.globalAlpha = obj.opacity
+      c.globalAlpha = obj.opacity/2 + .5
       image(img.tree, pos.x -w/2 + ter.block.width/2, pos.y -w/2 + ter.block.width/2, w, w)
       c.globalAlpha = 1
     }

@@ -17,6 +17,9 @@ Create.player = function () {
       case `right`:
         player.applySpeed({x:-player.speed})
         break;
+      case `inventory`:
+        Create.inventory()
+        break;
       default:
 
     }

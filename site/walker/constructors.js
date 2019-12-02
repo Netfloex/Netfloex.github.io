@@ -59,11 +59,23 @@ function Tree() {
   this.x = x
   this.y = random(1,ter.height -2)
 }
-function Water(x, y) {
+function Water(x, y, corner) {
   this.x = x
   this.y = y
   this.type = "water"
   this.img = img["water"]
+  if (corner) {
+    this.img = img.waterCorner
+    if (corner=="right") {
+      this.img = img.waterCornerR
+    }
+    if (corner == "side") {
+      this.img = img.waterSide
+    }
+    if (corner == "sideR") {
+      this.img = img.waterSideR
+    }
+  }
 }
 function Tile(type, hp) {
   if (!hp) {
@@ -104,7 +116,7 @@ function Item(x, y, type) {
       }
     })
     setTimeout(function () {
-      game[diz.type]++
+      game.inventory[diz.type]++
 
     },900)
     setTimeout(function () {

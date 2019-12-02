@@ -5,7 +5,7 @@ var ter = {
   width : blocks,
   height : blocks,
   block: {
-    width: can.width/13
+    width: can.width/16
   }
 }
 var ww = (blocks)*ter.block.width
