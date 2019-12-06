@@ -21,20 +21,27 @@ for (var i = 1; i < ter.height-1; i++) {
     var change = random(-1,1)
     riverOffset += change
     if (change==-1) {
-      corner.l = true
+      corner.l = "tl"
+      corner.r = "dRev"
+      // corner.m = "dr"
+      corner.e = "dr"
     }
     if (change==1) {
-      corner.r = "right"
+      corner.r = "tr"
+      // corner.l = "dRev"
+      // corner.m = "dl"
+      corner.e = "dl"
     }
 
   } else {
     var change = undefined
   }
   if (!change) {
-    corner.l = "side"
-    corner.r = "sideR"
+    corner.l = "sl"
+    corner.r = "sr"
   }
-  objects.push(new Water(riverStart + riverOffset, i))
+  objects.push(new Water(riverStart + riverOffset + change*-2, i, corner.e))
+  objects.push(new Water(riverStart + riverOffset, i, corner.m))
   objects.push(new Water(riverStart + riverOffset-1, i, corner.l))
   objects.push(new Water(riverStart + riverOffset+1, i, corner.r))
 }

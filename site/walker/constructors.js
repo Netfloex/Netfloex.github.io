@@ -65,16 +65,33 @@ function Water(x, y, corner) {
   this.type = "water"
   this.img = img["water"]
   if (corner) {
-    this.img = img.waterCorner
-    if (corner=="right") {
-      this.img = img.waterCornerR
+    var imag = undefined
+    switch (corner) {
+      case "tl":
+        imag = img.waterCorner
+        break;
+      case "tr":
+        imag = img.waterCornerR
+        break;
+      case "sl":
+        imag = img.waterSide
+        break;
+      case "sr":
+        imag = img.waterSideR
+        break;
+      case "dl":
+        imag = img.waterCornerDL
+        break;
+      case "dr":
+        imag = img.waterCornerDR
+        break;
+      case "dRev":
+        imag = img.waterCornerDRev
+        break;
+      default:
+
     }
-    if (corner == "side") {
-      this.img = img.waterSide
-    }
-    if (corner == "sideR") {
-      this.img = img.waterSideR
-    }
+    this.img = imag
   }
 }
 function Tile(type, hp) {
