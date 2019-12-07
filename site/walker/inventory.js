@@ -43,12 +43,9 @@ function toggleInventory() {
     openDark()
   }
 }
-function toggleDark() {
-  d("#darkOverlay").classList.toggle("hidden")
-}
 function openDark() {
-  d("#darkOverlay").classList.remove("hidden")
+  d("#darkOverlay").classList.remove("darkHidden")
 }
 function closeDark() {
-  d("#darkOverlay").classList.add("hidden")
+  d("#darkOverlay").classList.add("darkHidden")
 }

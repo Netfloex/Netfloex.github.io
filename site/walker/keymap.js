@@ -78,13 +78,15 @@ function terrainClick(e) {
   if (mouse.select) {
     var ter = terrain[mouse.select.x][mouse.select.y]
 
-    if (!ter.hp) { // Als het gewoon grond is
+    if (!ter.hp) { // Bouwen
       if (mouse.which !== 3) {
         return
       }
       var ps = player.selected
       if (ps) {
-
+        if (ter.type=="cobble") { // Op cobble mag je niet plaatsen
+          return
+        }
         if (game.inventory[ps]) {
           if (game.inventory[ps]>0) {
             game.inventory[ps]--
