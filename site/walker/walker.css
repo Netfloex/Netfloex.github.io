@@ -31,10 +31,15 @@ body {
 .selected {
   background-color: rgba(255,255,255, 0.5);
 }
-span {
+.hotbarItem span {
   position: absolute;
   bottom: 5px;
   right: 10px;
+}
+.invItem span {
+  position: absolute;
+  bottom: -10px;
+  right: 0px;
 }
 .item {
   position: fixed;
@@ -61,6 +66,7 @@ span {
   100%{background-position:0% 50%}
 }
 #inventory {
+  z-index: 2;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -75,10 +81,37 @@ span {
   transition: opacity .5s, transform .5s;
   opacity: 1;
 }
+@media only screen and (max-width: 1000px) {
+  #inventory {
+    width: 80%;
+  }
+}
 .invHidden {
   opacity: 0!important;
   transform: translate(-50%, -50%) scale(.1)!important;
 }
+.invItem {
+  width: 60px;
+  height: 60px;
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 5px white dashed;
+  position: relative;
+  color: white;
+  font-size: 2rem;
+  text-shadow: 5px 5px 5px #111111;
+}
 h1 {
   color: white;
+}
+#darkOverlay {
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 1;
+}
+.hidden {
+  display: none;
 }

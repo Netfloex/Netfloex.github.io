@@ -21,7 +21,7 @@ aEL("resize", function () {
   ww = (blocks)*ter.block.width
 })
 function loop() {
-  if (Object.keys(Create).length<6) {
+  if (Object.keys(Create).length<7) {
     return requestAnimationFrame(loop)
   }
   clear()
@@ -31,7 +31,7 @@ function loop() {
   Create.overlay()
   Create.animals()
   Create.items()
-
+  Create.inventory()
   if (mouse.which) {
     mousehold()
   }

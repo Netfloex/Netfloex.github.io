@@ -16,8 +16,8 @@ var keyCodes = {
 
 
   e: `inventory`,
+  Escape: `escape`
 }
-
 aEL("keydown", keydown)
 aEL("keyup", keyup)
 aEL("blur", offScreen)
@@ -30,9 +30,20 @@ aEL("mouseup", terrainClick)
 aEL("contextmenu", terrainClick)
 aEL("mouseup", animalsClick)
 function keydown(e) {
+  if (inventoryOpen) {
+    return
+  }
   keymap[e.key] = e.key
 }
 function keyup(e) {
+  if (keyCodes[e.key]=="inventory") {
+    toggleInventory()
+  }
+  if (keyCodes[e.key]=="escape") {
+    if (inventoryOpen) {
+      toggleInventory()
+    }
+  }
   delete keymap[e.key]
 }
 function offScreen() {
