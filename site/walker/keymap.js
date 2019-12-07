@@ -29,6 +29,9 @@ aEL("mousemove", mouseClick)
 aEL("mouseup", terrainClick)
 aEL("contextmenu", terrainClick)
 aEL("mouseup", animalsClick)
+
+aEL("wheel", scroll)
+
 function keydown(e) {
   if (inventoryOpen) {
     return
@@ -148,4 +151,26 @@ function animalsClick(e) {
       }
     }
   })
+}
+function scroll(e) {
+  var s = player.selected
+  var i = Object.keys(game.inventory)
+  if (!s) {
+    console.log(s);
+    player.selected = i[0]
+    s = i[0]
+  }
+  var index = i.indexOf(s)
+  var scr = Math.sign(e.deltaY)
+  var ss = index + scr
+  if (i[ss]) {
+    hotbarItems.forEach(y=> {
+      y.classList.remove("selected")
+    })
+    d(`#${i[ss]}`).parentElement.classList.add("selected")
+    console.log(ss);
+    player.selected = i[ss]
+
+  }
+
 }

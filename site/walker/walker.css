@@ -9,6 +9,7 @@ body {
   font-size: 2rem;
   color: white;
   font-family: monospace;
+  z-index: 2;
 }
 .hotbarItem {
   width: 100px;
