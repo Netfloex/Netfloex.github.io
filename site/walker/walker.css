@@ -1,6 +1,38 @@
 body {
   background: white;
   user-select: none;
+  color: white;
+}
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+.loadbar {
+  width: 300px;
+  height: 10px;
+  transform: translate(-50%,100px);
+  background-color: rgba(0, 0, 0, .1)
+}
+.loadbar div {
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  animation: enlarge 3s ease;
+}
+.footer {
+  position: fixed;
+  top: unset;
+  bottom: 0px;
+}
+@keyframes enlarge {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 100%;
+  }
 }
 #overlay {
   position: fixed;
@@ -73,18 +105,29 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
 
-  width: 50%;
-  height: 50%;
+  width: 80%;
+  height: 80%;
   background-color: white;
   box-shadow: 1px 1px 1px #111111;
   border-radius: 10px;
   padding: 2rem;
   transition: opacity .5s, transform .5s;
   opacity: 1;
+  color: white;
+}
+#crafting {
+  padding: 1rem;
+  align-items: center;
+}
+.craftImg {
+  width: 60px;
+}
+.arrow {
+  width: 60px;
 }
 @media only screen and (max-width: 1000px) {
   #inventory {
-    width: 80%;
+    width: 90%;
   }
 }
 .invHidden {
@@ -95,15 +138,12 @@ body {
   width: 60px;
   height: 60px;
   padding: 0px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.2);
   border: 5px white dashed;
   position: relative;
   color: white;
   font-size: 2rem;
   text-shadow: 5px 5px 5px #111111;
-}
-h1 {
-  color: white;
 }
 #darkOverlay {
   position: fixed;
@@ -116,4 +156,13 @@ h1 {
 }
 .darkHidden {
   opacity: 0;
+}
+.disabled {
+  background-color: rgba(0, 0, 0, .5);
+}
+.disabled img {
+  opacity: .5;
+}
+.disabled span {
+  color: #f44336;
 }

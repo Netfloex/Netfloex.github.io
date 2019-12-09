@@ -9,3 +9,18 @@ var ter = {
   }
 }
 var ww = (blocks)*ter.block.width
+
+var craftables = [
+  {
+    in: [
+      {
+        type: "wood",
+        count: 1
+      }
+    ],
+    out: {
+      type: "stick",
+      count: 4
+    }
+  }
+]

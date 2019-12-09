@@ -24,9 +24,95 @@ Create.inventory = function () {
     }
     imag.src = img[imgKey].getAttribute("src")
     imag.alt = key
+    inventoryItems[i].title = key
     count.innerHTML = game.inventory[key]
   })
+  var div = d("#craftingTable")
+  craftables.forEach((craft, i) => {
+    var tr = d(`.tr${i}`)
+    if (!tr) {
+      tr = document.createElement("tr")
+      tr.className = `tr${i}`
+      div.appendChild(tr)
+    }
+    craft.in.forEach(crIn => { // Input
+      var td = tr.querySelector(".td")
+      if (!td) {
+        td = document.createElement("td")
+        td.className="td invItem"
+        tr.appendChild(td)
+      }
+      if (crIn.count>game.inventory[crIn.type]) {
+        td.classList.add("disabled")
+      } else {
+        td.classList.remove("disabled")
+      }
+      var inImg = td.querySelector("img")
+      if (!inImg) {
+        inImg = document.createElement("img")
+        td.appendChild(inImg)
+      }
+      inImg.src = img[crIn.type].getAttribute("src")
+      inImg.alt = crIn.type
+      inImg.className = "hotbarImg"
 
+      var span = td.querySelector("span")
+      if (!span) {
+        span = document.createElement("span")
+        td.appendChild(span)
+      }
+      span.innerHTML = crIn.count
+    })
+
+    var arrow = tr.querySelector(".arrow")
+    if (!arrow) {
+      arrow = document.createElement("td")
+      arrow.className="arrow"
+      tr.appendChild(arrow)
+    }
+    var arrowImg = arrow.querySelector("img")
+    if (!arrowImg) {
+      arrowImg = document.createElement("img")
+      arrowImg.src = img.arrow.getAttribute("src")
+      arrowImg.alt = ">"
+      arrowImg.className = "hotbarImg"
+      arrow.appendChild(arrowImg)
+    }
+    var td2 = tr.querySelector(".td2") // Output
+    if (!td2) {
+      td2 = document.createElement("td")
+      td2.className = "td2 invItem"
+      tr.appendChild(td2)
+    }
+    td2.onclick = function () {
+      var enough = true
+      craft.in.forEach(crIn => {
+        if (crIn.count>game.inventory[crIn.type]) {
+          enough = false
+        }
+      })
+      if (enough) {
+        game.inventory[craft.out.type]+=craft.out.count
+        craft.in.forEach(crIn => {
+          game.inventory[crIn.type]-= crIn.count
+        })
+      }
+    }
+    var outImg = td2.querySelector("img")
+    if (!outImg) {
+      outImg = document.createElement("img")
+      td2.appendChild(outImg)
+    }
+    outImg.src = img[craft.out.type].getAttribute("src")
+    outImg.alt = craft.out.type
+    outImg.className = "hotbarImg"
+    var span = td2.querySelector("span")
+    if (!span) {
+      span = document.createElement("span")
+      td2.appendChild(span)
+    }
+    span.innerHTML = craft.out.count
+  })
 }
 function toggleInventory() {
   if (new Date() - lastInventory<200) {

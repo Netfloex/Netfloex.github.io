@@ -23,13 +23,13 @@ for (var i = 1; i < ter.height-1; i++) {
     if (change==-1) {
       corner.l = "tl"
       corner.r = "dRev"
-      // corner.m = "dr"
+      corner.m = "dRevTL"
       corner.e = "dr"
     }
     if (change==1) {
       corner.r = "tr"
-      // corner.l = "dRev"
-      // corner.m = "dl"
+      corner.l = "dRevDL"
+      corner.m = "dRevTR"
       corner.e = "dl"
     }
 

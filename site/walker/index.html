@@ -13,20 +13,35 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+  <div id="loading">
+    <h1 class="display-3 loading">Loading...</h1>
+    <div class="loadbar loading">
+      <div></div>
+      <p class="small">This is just an animation, it doesnt really show speeds...</p>
+    </div>
+    <div class="footer loading">
+      <p class="small">© Sam Taen 2019, December</p>
+    </div>
+  </div>
   <canvas id="canvas"></canvas>
   <div align="center" id="overlay">
     <table>
-    <tr>
-      <td class="hotbarItem"><img src="img/log.png" alt="Log" class="hotbarImg"><span id="wood"></span></th>
+    <tr id="hotbar">
+      <!-- <td class="hotbarItem selected"><img src="img/log.png" alt="Log" class="hotbarImg"><span id="wood"></span></th>
       <td class="hotbarItem"><img src="img/cow.png" alt="Cow" class="hotbarImg"><span id="cow"></span></td>
       <td class="hotbarItem"><img src="img/sheep.png" alt="Sheep" class="hotbarImg"><span id="sheep"></span></td>
-      <td class="hotbarItem"></td>
+      <td class="hotbarItem"><img src="img/stick.png" alt="Stick" class="hotbarImg"></td>
+      <td class="hotbarItem"></td> -->
     </tr>
   </table>
   </div>
   <div id="items"></div>
   <div class="headerGradient invHidden" id="inventory">
     <h1 class="display-3">Inventory</h1>
+    <div id="crafting">
+      <table id="craftingTable">
+      </table>
+    </div>
     <div id="inventoryItems" align="center">
       <table>
         <tr>

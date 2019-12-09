@@ -2,9 +2,10 @@ var player = new Player()
 var Create = {}
 var game = {}
 game.inventory = {
-  wood: 0,
+  log: 0,
   cow: 0,
-  sheep: 0
+  sheep: 0,
+  stick: 0
 }
 
 var animals = []
@@ -35,6 +36,25 @@ function loop() {
   if (mouse.which) {
     mousehold()
   }
-  requestAnimationFrame(loop)
+  if (running) {
+    requestAnimationFrame(loop)
+  }
 }
-loop()
+aEL("load", function () {
+  d("#loading").remove()
+  loop()
+})
+function createEl(elem, parent, klass) {
+  var e = parent.querySelector(elem)
+  if (klass) {
+    e = parent.querySelector(`.${klass}`)
+  }
+  if (!e) {
+    e = document.createElement(elem)
+    parent.appendChild(e)
+    if (klass) {
+      e.className = klass
+    }
+  }
+  return e
+}

@@ -16,8 +16,14 @@ var img = {
   waterSideR: newImage("img/water/waterSideR"),
   waterCornerDL: newImage("img/water/waterCornerDL"),
   waterCornerDR: newImage("img/water/waterCornerDR"),
+
+  waterCornerTLev: newImage("img/water/waterReversedTL"),
+  waterCornerTRev: newImage("img/water/waterReversedTR"),
+  waterCornerDLev: newImage("img/water/waterReversedDL"),
   waterCornerDRev: newImage("img/water/waterReversed"),
 
   log: newImage("img/log"),
   bubble: newImage("img/bubble"),
+  stick: newImage("img/stick"),
+  arrow: newImage("img/arrow"),
 }

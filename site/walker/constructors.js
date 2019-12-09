@@ -48,7 +48,7 @@ function Player() {
   }
   this.speed = 1
   this.normalSpeed = 1
-  this.selected = false
+  this.selected = "log"
 }
 function Tree() {
   var x = random(1,ter.width-2)
@@ -88,8 +88,17 @@ function Water(x, y, corner) {
       case "dRev":
         imag = img.waterCornerDRev
         break;
+      case "dRevDL":
+        imag = img.waterCornerDLev
+        break;
+      case "dRevTL":
+        imag = img.waterCornerTLev
+        break;
+      case "dRevTR":
+        imag = img.waterCornerTRev
+        break;
       default:
-
+      imag = img.cow
     }
     this.img = imag
   }

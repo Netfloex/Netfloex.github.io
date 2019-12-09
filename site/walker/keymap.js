@@ -21,6 +21,9 @@ var keyCodes = {
 aEL("keydown", keydown)
 aEL("keyup", keyup)
 aEL("blur", offScreen)
+aEL("click", function () {
+  mouse.which = 0
+})
 
 aEL("mouseup",mouseClick)
 aEL("mousedown",mouseClick)
@@ -93,6 +96,9 @@ function terrainClick(e) {
         if (game.inventory[ps]) {
           if (game.inventory[ps]>0) {
             game.inventory[ps]--
+            if (ps=="log") {
+              ps = "wood"
+            }
             terrain[mouse.select.x][mouse.select.y] = new Tile(ps)
           }
         }
@@ -120,7 +126,7 @@ function terrainClick(e) {
 
       }
       if (ter.hp>=0&&ter.type=="tree") {
-        addItem("wood")
+        addItem("log")
       }
     }
 
@@ -153,6 +159,9 @@ function animalsClick(e) {
   })
 }
 function scroll(e) {
+  if (!player) {
+    return
+  }
   var s = player.selected
   var i = Object.keys(game.inventory)
   if (!s) {
@@ -167,6 +176,7 @@ function scroll(e) {
     hotbarItems.forEach(y=> {
       y.classList.remove("selected")
     })
+    console.log(i[ss]);
     d(`#${i[ss]}`).parentElement.classList.add("selected")
     console.log(ss);
     player.selected = i[ss]
