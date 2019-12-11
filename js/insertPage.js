@@ -1,3 +1,14 @@
+function toast(msg) {
+  // return
+  Toastify({
+  text: msg,
+  duration: 10000,
+  gravity: "top", // `top` or `bottom`
+  positionLeft: true, // `true` or `false`
+  backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+  stopOnFocus: false // Prevents dismissing of toast on hover
+}).showToast();
+}
 function headerHeight() {
   var i = d("header").style.height.replace("px","")
   if (parseInt(i)) {
@@ -54,7 +65,9 @@ function insertSite() {
     d("iframe").classList.remove("appear")
     create.Iframe(`/site${l}`)
     d("fourOfour").classList.add("hidden")
-
+    if (current.help) {
+      toast(current.help)
+    }
     d("iframe").focus()
     if (qi.s) {
       var link = current.href.replace("/", "")
