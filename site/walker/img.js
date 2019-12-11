@@ -13,8 +13,8 @@ var img = {
   water: newImage("img/water/water"),
   waterCorner: newImage("img/water/waterCornerL"),
   waterCornerR: newImage("img/water/waterCornerR"),
-  waterSide: newImage("img/water/waterSideL"),
-  waterSideR: newImage("img/water/waterSideR"),
+  waterSide: newImage("img/water/watersideL"),
+  waterSideR: newImage("img/water/watersideR"),
   waterCornerDL: newImage("img/water/waterCornerDL"),
   waterCornerDR: newImage("img/water/waterCornerDR"),
 
