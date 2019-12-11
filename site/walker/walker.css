@@ -154,6 +154,11 @@ body {
   z-index: 1;
   transition: opacity .5s;
 }
+#craftingTable {
+  padding-bottom: 10px;
+  border-collapse:separate;
+  border-spacing: 10px 1rem;
+}
 .darkHidden {
   opacity: 0;
 }
@@ -165,4 +170,11 @@ body {
 }
 .disabled span {
   color: #f44336;
+}
+.td2 {
+  position: absolute;
+  right: 2rem;
+}
+.disabledOut {
+  border: 5px #f44336 dashed;
 }

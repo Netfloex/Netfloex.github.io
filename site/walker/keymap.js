@@ -93,12 +93,16 @@ function terrainClick(e) {
         if (ter.type=="cobble") { // Op cobble mag je niet plaatsen
           return
         }
+        if (itemsList[ps]) {
+          if (!itemsList[ps].placable) {
+            return
+          }
+        } else if (ps!=="empty") {
+          console.warn(`Let op: ${ps} zit niet in itemsList (variables.js)`)
+        }
         if (game.inventory[ps]) {
           if (game.inventory[ps]>0) {
             game.inventory[ps]--
-            if (ps=="log") {
-              ps = "wood"
-            }
             terrain[mouse.select.x][mouse.select.y] = new Tile(ps)
           }
         }
@@ -134,7 +138,11 @@ function terrainClick(e) {
 }
 var lastHold = new Date()
 function mousehold() {
-  if (new Date() - lastHold>100) {
+  var delay = 100
+  if (player.selected=="axe") {
+    delay = -100
+  }
+  if (new Date() - lastHold>delay) {
     terrainClick()
     lastHold = new Date()
   }
@@ -163,24 +171,25 @@ function scroll(e) {
     return
   }
   var s = player.selected
-  var i = Object.keys(game.inventory)
+  var i = hotbarItems
   if (!s) {
-    console.log(s);
     player.selected = i[0]
     s = i[0]
   }
-  var index = i.indexOf(s)
+  var span = d(`#${s}`)
+  if (!span) {
+    return
+  }
+  var index = i.indexOf(span.parentElement)
+  console.log(index);
   var scr = Math.sign(e.deltaY)
   var ss = index + scr
   if (i[ss]) {
     hotbarItems.forEach(y=> {
       y.classList.remove("selected")
     })
-    console.log(i[ss]);
-    d(`#${i[ss]}`).parentElement.classList.add("selected")
-    console.log(ss);
-    player.selected = i[ss]
-
+    i[ss].classList.add("selected")
+    player.selected = i[ss].querySelector("span").id
   }
 
 }

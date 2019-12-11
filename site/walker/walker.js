@@ -5,7 +5,9 @@ game.inventory = {
   log: 0,
   cow: 0,
   sheep: 0,
-  stick: 0
+  stick: 0,
+  beef: 0,
+  axe: 0
 }
 
 var animals = []
@@ -17,7 +19,7 @@ var items = []
 var bubbles = []
 
 aEL("resize", function () {
-  ter.block.width = can.width/13
+  ter.block.width = can.width/16
   player.rpos = {x:0,y:0}
   ww = (blocks)*ter.block.width
 })

@@ -6,43 +6,32 @@ var inventoryItems = Array.from(document.querySelectorAll('.invItem'))
 Create.inventory = function () {
   var keys = Object.keys(game.inventory)
   keys.forEach((key, i) => {
-    var imgKey = key
-    if (key=="wood") {
-      imgKey = "log"
+    if (game.inventory[key]==0) {
+      inventoryItems[i].innerHTML= ""
+      return
     }
-    var imag = inventoryItems[i].querySelector("img")
-    var count = inventoryItems[i].querySelector("span")
-
-    if (imag == null) {
-      imag = document.createElement("img")
-      inventoryItems[i].appendChild(imag)
-      imag.className = "hotbarImg"
-    }
-    if (count == null) {
-      count = document.createElement("span")
-      inventoryItems[i].appendChild(count)
-    }
-    imag.src = img[imgKey].getAttribute("src")
+    var imag = createEl("img", inventoryItems[i], "hotbarImg")
+    var count = createEl("span", inventoryItems[i])
+    imag.src = img[key].getAttribute("src")
     imag.alt = key
     inventoryItems[i].title = key
     count.innerHTML = game.inventory[key]
   })
   var div = d("#craftingTable")
   craftables.forEach((craft, i) => {
+    var enoughItems = true
     var tr = d(`.tr${i}`)
     if (!tr) {
       tr = document.createElement("tr")
       tr.className = `tr${i}`
       div.appendChild(tr)
     }
-    craft.in.forEach(crIn => { // Input
-      var td = tr.querySelector(".td")
-      if (!td) {
-        td = document.createElement("td")
-        td.className="td invItem"
-        tr.appendChild(td)
-      }
+
+    craft.in.forEach((crIn, i) => { // Input
+      var td = createEl("td", tr, `td${i}`)
+      td.classList.add(`invItem`)
       if (crIn.count>game.inventory[crIn.type]) {
+        enoughItems = false
         td.classList.add("disabled")
       } else {
         td.classList.remove("disabled")
@@ -78,11 +67,12 @@ Create.inventory = function () {
       arrowImg.className = "hotbarImg"
       arrow.appendChild(arrowImg)
     }
-    var td2 = tr.querySelector(".td2") // Output
-    if (!td2) {
-      td2 = document.createElement("td")
-      td2.className = "td2 invItem"
-      tr.appendChild(td2)
+    var td2 = createEl("td", tr, "td2") // Output
+    td2.classList.add("invItem")
+    if (!enoughItems) {
+      td2.classList.add("disabledOut")
+    } else {
+      td2.classList.remove("disabledOut")
     }
     td2.onclick = function () {
       var enough = true

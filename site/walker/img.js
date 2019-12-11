@@ -2,6 +2,7 @@ var img = {
   player: newImage("img/player"),
 
   cow: newImage("img/cow"),
+  beef: newImage("img/beef"),
   sheep: newImage("img/sheep"),
 
   tree: newImage("img/tree"),
@@ -26,4 +27,5 @@ var img = {
   bubble: newImage("img/bubble"),
   stick: newImage("img/stick"),
   arrow: newImage("img/arrow"),
+  axe: newImage("img/axe"),
 }
