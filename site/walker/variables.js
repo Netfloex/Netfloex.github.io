@@ -11,6 +11,11 @@ var ter = {
 var ww = (blocks)*ter.block.width
 var hotbarItems = Array.from(document.querySelectorAll(".hotbarItem"))
 
+var overworldAnimals = [
+  "cow",
+  "sheep"
+]
+
 var craftables = [
   {
     in: [
@@ -65,5 +70,10 @@ var itemsList = {
   axe: {
     hotbar: true,
     placable: false
+  },
+  diaOre: {
+    placable: true,
+    hotbar: true,
+
   }
 }

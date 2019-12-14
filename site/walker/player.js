@@ -48,6 +48,9 @@ Create.player = function () {
           bubbles = []
           player.speed = ter.block.width/100
         }
+        if (terrain[x][y].type=="portal") {
+          toggleDim()
+        }
 
       }
     }

@@ -103,10 +103,11 @@ function Water(x, y, corner) {
     this.img = imag
   }
 }
-function Tile(type, hp) {
+function Tile(type, hp, placable) {
   if (!hp) {
     this.hp = 4
   }
+  this.unplacable = placable
   this.type = type
   this.img = img[type]
 }

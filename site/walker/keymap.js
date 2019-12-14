@@ -90,7 +90,7 @@ function terrainClick(e) {
       }
       var ps = player.selected
       if (ps) {
-        if (ter.type=="cobble") { // Op cobble mag je niet plaatsen
+        if (ter.unplacable) { // Op cobble mag je niet plaatsen
           return
         }
         if (itemsList[ps]) {

@@ -7,7 +7,8 @@ game.inventory = {
   sheep: 0,
   stick: 0,
   beef: 0,
-  axe: 0
+  axe: 0,
+  diaOre: 0,
 }
 
 var animals = []

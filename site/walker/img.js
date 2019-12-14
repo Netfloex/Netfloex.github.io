@@ -8,7 +8,10 @@ var img = {
   tree: newImage("img/tree"),
   cobble: newImage("img/cobble"),
   wood: newImage("img/wood"),
+  stone: newImage("img/stone"),
+  diaOre: newImage("img/diamond_ore"),
   grass: newImage("img/grass"),
+  portal: newImage("img/portal"),
 
   water: newImage("img/water/water"),
   waterCorner: newImage("img/water/waterCornerL"),

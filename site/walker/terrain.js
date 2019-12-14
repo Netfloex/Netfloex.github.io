@@ -1,13 +1,49 @@
-var terrain = createArray(ter.width, ter.height)
+var overworld = createArray(ter.width, ter.height)
+var underworld = createArray(ter.width, ter.height)
+
+var terrainTypes = ["overworld", "underworld"]
+
+overworld.type = "overworld"
+underworld.type = "underworld"
+var terrain = overworld
 for (var x = 0; x < ter.width; x++) {
   for (var y = 0; y < ter.height; y++) {
-    terrain[x][y] = x+y + x*4
     terrain[x][y] = new Tile("grass", true)
     if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
-      terrain[x][y] = new Tile("cobble", true)
+      terrain[x][y] = new Tile("cobble", true, true)
+    }
+    if (x== ter.width -1 && y<4&&y>=1) {
+      terrain[x][y] = new Tile("portal", true, true)
     }
   }
 }
+for (var x = 0; x < ter.width; x++) {
+  for (var y = 0; y < ter.height; y++) {
+    underworld[x][y] = new Tile("stone", true)
+    if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
+      underworld[x][y] = new Tile("grass", true)
+    }
+    if (x== 0 && y<4&&y>=1) {
+      underworld[x][y] = new Tile("portal", true, true)
+    }
+  }
+}
+
+function toggleDim() {
+  var index = terrainTypes.indexOf(terrain.type)
+  player.motion = {x:0,y:0}
+  if (index==0) {
+    player.pos.x = 0
+    player.rpos.x = -(can.width/2 - ter.block.width*1.5)
+    index = 1
+  } else if (index==1) {
+    player.rpos.x = can.width-(can.width/2 + ter.block.width*1.5)
+    player.pos.x = -ww+can.width
+    index = 0
+  }
+  terrain = window[terrainTypes[index]]
+}
+
 var objects = [
   new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),
 ]
@@ -71,7 +107,11 @@ Create.terrain = function () {
         x: xi*(ter.block.width)+player.pos.x + ter.x,
         y: yi*(ter.block.width)+player.pos.y + ter.y
       }
-      image(img.grass, pos.x, pos.y, ter.block.width, ter.block.width)
+      var bg = img.grass
+      if (terrain.type=="underworld") {
+        bg = img.stone
+      }
+      image(bg, pos.x, pos.y, ter.block.width, ter.block.width)
       if (typeof y == "object") {
         c.globalAlpha = y.opacity +.5
         var w = ter.block.width
@@ -114,19 +154,21 @@ Create.terrain = function () {
       }
     })
   })
-  objects.forEach((obj, i)=>{
-    if (obj.type=="tree") {
-      objects[i] = terrain[obj.x][obj.y]
-      var pos = {
-        x: obj.x*(ter.block.width)+player.pos.x + ter.x,
-        y: obj.y*(ter.block.width)+player.pos.y + ter.y
+  if (terrain.type=="overworld") {
+    objects.forEach((obj, i)=>{
+      if (obj.type=="tree") {
+        objects[i] = terrain[obj.x][obj.y]
+        var pos = {
+          x: obj.x*(ter.block.width)+player.pos.x + ter.x,
+          y: obj.y*(ter.block.width)+player.pos.y + ter.y
+        }
+        var w = ter.block.width*2
+        c.globalAlpha = obj.opacity/2 + .5
+        image(img.tree, pos.x -w/2 + ter.block.width/2, pos.y -w/2 + ter.block.width/2, w, w)
+        c.globalAlpha = 1
       }
-      var w = ter.block.width*2
-      c.globalAlpha = obj.opacity/2 + .5
-      image(img.tree, pos.x -w/2 + ter.block.width/2, pos.y -w/2 + ter.block.width/2, w, w)
-      c.globalAlpha = 1
-    }
-  })
+    })
+  }
 }
 Create.bubbles = function () {
   bubbles.forEach(bub => {

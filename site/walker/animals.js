@@ -1,6 +1,9 @@
 Create.animals = function () {
   var w = ter.block.width * 1.5
   animals.forEach(an=>{
+    if (overworldAnimals.includes(an.type)&&terrain.type!=="overworld") {
+      return
+    }
     c.save()
     c.globalAlpha= an.hp/10 + .5
     c.translate(an.x + player.pos.x, an.y + player.pos.y)
