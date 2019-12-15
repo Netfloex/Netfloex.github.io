@@ -29,11 +29,11 @@ Create.player = function () {
     var py = -player.pos.y + player.rpos.y + (can.height/2)
 
     player.tile = {
-      x: Math.round(px/ter.width),
-      y: Math.round(py/ter.height)
+      x: Math.floor((px/ter.block.width)),
+      y: Math.floor((py/ter.block.width))
     }
-    var x = Math.floor((px/ter.block.width))
-    var y = Math.floor((py/ter.block.width))
+    var x = player.tile.x
+    var y = player.tile.y
     if (terrain[x]) {
       if (terrain[x][y]) {
         if (terrain[x][y].type=="water") {
@@ -48,14 +48,26 @@ Create.player = function () {
           bubbles = []
           player.speed = ter.block.width/100
         }
+
         if (terrain[x][y].type=="portal") {
           toggleDim()
         }
-
+        var wble = terrain[x][y].unwalkable
+        if (wble) {
+          player.motion = {x:0,y:0}
+        }
+        if (!wble) {
+          player.oldPos = Object.assign({}, player.pos)
+          player.oldRPos = Object.assign({}, player.rpos)
+        }
+        player.applyMotion()
+        if (wble&&typeof player.oldPos.x !== "undefined") {
+          player.pos = player.oldPos
+          player.rpos = player.oldRPos
+        }
       }
     }
   }
-  player.applyMotion()
   if (player.pos.x>-ter.x) {
     player.rpos.x-=player.pos.x-ter.x
     player.pos.x=-ter.x

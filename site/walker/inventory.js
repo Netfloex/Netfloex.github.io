@@ -3,6 +3,14 @@ var inventoryOpen = false
 
 var inventoryItems = Array.from(document.querySelectorAll('.invItem'))
 
+function give(item, count) {
+  var c = count || 1
+  if (game.inventory[item]) {
+    game.inventory[item]+= c
+  } else {
+    game.inventory[item] = c
+  }
+}
 Create.inventory = function () {
   var keys = Object.keys(game.inventory)
   keys.forEach((key, i) => {
@@ -30,7 +38,7 @@ Create.inventory = function () {
     craft.in.forEach((crIn, i) => { // Input
       var td = createEl("td", tr, `td${i}`)
       td.classList.add(`invItem`)
-      if (crIn.count>game.inventory[crIn.type]) {
+      if (crIn.count>game.inventory[crIn.type]||!game.inventory[crIn.type]) {
         enoughItems = false
         td.classList.add("disabled")
       } else {
@@ -82,7 +90,7 @@ Create.inventory = function () {
         }
       })
       if (enough) {
-        game.inventory[craft.out.type]+=craft.out.count
+        give(craft.out.type, craft.out.count)
         craft.in.forEach(crIn => {
           game.inventory[crIn.type]-= crIn.count
         })

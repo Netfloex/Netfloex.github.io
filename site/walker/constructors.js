@@ -7,6 +7,8 @@ function Player() {
     x: 0,
     y: 0
   }
+  this.oldPos = {}
+  this.oldRPos = {}
   this.motion = {
     x: 0,
     y: 0
@@ -55,6 +57,7 @@ function Tree() {
   this.type = "tree"
   this.img = img.tree
   this.opacity = 1;
+  this.unwalkable = true
   this.hp = 10
   this.x = x
   this.y = random(1,ter.height -2)
@@ -110,6 +113,9 @@ function Tile(type, hp, placable) {
   this.unplacable = placable
   this.type = type
   this.img = img[type]
+  if (unwalkableTiles.includes(type)) {
+    this.unwalkable = true
+  }
 }
 function Item(x, y, type) {
   this.x = x + random(-25, 25)
@@ -131,7 +137,7 @@ function Item(x, y, type) {
       // div.style.marginTop = `-1rem`
     })
     setTimeout(function () {
-      game.inventory[diz.type]++
+      give(diz.type)
 
     },900)
     setTimeout(function () {

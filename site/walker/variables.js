@@ -15,13 +15,31 @@ var overworldAnimals = [
   "cow",
   "sheep"
 ]
-
+var unwalkableTiles = [
+  "wood",
+  "stoneTop",
+  "cobble",
+  "tree",
+  "log"
+]
 var craftables = [
   {
     in: [
       {
         type: "log",
         count: 1
+      }
+    ],
+    out: {
+      type: "wood",
+      count: 4
+    }
+  },
+  {
+    in: [
+      {
+        type: "wood",
+        count: 2
       }
     ],
     out: {
@@ -36,7 +54,7 @@ var craftables = [
         count: 2
       },
       {
-        type: "log",
+        type: "wood",
         count: 1
       }
     ],
@@ -74,6 +92,9 @@ var itemsList = {
   diaOre: {
     placable: true,
     hotbar: true,
-
+  },
+  wood: {
+    placable: true,
+    hotbar: true,
   }
 }

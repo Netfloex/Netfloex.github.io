@@ -9,6 +9,7 @@ var img = {
   cobble: newImage("img/cobble"),
   wood: newImage("img/wood"),
   stone: newImage("img/stone"),
+  stoneTop: newImage("img/stoneTop"),
   diaOre: newImage("img/diamond_ore"),
   grass: newImage("img/grass"),
   portal: newImage("img/portal"),

@@ -4,34 +4,48 @@ var underworld = createArray(ter.width, ter.height)
 var terrainTypes = ["overworld", "underworld"]
 
 overworld.type = "overworld"
+overworld.bg = img.grass
+overworld.bgname = "grass"
 underworld.type = "underworld"
+underworld.bg = img.stone
+underworld.bgname = "stone"
 var terrain = overworld
 for (var x = 0; x < ter.width; x++) {
   for (var y = 0; y < ter.height; y++) {
-    terrain[x][y] = new Tile("grass", true)
+    var sides = "cobble"
+    var portal = "portal"
+    // overworld
+    var bg = overworld.bgname
+    overworld[x][y] = new Tile(bg, true)
     if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
-      terrain[x][y] = new Tile("cobble", true, true)
+      overworld[x][y] = new Tile(sides, true, true)
     }
     if (x== ter.width -1 && y<4&&y>=1) {
-      terrain[x][y] = new Tile("portal", true, true)
+      overworld[x][y] = new Tile(portal, true, true)
     }
-  }
-}
-for (var x = 0; x < ter.width; x++) {
-  for (var y = 0; y < ter.height; y++) {
-    underworld[x][y] = new Tile("stone", true)
+
+
+    // underworld
+    var bg = "stoneTop"
+
+    underworld[x][y] = new Tile(bg, false, false, true)
     if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
-      underworld[x][y] = new Tile("grass", true)
+      underworld[x][y] = new Tile(sides, true)
     }
     if (x== 0 && y<4&&y>=1) {
-      underworld[x][y] = new Tile("portal", true, true)
+      underworld[x][y] = new Tile(portal, true, true)
+    }
+    if (x== 1 && y<4&&y>=1) {
+      underworld[x][y] = new Tile(underworld.bgname, true, true, true)
     }
   }
 }
 
 function toggleDim() {
   var index = terrainTypes.indexOf(terrain.type)
-  player.motion = {x:0,y:0}
+  // player.motion = {x:0,y:0}
+  player.oldPos = {}
+  player.oldRPos = {}
   if (index==0) {
     player.pos.x = 0
     player.rpos.x = -(can.width/2 - ter.block.width*1.5)
@@ -107,10 +121,7 @@ Create.terrain = function () {
         x: xi*(ter.block.width)+player.pos.x + ter.x,
         y: yi*(ter.block.width)+player.pos.y + ter.y
       }
-      var bg = img.grass
-      if (terrain.type=="underworld") {
-        bg = img.stone
-      }
+      var bg = terrain.bg
       image(bg, pos.x, pos.y, ter.block.width, ter.block.width)
       if (typeof y == "object") {
         c.globalAlpha = y.opacity +.5
@@ -144,14 +155,28 @@ Create.terrain = function () {
         var ww = 3
         c.lineWidth = ww;
         rect(
-          pos.x, // X
-          pos.y, // Y
-          ter.block.width-ww, // Width
-          ter.block.width -ww, // Height
+          pos.x + ww/2, // X
+          pos.y + ww/2, // Y
+          ter.block.width-ww*1, // Width
+          ter.block.width -ww*1, // Height
           "black",
           true
         )
       }
+      // if (player.tile) {
+      //   if (xi==player.tile.x&&player.tile.y==yi) {
+      //     console.log(xi,yi);
+      //     var ww = 3
+      //     rect(
+      //       pos.x + ww/2, // X
+      //       pos.y + ww/2, // Y
+      //       ter.block.width-ww*1, // Width
+      //       ter.block.width -ww*1, // Height
+      //       "black",
+      //       true
+      //     )
+      //   }
+      // }
     })
   })
   if (terrain.type=="overworld") {

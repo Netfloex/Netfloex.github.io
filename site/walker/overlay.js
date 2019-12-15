@@ -1,7 +1,7 @@
-var invKeys = Object.keys(game.inventory)
 // invKeys.push("empty")
 var hotbarItems = []
 Create.overlay = function () {
+  var invKeys = Object.keys(game.inventory)
   var hotbar = d("#hotbar")
   hotbarItems = []
   invKeys.forEach((key) => {

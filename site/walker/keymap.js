@@ -16,7 +16,9 @@ var keyCodes = {
 
 
   e: `inventory`,
-  Escape: `escape`
+  Escape: `escape`,
+
+  t: "toggleDim"
 }
 aEL("keydown", keydown)
 aEL("keyup", keyup)
@@ -49,6 +51,9 @@ function keyup(e) {
     if (inventoryOpen) {
       toggleInventory()
     }
+  }
+  if (keyCodes[e.key]=="toggleDim") {
+    toggleDim()
   }
   delete keymap[e.key]
 }
@@ -118,7 +123,7 @@ function terrainClick(e) {
       ter.hp-=1
       ter.opacity = ter.hp/10
       if (ter.hp<=0) {
-        terrain[mouse.select.x][mouse.select.y] = new Tile("grass", true)
+        terrain[mouse.select.x][mouse.select.y] = new Tile(terrain.bgname, true)
         if (ter.type !== "tree") {
           addItem(ter.type)
         } else {
