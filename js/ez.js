@@ -47,6 +47,10 @@ function clear() {
     c.clearRect(0, 0, can.width, can.height)
 }
 function image(img,x,y,w,h) {
+  if (!img||!x||!y||!w||!h) {
+    console.error(`Ik zie niet alle variables die ik nodig heb voor img`)
+    return
+  }
     c.drawImage(img,x,y,w,h)
 }
 function newImage(url) {
