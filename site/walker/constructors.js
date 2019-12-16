@@ -40,6 +40,14 @@ function Player() {
     else if (mot.y) {
       this.motion.y += mot.y
     }
+    this.absPos = {
+      x: -player.pos.x + player.rpos.x + (can.width/2),
+      y: -player.pos.y + player.rpos.y + (can.height/2)
+    }
+    this.tile = {
+      x: Math.floor((this.absPos.x/ter.block.width)),
+      y: Math.floor((this.absPos.y/ter.block.width))
+    }
   }
   this.applyMotion = function () {
     this.applyForce(this.motion)
@@ -209,6 +217,31 @@ function Animal(type) {
     this.drops.forEach(drop => {
       addItem(drop.type)
     })
+  }
+  this.updateTile = function () {
+    this.tile = {
+      x: Math.floor((this.x/ter.block.width)),
+      y: Math.floor((this.y/ter.block.width))
+    }
+  }
+  this.lastDont = 0
+  this.timesDont = 0
+  this.dont = function () {
+    if (new Date()-this.lastDont<100) {
+      this.timesDont++
+      if (this.timesDont>100) {
+        this.x += random(0,10)
+        this.y += random(0,10)
+      }
+    } else {
+      this.timesDont = 0
+    }
+    this.ai.speed.x *= -1 + random(-10,10)/30
+    this.ai.speed.y *= -1 + random(-10,10)/30
+    this.rotation = this.getAngle()
+
+    this.ai.runFromPlayer = false
+    this.lastDont = new Date()
   }
 }
 function Bubble() {

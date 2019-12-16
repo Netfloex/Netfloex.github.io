@@ -18,15 +18,7 @@ Create.animals = function () {
       width: ww - ter.block.width*2,
       height: ww - ter.block.width*2
     }
-    if (!isHitbox(an, obj)) {
-      // an.x = can.width/2
-      // an.y = can.height/2
-      an.ai.speed.x *= -1
-      an.ai.speed.y *= -1
-      an.rotation = an.getAngle()
-      // an.randomAi()
-      an.ai.runFromPlayer = false
-    }
+    if (!isHitbox(an, obj)) {an.dont()} // Als hij zijkant raakt, doe het niet
     if (an.ai.runFromPlayer) {
       var x = Math.atan2(((player.rpos.y+can.height/2- player.pos.y)-an.y),
                         ((player.rpos.x+can.width/2 - player.pos.x)-an.x))*180/Math.PI
@@ -41,6 +33,18 @@ Create.animals = function () {
     }
     if (new Date() - an.ai.time>5000) {
       an.randomAi()
+    }
+    an.updateTile()
+    if (an.tile.x) {
+      var x = terrain[an.tile.x]
+      if (x) {
+        var y = x[an.tile.y]
+        if (y) {
+          if (y.unwalkable) {
+            an.dont()
+          }
+        }
+      }
     }
   })
 }

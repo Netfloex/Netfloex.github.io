@@ -7,13 +7,15 @@ Create.items = function () {
         image(i.img,-w/2,-w/2 , w, w)
     c.restore()
     i.rotation++
+    if (!player.absPos) {
+      return
+    }
     var dista = dist(player.absPos.x, player.absPos.y, i.x, i.y)
     if (dista<ter.block.width) {
       items.splice(index, 1)
       i.collect()
     }
   })
-  arc(player.absPos.x, player.absPos.y)
 }
 function addItem(type) {
   var c = toCoords(mouse.select)

@@ -24,18 +24,15 @@ Create.player = function () {
 
     }
   })
-  player.absPos = {
-    x: -player.pos.x + player.rpos.x + (can.width/2),
-    y: -player.pos.y + player.rpos.y + (can.height/2)
-  }
-  if (player.absPos) {
-    var px = -player.pos.x + player.rpos.x + (can.width/2)
-    var py = -player.pos.y + player.rpos.y + (can.height/2)
 
-    player.tile = {
-      x: Math.floor((px/ter.block.width)),
-      y: Math.floor((py/ter.block.width))
-    }
+  if (player.absPos) {
+    // var px = -player.pos.x + player.rpos.x + (can.width/2)
+    // var py = -player.pos.y + player.rpos.y + (can.height/2)
+    //
+    // player.tile = {
+    //   x: Math.floor((px/ter.block.width)),
+    //   y: Math.floor((py/ter.block.width))
+    // }
     var x = player.tile.x
     var y = player.tile.y
     if (terrain[x]) {
@@ -81,7 +78,6 @@ Create.player = function () {
     player.pos.y=-ter.y
   }
   if (player.pos.x<-(ww-can.width)||player.rpos.x>10) {
-    console.log("ye");
     player.rpos.x-=player.pos.x+(ww-can.width)
     player.pos.x=-(ww-can.width)
   }
