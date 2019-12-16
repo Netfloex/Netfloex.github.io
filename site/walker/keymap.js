@@ -186,7 +186,6 @@ function scroll(e) {
     return
   }
   var index = i.indexOf(span.parentElement)
-  console.log(index);
   var scr = Math.sign(e.deltaY)
   var ss = index + scr
   if (i[ss]) {

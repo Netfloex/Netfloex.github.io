@@ -12,11 +12,11 @@ Create.animals = function () {
     c.restore()
     an.x+=an.ai.speed.x * ter.block.width/100
     an.y+=an.ai.speed.y * ter.block.width/100
-    var obj = {
-      x: 0,
-      y: 0,
-      width: ww,
-      height: ww
+    var obj = { // Zonder sides
+      x: ter.block.width,
+      y: ter.block.width,
+      width: ww - ter.block.width*2,
+      height: ww - ter.block.width*2
     }
     if (!isHitbox(an, obj)) {
       // an.x = can.width/2
@@ -24,6 +24,7 @@ Create.animals = function () {
       an.ai.speed.x *= -1
       an.ai.speed.y *= -1
       an.rotation = an.getAngle()
+      // an.randomAi()
       an.ai.runFromPlayer = false
     }
     if (an.ai.runFromPlayer) {

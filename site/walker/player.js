@@ -24,6 +24,10 @@ Create.player = function () {
 
     }
   })
+  player.absPos = {
+    x: -player.pos.x + player.rpos.x + (can.width/2),
+    y: -player.pos.y + player.rpos.y + (can.height/2)
+  }
   if (player.absPos) {
     var px = -player.pos.x + player.rpos.x + (can.width/2)
     var py = -player.pos.y + player.rpos.y + (can.height/2)
@@ -76,14 +80,17 @@ Create.player = function () {
     player.rpos.y-=player.pos.y-ter.y
     player.pos.y=-ter.y
   }
-  if (player.pos.x<-(ww-can.width)) {
+  if (player.pos.x<-(ww-can.width)||player.rpos.x>10) {
+    console.log("ye");
     player.rpos.x-=player.pos.x+(ww-can.width)
     player.pos.x=-(ww-can.width)
   }
-  if (player.pos.y<-(ww-can.height)) {
+  if (player.pos.y<-(ww-can.height)||player.rpos.y>10) {
     player.rpos.y-=player.pos.y+(ww-can.height)
     player.pos.y=-(ww-can.height)
   }
+
+
   if (player.rpos.x<-can.width/2) {
     player.rpos.x = -can.width/2
   }
@@ -110,8 +117,4 @@ Create.player = function () {
     w
   )
   c.restore()
-  player.absPos = {
-    x: player.pos.x + (can.width/2)+player.rpos.x,
-    y: player.pos.y + (can.height/2)+player.rpos.y,
-  }
 }
