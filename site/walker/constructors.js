@@ -118,7 +118,9 @@ function Tile(type, hp, placable) {
   if (!hp) {
     this.hp = 4
   }
-  this.unplacable = placable
+  if (placable) {
+    this.unplacable = placable
+  }
   this.type = type
   this.img = img[type]
   if (unwalkableTiles.includes(type)) {
@@ -187,8 +189,8 @@ function Animal(type) {
     var degrees = 180*angle/Math.PI;
     return (360+Math.round(degrees))%360 + 90;
   }
-  this.setAngle = function(degree){
-    var l = 5
+  this.setAngle = function(degree, l){
+    var l = l || 5
     degree-=90
     var angle = degree*Math.PI/180;
     this.ai.speed.x=Math.cos(angle)*l;
@@ -196,7 +198,7 @@ function Animal(type) {
     return;
   }
   this.randomAi = function () {
-    var idle = random(0,1)
+    var idle = false
     if (!idle) {
       this.ai.speed = {
         x: random(-2, 2),
@@ -224,24 +226,44 @@ function Animal(type) {
       y: Math.floor((this.y/ter.block.width))
     }
   }
+  this.damage = function () {
+    this.ai.runFromPlayer = true
+    this.hp--
+    if (this.hp<=0) {
+      this.kill()
+    }
+    this.ai.time = new Date()
+  }
   this.lastDont = 0
   this.timesDont = 0
   this.dont = function () {
-    if (new Date()-this.lastDont<100) {
+    if (new Date()-this.lastDont<400) {
       this.timesDont++
-      if (this.timesDont>100) {
-        this.x += random(0,10)
-        this.y += random(0,10)
+      if (this.timesDont>50) {
+        var helpNeeded = true
+        this.timesDont = 0
       }
     } else {
       this.timesDont = 0
     }
-    this.ai.speed.x *= -1 + random(-10,10)/30
-    this.ai.speed.y *= -1 + random(-10,10)/30
-    this.rotation = this.getAngle()
-
+    // this.ai.speed.x = M.sign(this.ai.speed.x) * -1
+    // this.ai.speed.y = M.sign(this.ai.speed.y) * -1
+    var tileCenter = toCoords(this.tile)
+    var angle = Math.atan2((tileCenter.y-this.y),
+                      (tileCenter.x-this.x))*180/Math.PI
+    var degrees = angle + 180 + 90
+    var speed = 2
+    if (helpNeeded) {
+      degrees += 90
+      speed = 100
+    }
+    this.setAngle(degrees, speed)
+    this.rotation = degrees
+    arc(tileCenter.x + player.pos.x, tileCenter.y + player.pos.y, 10, "black")
+    arc(this.x + player.pos.x, this.y + player.pos.y, 10, "blue")
     this.ai.runFromPlayer = false
     this.lastDont = new Date()
+    this.ai.time = new Date()*2
   }
 }
 function Bubble() {
