@@ -58,7 +58,7 @@ function Player() {
   }
   this.speed = 1
   this.normalSpeed = 1
-  this.selected = "log"
+  this.selected = 0
 }
 function Tree() {
   var x = random(1,ter.width-2)
@@ -114,12 +114,18 @@ function Water(x, y, corner) {
     this.img = imag
   }
 }
-function Tile(type, hp, placable) {
-  if (!hp) {
-    this.hp = 4
-  }
-  if (placable) {
-    this.unplacable = placable
+function Tile(type, opt) {
+  this.hp = 4
+  if (opt) {
+    if (opt.noHp) {
+      delete this.hp
+    }
+    if (opt.unplacable) {
+      this.unplacable = true
+    }
+    if (opt.spawnOres) {
+      this.spawnOres = true
+    }
   }
   this.type = type
   this.img = img[type]
@@ -259,8 +265,6 @@ function Animal(type) {
     }
     this.setAngle(degrees, speed)
     this.rotation = degrees
-    arc(tileCenter.x + player.pos.x, tileCenter.y + player.pos.y, 10, "black")
-    arc(this.x + player.pos.x, this.y + player.pos.y, 10, "blue")
     this.ai.runFromPlayer = false
     this.lastDont = new Date()
     this.ai.time = new Date()*2

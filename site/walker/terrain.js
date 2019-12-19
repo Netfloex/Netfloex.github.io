@@ -16,27 +16,27 @@ for (var x = 0; x < ter.width; x++) {
     var portal = "portal"
     // overworld
     var bg = overworld.bgname
-    overworld[x][y] = new Tile(bg, true)
+    overworld[x][y] = new Tile(bg, {noHp:true})
     if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
-      overworld[x][y] = new Tile(sides, true, true)
+      overworld[x][y] = new Tile(sides, {noHp:true, unplacable:true})
     }
     if (x== ter.width -1 && y<4&&y>=1) {
-      overworld[x][y] = new Tile(portal, true, true)
+      overworld[x][y] = new Tile(portal, {noHp:true, unplacable:true})
     }
 
 
     // underworld
     var bg = "stoneTop"
 
-    underworld[x][y] = new Tile(bg, false, false, true)
+    underworld[x][y] = new Tile(bg, {spawnOres: true})
     if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
-      underworld[x][y] = new Tile(sides, true)
+      underworld[x][y] = new Tile(sides, {noHp:true})
     }
     if (x== 0 && y<4&&y>=1) {
-      underworld[x][y] = new Tile(portal, true, true)
+      underworld[x][y] = new Tile(portal, {noHp:true, unplacable:true})
     }
     if (x== 1 && y<4&&y>=1) {
-      underworld[x][y] = new Tile(underworld.bgname, true, true, true)
+      underworld[x][y] = new Tile(underworld.bgname, {noHp:true, unplacable:true})
     }
   }
 }
@@ -64,9 +64,18 @@ var objects = [
 
 var riverStart = random(5, ter.width-6)
 var riverOffset = 0
+// var lakeStart = random(5, ter.height-10)
 for (var i = 1; i < ter.height-1; i++) {
+  // if (i>=lakeStart&&i<lakeStart+6) {
+  //   for (var z = -3; z < 4; z++) {
+  //     objects.push(new Water(riverStart + riverOffset + z, i, corner.m))
+  //   }
+  //   continue
+  // }
+
   var r = random(1,3)
   var corner = {}
+
   if (r==1) {
     var change = random(-1,1)
     riverOffset += change
@@ -163,20 +172,6 @@ Create.terrain = function () {
           true
         )
       }
-      // if (player.tile) {
-      //   if (xi==player.tile.x&&player.tile.y==yi) {
-      //     console.log(xi,yi);
-      //     var ww = 3
-      //     rect(
-      //       pos.x + ww/2, // X
-      //       pos.y + ww/2, // Y
-      //       ter.block.width-ww*1, // Width
-      //       ter.block.width -ww*1, // Height
-      //       "black",
-      //       true
-      //     )
-      //   }
-      // }
     })
   })
   if (terrain.type=="overworld") {

@@ -93,7 +93,7 @@ function terrainClick(e) {
       if (mouse.which !== 3) {
         return
       }
-      var ps = player.selected
+      var ps = hotbarKeys[player.selected]
       if (ps) {
         if (ter.unplacable) { // Op cobble mag je niet plaatsen
           return
@@ -107,7 +107,7 @@ function terrainClick(e) {
         }
         if (game.inventory[ps]) {
           if (game.inventory[ps]>0) {
-            game.inventory[ps]--
+            give(ps, -1)
             terrain[mouse.select.x][mouse.select.y] = new Tile(ps)
           }
         }
@@ -123,7 +123,14 @@ function terrainClick(e) {
       ter.hp-=1
       ter.opacity = ter.hp/10
       if (ter.hp<=0) {
-        terrain[mouse.select.x][mouse.select.y] = new Tile(terrain.bgname, true)
+        terrain[mouse.select.x][mouse.select.y] = new Tile(terrain.bgname, {noHp:true})
+        if (ter.spawnOres) {
+          var r = random(0, 100)
+          if (r>50) {
+            terrain[mouse.select.x][mouse.select.y] = new Tile("diaOre")
+            return
+          }
+        }
         if (ter.type !== "tree") {
           addItem(ter.type)
         } else {
@@ -144,7 +151,7 @@ function terrainClick(e) {
 var lastHold = new Date()
 function mousehold() {
   var delay = 100
-  if (player.selected=="axe") {
+  if (hotbarKeys[player.selected]=="axe") {
     delay = -100
   }
   if (new Date() - lastHold>delay) {
@@ -167,24 +174,21 @@ function scroll(e) {
     return
   }
   var s = player.selected
-  var i = hotbarItems
-  if (!s) {
-    player.selected = i[0]
-    s = i[0]
-  }
-  var span = d(`#${s}`)
-  if (!span) {
-    return
-  }
-  var index = i.indexOf(span.parentElement)
+  var i = hotbarKeys
   var scr = Math.sign(e.deltaY)
-  var ss = index + scr
-  if (i[ss]) {
-    hotbarItems.forEach(y=> {
-      y.classList.remove("selected")
-    })
-    i[ss].classList.add("selected")
-    player.selected = i[ss].querySelector("span").id
+  if (!s||typeof s !== "number") {
+    player.selected = 0
+    s = 0
+  }
+  if (i[scr+s]) {
+    player.selected = scr+s
+    // hotbarItems.forEach((hi, i) => {
+    //   hi.classList.remove("selected")
+    //   if (s+scr==i) {
+    //     hi.classList.add("selected")
+    //   }
+    // })
+
   }
 
 }

@@ -1,6 +1,6 @@
 var lastInventory = 0
 var inventoryOpen = false
-
+var hotbarKeys = []
 var inventoryItems = Array.from(document.querySelectorAll('.invItem'))
 
 function give(item, count) {
@@ -12,8 +12,8 @@ function give(item, count) {
   }
 }
 Create.inventory = function () {
-  var keys = Object.keys(game.inventory)
-  keys.forEach((key, i) => {
+  hotbarKeys = Array.from(hotbar.children).map(t=>t.classList[0])
+  hotbarKeys.forEach((key, i) => {
     if (game.inventory[key]==0) {
       inventoryItems[i].innerHTML= ""
       return

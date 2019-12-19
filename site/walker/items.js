@@ -1,5 +1,5 @@
 Create.items = function () {
-  var w = 70
+  var w = ter.block.width
   items.forEach((i, index) => {
     c.save()
       c.translate(i.x + player.pos.x, i.y + player.pos.y + Math.sin(i.rotation/10)*30)

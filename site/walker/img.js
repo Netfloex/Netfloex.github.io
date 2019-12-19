@@ -11,6 +11,7 @@ var img = {
   stone: newImage("img/stone"),
   stoneTop: newImage("img/stoneTop"),
   diaOre: newImage("img/diamond_ore"),
+  iroOre: newImage("img/iron_ore"),
   grass: newImage("img/grass"),
   portal: newImage("img/portal"),
 

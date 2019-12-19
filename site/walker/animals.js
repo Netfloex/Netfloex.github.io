@@ -19,7 +19,7 @@ Create.animals = function () {
       width: ww - ter.block.width*2,
       height: ww - ter.block.width*2
     }
-    // if (!isHitbox(an, obj)) {an.dont()} // Als hij zijkant raakt, doe het niet
+    if (!isHitbox(an, obj)) {an.dont()} // Als hij zijkant raakt, doe het niet
     if (an.ai.runFromPlayer) {
       var x = Math.atan2(((player.rpos.y+can.height/2- player.pos.y)-an.y),
                         ((player.rpos.x+can.width/2 - player.pos.x)-an.x))*180/Math.PI

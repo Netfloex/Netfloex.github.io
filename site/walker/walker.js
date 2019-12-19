@@ -1,10 +1,9 @@
 var player = new Player()
 var Create = {}
-var game = {}
-game.inventory = {
-  log:1,
-  wood: 100
+var game = {
+  inventory: {}
 }
+
 
 var animals = []
 for (var i = 0; i < 4; i++) {

@@ -96,5 +96,9 @@ var itemsList = {
   wood: {
     placable: true,
     hotbar: true,
+  },
+  stoneTop: {
+    placable: true,
+    hotbar: true,
   }
 }
