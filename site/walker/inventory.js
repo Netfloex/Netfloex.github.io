@@ -5,6 +5,9 @@ var inventoryItems = Array.from(document.querySelectorAll('.invItem'))
 
 function give(item, count) {
   var c = count || 1
+  if (typeof c !== "number") {
+    return
+  }
   if (game.inventory[item]) {
     game.inventory[item]+= c
   } else {
@@ -13,7 +16,8 @@ function give(item, count) {
 }
 Create.inventory = function () {
   hotbarKeys = Array.from(hotbar.children).map(t=>t.classList[0])
-  hotbarKeys.forEach((key, i) => {
+  inventoryKeys = Object.keys(game.inventory).filter(a=>game.inventory[a]!==0)
+  inventoryKeys.forEach((key, i) => {
     if (game.inventory[key]==0) {
       inventoryItems[i].innerHTML= ""
       return
@@ -24,6 +28,11 @@ Create.inventory = function () {
     imag.alt = key
     inventoryItems[i].title = key
     count.innerHTML = game.inventory[key]
+  })
+  inventoryItems.filter(a=>a.innerHTML).forEach((item, i) => {
+    if (i>inventoryKeys.length) {
+      item.innerHTML = ""
+    }
   })
   var div = d("#craftingTable")
   craftables.forEach((craft, i) => {
@@ -92,7 +101,7 @@ Create.inventory = function () {
       if (enough) {
         give(craft.out.type, craft.out.count)
         craft.in.forEach(crIn => {
-          game.inventory[crIn.type]-= crIn.count
+          give(crIn.type, -crIn.count)
         })
       }
     }
