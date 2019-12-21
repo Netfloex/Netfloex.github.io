@@ -39,15 +39,14 @@ Create.player = function () {
     if (terrain[x]) {
       if (terrain[x][y]) {
         if (terrain[x][y].type=="water") {
-          if (bubbles.length<20) {
-            bubbles.push(new Bubble)
+          if (!random(0,5)) {
+            bubbles.push(new Bubble(player.absPos))
           }
           player.speed *= .96
           if (player.speed<ter.block.width/200) {
             player.speed=ter.block.width/200
           }
         } else {
-          bubbles = []
           player.speed = ter.block.width/100
         }
 

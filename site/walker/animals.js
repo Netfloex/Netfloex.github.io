@@ -43,6 +43,16 @@ Create.animals = function () {
           if (y.unwalkable) {
             an.dont()
           }
+          if (y.type=="water") {
+            if (!random(0,5)) {
+              bubbles.push(new Bubble(an))
+            }
+            if (Math.abs(an.ai.speed.x)>ter.block.width/200) {
+              an.ai.speed.x *=.96
+              an.ai.speed.y *=.96
+              an.rotation = an.getAngle()
+            }
+          }
         }
       }
     }

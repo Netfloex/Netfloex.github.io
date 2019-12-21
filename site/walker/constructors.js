@@ -307,19 +307,23 @@ function Animal(type) {
     this.ai.time = new Date()*2
   }
 }
-function Bubble() {
+function Bubble(pos) {
+  this.x = pos.x + random(-ter.block.width/10,+ter.block.width/10)|| 0
+  this.y = pos.y + random(-ter.block.width/10,+ter.block.width/10)|| 0
   this.rotation = 0
-  this.size = random(10, 100) * ter.block.width/100
-  this.addX = random(-30,30) * ter.block.width/100
-  this.random = random(0,50) * ter.block.width/100
-  this.rer = random(0,1)
-  this.rer2 = random(0,1)
+  this.born = new Date()
+  this.speed = random(50,150)/100
+  this.size = random(10, 50) * ter.block.width/100
   this.draw = function () {
-    this.rotation++
+    if (new Date()- this.born>1000) {
+      bubbles.splice(bubbles.indexOf(this),1)
+    }
+    this.rotation+=this.speed
+    this.size+=this.speed*.1
     c.save()
     c.translate(
-      player.rpos.x + (can.width/2) + this.addX +Math.cos(this.rotation/10)*this.random * this.rer,
-      player.rpos.y + (can.height/2) + Math.sin(this.rotation/10)*this.random * this.rer2
+      this.x + player.pos.x,
+      this.y + player.pos.y - this.rotation
     )
     rotate(this.rotation)
     image(img.bubble,-this.size/2,-this.size/2 , this.size, this.size)
