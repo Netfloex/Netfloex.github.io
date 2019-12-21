@@ -154,8 +154,8 @@ Create.terrain = function () {
         height: ter.block.width
       }
       if (isHitbox({
-        x: mouse.x + player.pos.x,
-        y: mouse.y + player.pos.y
+        x: mouse.screenX,
+        y: mouse.screenY
       }, obj)) {
         mouse.select = {
           x: xi,

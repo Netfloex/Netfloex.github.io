@@ -65,15 +65,10 @@ function mouseClick(e) {
   if (typeof player == "undefined") {
     return
   }
-  var x = Math.atan((e.clientY-(player.rpos.y+can.height/2))/
-                    (e.clientX-(player.rpos.x+can.width/2)))*180/Math.PI
-  if (e.clientX<(player.rpos.x+can.width/2)) {
-    x+=180
-  }
-  x+=30
-  player.rotation = x
   mouse.x = e.clientX  - player.pos.x
   mouse.y = e.clientY  - player.pos.y
+  mouse.screenX = e.clientX
+  mouse.screenY = e.clientY
   mouse.which = e.which
   if (e.which) {
     mouse.timestamp = new Date()

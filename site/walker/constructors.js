@@ -31,7 +31,9 @@ function Player() {
     if (!noY) {
       this.pos.y += motY
     }
-    this.applyFriction()
+    var x = Math.atan2((mouse.screenY-(player.rpos.y+can.height/2)),
+                      (mouse.screenX-(player.rpos.x+can.width/2)))*180/Math.PI
+    player.rotation = x
   }
   this.applySpeed = function (mot) {
     if (mot.x) {
@@ -40,6 +42,14 @@ function Player() {
     else if (mot.y) {
       this.motion.y += mot.y
     }
+
+  }
+  this.applyMotion = function () {
+    this.applyForce(this.motion)
+  }
+  this.applyFriction = function () {
+    this.motion.x *= .9
+    this.motion.y *= .9
     this.absPos = {
       x: -player.pos.x + player.rpos.x + (can.width/2),
       y: -player.pos.y + player.rpos.y + (can.height/2)
@@ -49,16 +59,43 @@ function Player() {
       y: Math.floor((this.absPos.y/ter.block.width))
     }
   }
-  this.applyMotion = function () {
-    this.applyForce(this.motion)
-  }
-  this.applyFriction = function () {
-    this.motion.x *= .9
-    this.motion.y *= .9
-  }
   this.speed = 1
   this.normalSpeed = 1
   this.selected = 0
+
+  this.setAngle = function(degree, l){
+    this.oldPos = {}
+    this.oldRPos = {}
+    var l = l || 5
+    var angle = degree*Math.PI/180;
+    this.motion.x=Math.cos(angle)*l;
+    this.motion.y=Math.sin(angle)*l;
+    return;
+  }
+
+  this.lastDont = 0
+  this.timesDont = 0
+  this.dont = function () {
+    if (new Date() - this.lastDont<100) {
+      this.timesDont++
+      if (this.timesDont>10) {
+        var tileCenter = toCoords(this.tile)
+        var angle = Math.atan2((tileCenter.y-this.absPos.y),
+                          (tileCenter.x-this.absPos.x))*180/Math.PI
+        var degrees = angle
+        var speed = this.timesDont/10
+        this.setAngle(degrees, speed)
+        this.rotation = degrees
+      }
+    } else {
+      this.timesDont = 0
+    }
+    this.lastDont = new Date()
+    if (typeof this.oldPos.x !== "undefined") {
+      this.pos = this.oldPos
+      this.rpos = this.oldRPos
+    }
+  }
 }
 function Tree() {
   var x = random(1,ter.width-2)

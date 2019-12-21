@@ -25,7 +25,8 @@ Create.player = function () {
     }
   })
 
-  if (player.absPos) {
+  player.applyFriction()
+  if (player.tile) {
     // var px = -player.pos.x + player.rpos.x + (can.width/2)
     // var py = -player.pos.y + player.rpos.y + (can.height/2)
     //
@@ -55,16 +56,15 @@ Create.player = function () {
         }
         var wble = terrain[x][y].unwalkable
         if (wble) {
-          player.motion = {x:0,y:0}
+          // player.motion = {x:0,y:0}
         }
         if (!wble) {
           player.oldPos = Object.assign({}, player.pos)
           player.oldRPos = Object.assign({}, player.rpos)
         }
         player.applyMotion()
-        if (wble&&typeof player.oldPos.x !== "undefined") {
-          player.pos = player.oldPos
-          player.rpos = player.oldRPos
+        if (wble) {
+          player.dont()
         }
       }
     }
@@ -104,7 +104,7 @@ Create.player = function () {
     player.rpos.x+can.width/2,
     player.rpos.y+can.height/2
   )
-  rotate(player.rotation)
+  rotate(player.rotation + 30)
   var w = ter.block.width
   image(img.player,
     -w/2, // X
