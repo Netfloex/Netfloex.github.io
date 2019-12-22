@@ -89,13 +89,29 @@ function terrainClick(e) {
         return
       }
       var ps = hotbarKeys[player.selected]
+      var opt = {}
       if (ps) {
         if (ter.unplacable) { // Op cobble mag je niet plaatsen
           return
         }
         if (itemsList[ps]) {
+          if (itemsList[ps].tills&&ter.type!=="soil") {
+
+            terrain[mouse.select.x][mouse.select.y] = new Tile("soil", {noHp:1})
+            if (!random(0,2)) {
+              addItem("seeds")
+            }
+            return
+          }
           if (!itemsList[ps].placable) {
             return
+          }
+          if (itemsList[ps].soil) {
+            if (ter.type!=="soil") {
+              return
+            }
+            opt.soil = true
+            opt.bg = img.soil
           }
         } else if (ps!=="empty") {
           console.warn(`Let op: ${ps} zit niet in itemsList (variables.js)`)
@@ -103,7 +119,8 @@ function terrainClick(e) {
         if (game.inventory[ps]) {
           if (game.inventory[ps]>0) {
             give(ps, -1)
-            terrain[mouse.select.x][mouse.select.y] = new Tile(ps)
+            terrain[mouse.select.x][mouse.select.y] = new Tile(ps, opt)
+            console.log(terrain[mouse.select.x][mouse.select.y]);
           }
         }
       }

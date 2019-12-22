@@ -13,6 +13,7 @@ var img = {
   diaOre: newImage("img/diamond_ore"),
   iroOre: newImage("img/iron_ore"),
   grass: newImage("img/grass"),
+  soil: newImage("img/soil"),
   portal: newImage("img/portal"),
 
   water: newImage("img/water/water"),
@@ -33,4 +34,7 @@ var img = {
   stick: newImage("img/stick"),
   arrow: newImage("img/arrow"),
   axe: newImage("img/axe"),
+  hoe: newImage("img/hoe"),
+  seeds: newImage("img/wheat_seeds"),
+  wheat: newImage("img/wheat"),
 }

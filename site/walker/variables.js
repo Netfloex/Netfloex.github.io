@@ -62,6 +62,22 @@ var craftables = [
       type: "axe",
       count: 1
     }
+  },
+  {
+    in: [
+      {
+        type: "stick",
+        count: 2
+      },
+      {
+        type: "stoneTop",
+        count: 1
+      }
+    ],
+    out: {
+      type: "hoe",
+      count: 1
+    }
   }
 ]
 var itemsList = {
@@ -89,6 +105,11 @@ var itemsList = {
     hotbar: true,
     placable: false
   },
+  hoe: {
+    hotbar: true,
+    placable: false,
+    tills:true
+  },
   diaOre: {
     placable: true,
     hotbar: true,
@@ -100,5 +121,14 @@ var itemsList = {
   stoneTop: {
     placable: true,
     hotbar: true,
-  }
+  },
+  seeds: {
+    hotbar: true,
+    placable: true,
+    soil: true
+  },
+  wheat: {
+    hotbar: true,
+    placable: false
+  },
 }

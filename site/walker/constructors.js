@@ -157,12 +157,7 @@ function Tile(type, opt) {
     if (opt.noHp) {
       delete this.hp
     }
-    if (opt.unplacable) {
-      this.unplacable = true
-    }
-    if (opt.spawnOres) {
-      this.spawnOres = true
-    }
+    Object.assign(this, opt)
   }
   this.type = type
   this.img = img[type]
@@ -182,7 +177,7 @@ function Item(x, y, type) {
     div.className = "item"
     div.style.left = `${this.x + player.pos.x  - 50}px`
     div.style.top = `${this.y + player.pos.y  - 50}px`
-    div.style.backgroundImage = `url(img/${type}.png)`
+    div.style.backgroundImage = `url(${this.img.getAttribute("src")})`
     d("#items").appendChild(div)
     setTimeout(function () {
       div.classList.add("toHotbar")

@@ -123,14 +123,11 @@ function toCoords(block) {
 Create.terrain = function () {
   terrain.forEach((x, xi)=>{
     x.forEach((y, yi)=>{
-      if (typeof y == "number") {
-        return
-      }
       var pos = {
         x: xi*(ter.block.width)+player.pos.x + ter.x,
         y: yi*(ter.block.width)+player.pos.y + ter.y
       }
-      var bg = terrain.bg
+      var bg = y.bg || terrain.bg
       image(bg, pos.x, pos.y, ter.block.width, ter.block.width)
       if (typeof y == "object") {
         c.globalAlpha = y.opacity +.5
