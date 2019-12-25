@@ -19,7 +19,7 @@ aEL("resize", function () {
   ww = (blocks)*ter.block.width
 })
 function loop() {
-  if (Object.keys(Create).length<7) {
+  if (Object.keys(Create).length<8) {
     return requestAnimationFrame(loop)
   }
   clear()
@@ -30,6 +30,8 @@ function loop() {
   Create.animals()
   Create.items()
   Create.inventory()
+  Create.market()
+
   if (mouse.which) {
     mousehold()
   }

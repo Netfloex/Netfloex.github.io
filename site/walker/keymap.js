@@ -38,19 +38,27 @@ aEL("mouseup", animalsClick)
 aEL("wheel", scroll)
 
 function keydown(e) {
-  if (inventoryOpen) {
+  if (inventoryOpen||marketOpen) {
     return
   }
   keymap[e.key] = e.key
 }
 function keyup(e) {
   if (keyCodes[e.key]=="inventory") {
-    toggleInventory()
+    if (!marketOpen) {
+      toggleInventory()
+    } else {
+      marketOpen = false
+      d("#market").classList.add("invHidden")
+      closeDark()
+    }
   }
   if (keyCodes[e.key]=="escape") {
-    if (inventoryOpen) {
-      toggleInventory()
-    }
+    d("#inventory").classList.add("invHidden")
+    d("#market").classList.add("invHidden")
+    inventoryOpen = false
+    marketOpen = false
+    closeDark()
   }
   if (keyCodes[e.key]=="toggleDim") {
     toggleDim()

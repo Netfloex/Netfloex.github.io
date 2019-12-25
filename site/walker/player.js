@@ -53,6 +53,16 @@ Create.player = function () {
         if (terrain[x][y].type=="portal") {
           toggleDim()
         }
+        if (terrain[x][y].marketfloor) {
+          if (!player.standMarket) {
+            openMarket()
+          }
+          player.standMarket = true
+        } else {
+          player.standMarket = false
+        }
+
+
         var wble = terrain[x][y].unwalkable
         if (wble) {
           // player.motion = {x:0,y:0}

@@ -17,6 +17,9 @@ for (var x = 0; x < ter.width; x++) {
     // overworld
     var bg = overworld.bgname
     overworld[x][y] = new Tile(bg, {noHp:true})
+    if (x<8&&y<4) {
+      overworld[x][y] = new Tile("wood", {noHp:true, unplacable:true, walkable: true, marketfloor: true})
+    }
     if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
       overworld[x][y] = new Tile(sides, {noHp:true, unplacable:true})
     }
@@ -62,7 +65,7 @@ var objects = [
   new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),new Tree(),
 ]
 
-var riverStart = random(5, ter.width-6)
+var riverStart = random(10, ter.width-6)
 var riverOffset = 0
 // var lakeStart = random(5, ter.height-10)
 for (var i = 1; i < ter.height-1; i++) {
@@ -104,8 +107,12 @@ for (var i = 1; i < ter.height-1; i++) {
   objects.push(new Water(riverStart + riverOffset-1, i, corner.l))
   objects.push(new Water(riverStart + riverOffset+1, i, corner.r))
 }
-objects.forEach(obj=>{
+objects.forEach((obj, i)=>{
   if (terrain[obj.x]) {
+    if (terrain[obj.x][obj.y].unplacable) {
+      objects.splice(i, 1)
+      return
+    }
     terrain[obj.x][obj.y] = obj
   }
 })

@@ -37,4 +37,7 @@ var img = {
   hoe: newImage("img/hoe"),
   seeds: newImage("img/wheat_seeds"),
   wheat: newImage("img/wheat"),
+
+  market: newImage("img/market"),
+  sign: newImage("img/sign"),
 }

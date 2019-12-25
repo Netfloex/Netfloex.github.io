@@ -62,7 +62,7 @@ function Player() {
   this.speed = 1
   this.normalSpeed = 1
   this.selected = 0
-
+  this.standMarket = false
   this.setAngle = function(degree, l){
     this.oldPos = {}
     this.oldRPos = {}
@@ -161,7 +161,7 @@ function Tile(type, opt) {
   }
   this.type = type
   this.img = img[type]
-  if (unwalkableTiles.includes(type)) {
+  if (unwalkableTiles.includes(type)&&!opt.walkable) {
     this.unwalkable = true
   }
 }
