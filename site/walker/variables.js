@@ -54,8 +54,8 @@ var craftables = [
         count: 2
       },
       {
-        type: "wood",
-        count: 1
+        type: "stoneTop",
+        count: 3
       }
     ],
     out: {
@@ -71,7 +71,7 @@ var craftables = [
       },
       {
         type: "stoneTop",
-        count: 1
+        count: 2
       }
     ],
     out: {
