@@ -38,4 +38,6 @@ Create.overlay = function () {
       player.selected =0
     }
   }
+
+  d("#cash b").innerHTML = game.money
 }

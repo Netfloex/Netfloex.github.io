@@ -1,7 +1,8 @@
 var player = new Player()
 var Create = {}
 var game = {
-  inventory: {}
+  inventory: {},
+  money: 0
 }
 
 
@@ -46,7 +47,7 @@ aEL("load", function () {
 function createEl(elem, parent, klass) {
   var e = parent.querySelector(elem)
   if (klass) {
-    e = parent.querySelector(`.${klass}`)
+    e = parent.querySelector(`${elem}.${klass}`)
   }
   if (!e) {
     e = document.createElement(elem)

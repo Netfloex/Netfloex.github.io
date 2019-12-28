@@ -132,3 +132,11 @@ var itemsList = {
     placable: false
   },
 }
+var market = {
+  sells: [
+    {
+      item: "wheat",
+      price: 50
+    }
+  ]
+}

@@ -211,3 +211,30 @@ body {
 .right {
   right: 0px;
 }
+.hidden {
+  display: none;
+}
+.marketItem {
+  width: 200px;
+  height: 200px;
+}
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+#cash {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+
+  color: white;
+  font-size: 3rem;
+  text-align: right;
+  text-shadow: 2px 2px black;
+  font-family: "Gloria Hallelujah";
+}
+#cash img {
+  height: 3rem;
+}
