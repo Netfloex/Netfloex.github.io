@@ -137,6 +137,10 @@ var market = {
     {
       item: "wheat",
       price: 50
+    },
+    {
+      item: "diaOre",
+      price: 100
     }
   ]
 }

@@ -103,7 +103,7 @@ function terrainClick(e) {
           return
         }
         if (itemsList[ps]) {
-          if (itemsList[ps].tills&&ter.type!=="soil") {
+          if (itemsList[ps].tills&&ter.type=="grass") {
 
             terrain[mouse.select.x][mouse.select.y] = new Tile("soil", {noHp:1})
             if (!random(0,2)) {
@@ -149,7 +149,7 @@ function terrainClick(e) {
         terrain[mouse.select.x][mouse.select.y] = new Tile(bgname, {noHp:true})
         if (ter.spawnOres) {
           var r = random(0, 100)
-          if (r>50) {
+          if (r>80) {
             terrain[mouse.select.x][mouse.select.y] = new Tile("diaOre")
             return
           }
