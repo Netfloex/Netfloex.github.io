@@ -153,14 +153,20 @@ function Water(x, y, corner) {
 }
 function Tile(type, opt) {
   this.hp = 4
+  this.type = type
+  this.img = img[type]
+
+  if (type == "seeds") {
+    this.type = "wheat"
+    this.growth = 0
+    this.plant = new Date()
+  }
   if (opt) {
     if (opt.noHp) {
       delete this.hp
     }
     Object.assign(this, opt)
   }
-  this.type = type
-  this.img = img[type]
   if (unwalkableTiles.includes(type)&&!opt.walkable) {
     this.unwalkable = true
   }

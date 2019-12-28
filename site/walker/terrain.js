@@ -136,6 +136,12 @@ Create.terrain = function () {
       }
       var bg = y.bg || terrain.bg
       image(bg, pos.x, pos.y, ter.block.width, ter.block.width)
+      if (y.type=="wheat") {
+        y.img = img.wheatTile[y.growth]
+        if (new Date() - y.plant>1000) {
+          y.growth = 1
+        }
+      }
       if (typeof y == "object") {
         c.globalAlpha = y.opacity +.5
         var w = ter.block.width

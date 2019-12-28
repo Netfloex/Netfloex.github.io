@@ -40,4 +40,9 @@ var img = {
 
   market: newImage("img/market"),
   sign: newImage("img/sign"),
+
+  wheatTile: [
+    newImage("img/wheatSmall"),
+    newImage("img/wheatTile"),
+  ]
 }

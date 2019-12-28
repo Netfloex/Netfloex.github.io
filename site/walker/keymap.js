@@ -128,7 +128,6 @@ function terrainClick(e) {
           if (game.inventory[ps]>0) {
             give(ps, -1)
             terrain[mouse.select.x][mouse.select.y] = new Tile(ps, opt)
-            console.log(terrain[mouse.select.x][mouse.select.y]);
           }
         }
       }
@@ -143,7 +142,11 @@ function terrainClick(e) {
       ter.hp-=1
       ter.opacity = ter.hp/10
       if (ter.hp<=0) {
-        terrain[mouse.select.x][mouse.select.y] = new Tile(terrain.bgname, {noHp:true})
+        var bgname = terrain.bgname
+        if (ter.soil) {
+          bgname = "soil"
+        }
+        terrain[mouse.select.x][mouse.select.y] = new Tile(bgname, {noHp:true})
         if (ter.spawnOres) {
           var r = random(0, 100)
           if (r>50) {
