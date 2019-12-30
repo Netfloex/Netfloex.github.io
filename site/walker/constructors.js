@@ -158,6 +158,7 @@ function Tile(type, opt) {
 
   if (type == "seeds") {
     this.type = "wheat"
+    this.hp = 2
     this.growth = 0
     this.plant = new Date()
   }
@@ -214,7 +215,9 @@ function Animal(type, pos) {
   }
   if (hostileAnimals.includes(type)) {
     this.hostile = true
+    this.bait = false
   } else {
+    this.bait = "wheat"
     this.hostile = false
   }
   this.rotation = random(0,360)
@@ -248,6 +251,15 @@ function Animal(type, pos) {
     this.ai.speed.x=Math.cos(angle)*l;
     this.ai.speed.y=Math.sin(angle)*l;
     return;
+  }
+  this.degToPlayer = function () {
+    var x = Math.atan2(((player.rpos.y+can.height/2- player.pos.y)-this.y),
+                      ((player.rpos.x+can.width/2 - player.pos.x)-this.x))*180/Math.PI
+    x+=90
+    return x
+  }
+  this.distToPlayer = function () {
+    return dist(player.absPos.x, player.absPos.y, this.x, this.y)
   }
   this.randomAi = function () {
     var idle = false

@@ -145,6 +145,11 @@ function terrainClick(e) {
         var bgname = terrain.bgname
         if (ter.soil) {
           bgname = "soil"
+          addItem("seeds")
+          var r = random(0, 100)
+          if (r>50) {
+            addItem("seeds")
+          }
         }
         terrain[mouse.select.x][mouse.select.y] = new Tile(bgname, {noHp:true})
         if (ter.spawnOres) {

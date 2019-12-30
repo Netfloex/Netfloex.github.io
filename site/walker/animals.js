@@ -27,14 +27,23 @@ Create.animals = function () {
     }
     if (!isHitbox(an, obj)) {an.dont()} // Als hij zijkant raakt, doe het niet
     if (an.ai.runFromPlayer) {
-      var x = Math.atan2(((player.rpos.y+can.height/2- player.pos.y)-an.y),
-                        ((player.rpos.x+can.width/2 - player.pos.x)-an.x))*180/Math.PI
-      x+=90
+      var x = an.degToPlayer()
       if (!an.hostile) { // Als beestje je niet wil aanvallen rent hij weg
         x+=180
       }
       an.rotation = x
       an.setAngle(x)
+    } else {
+      if (hotbarKeys[player.selected]==an.bait&&an.distToPlayer()<ter.block.width*5) {
+        var x = an.degToPlayer()
+        if (an.distToPlayer()>ter.block.width) {
+          an.setAngle(x, 3)
+        } else {
+          an.ai.speed = {x:0,y:0}
+        }
+        an.rotation = x
+        an.ai.time = new Date()
+      }
     }
     if (!an.ai.speed.x&&!an.ai.speed.y&&!x) {
 

@@ -17,7 +17,7 @@ for (var x = 0; x < ter.width; x++) {
     // overworld
     var bg = overworld.bgname
     overworld[x][y] = new Tile(bg, {noHp:true})
-    if (x<8&&y<4) {
+    if (x<8&&y<3) { // Marktkraam vloer
       overworld[x][y] = new Tile("wood", {noHp:true, unplacable:true, walkable: true, marketfloor: true})
     }
     if (x==0 || y==0 || y == ter.height-1 || x == ter.width-1) {
