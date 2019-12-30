@@ -53,10 +53,12 @@ function toggleDim() {
     player.pos.x = 0
     player.rpos.x = -(can.width/2 - ter.block.width*1.5)
     index = 1
+    d("#vignette").classList.add("darknette")
   } else if (index==1) {
     player.rpos.x = can.width-(can.width/2 + ter.block.width*1.5)
     player.pos.x = -ww+can.width
     index = 0
+    d("#vignette").classList.remove("darknette")
   }
   terrain = window[terrainTypes[index]]
 }

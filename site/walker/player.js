@@ -122,4 +122,6 @@ Create.player = function () {
     w
   )
   c.restore()
+  d("#vignette").style.top = `${round(player.rpos.y)}px`
+  d("#vignette").style.left = `${round(player.rpos.x)}px`
 }

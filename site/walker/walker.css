@@ -228,13 +228,23 @@ img {
   position: fixed;
   top: 10px;
   right: 10px;
-
+  z-index: 5;
   color: white;
   font-size: 3rem;
   text-align: right;
   text-shadow: 2px 2px black;
   font-family: "Gloria Hallelujah";
 }
-#cash img {
-  height: 3rem;
+
+#vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200vw;
+  height: 200vh;
+  transform: translate(-25%, -25%);
+  background: radial-gradient(circle, transparent 18%, black 145%);
+}
+.darknette {
+  background: radial-gradient(circle, transparent 2%, black 69%)!important;
 }
