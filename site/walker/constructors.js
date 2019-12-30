@@ -234,6 +234,8 @@ function Animal(type, pos) {
     runFromPlayer : false,
     rotateSpeed: random(-10,10)/10,
     time: new Date() -(random(0,10000)),
+    path: [],
+    tile: {},
     speed : {
       x: 0,
       y: 0
@@ -260,6 +262,19 @@ function Animal(type, pos) {
   }
   this.distToPlayer = function () {
     return dist(player.absPos.x, player.absPos.y, this.x, this.y)
+  }
+  this.goToPlayer = function () {
+    if (this.distToPlayer()<ter.block.width) {
+      this.ai.speed = {x:0,y:0}
+      return
+    }
+    if (this.ai.tile.x!==player.tile.x||this.ai.tile.y!==player.tile.y) {
+      this.ai.time = new Date()
+      Path(this.tile, player.tile).then(path => {
+        this.ai.tile = player.tile
+        this.ai.path = path
+      })
+    }
   }
   this.randomAi = function () {
     var idle = false
@@ -350,4 +365,26 @@ function Bubble(pos) {
     image(img.bubble,-this.size/2,-this.size/2 , this.size, this.size)
     c.restore()
   }
+}
+var grid
+function Path(startTile, endTile) {
+  if (!startTile||!endTile) {
+    console.error(`Geen startTile ${arguments}`)
+    return new Promise(function(resolve, reject) {
+      reject("Geen tiles")
+    });
+  }
+  var easystar = new EasyStar.js();
+  grid = terrain.map(b=>b.map(a=>!a.unwalkable||false))
+  grid = grid[0].map((col, i) => grid.map(row => row[i]));
+  easystar.setGrid(grid);
+  easystar.setAcceptableTiles([true])
+  easystar.enableDiagonals()
+  easystar.disableCornerCutting()
+  return new Promise(function(resolve, reject) {
+    easystar.findPath(startTile.x, startTile.y, endTile.x, endTile.y, function( path ) { // X en Y is omgewisseld omdat ik dat eigenlijk verkeerd heb gedaan bij terrain maar boeie
+      resolve(path)
+    });
+    easystar.calculate()
+  });
 }

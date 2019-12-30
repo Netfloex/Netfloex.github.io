@@ -19,6 +19,19 @@ Create.animals = function () {
     c.restore()
     an.x+=an.ai.speed.x * ter.block.width/100
     an.y+=an.ai.speed.y * ter.block.width/100
+    if (an.ai.path) {
+      if (an.ai.path[0]) {
+        var x = toCoords(an.ai.path[0])
+        var deg = Math.atan2(x.y - an.y,x.x - an.x)*180/Math.PI;
+        deg += 90
+        arc(x.x + player.pos.x, x.y + player.pos.y, 10, "orange")
+        an.setAngle(deg)
+        an.rotation = deg
+        if (an.tile.x == an.ai.path[0].x&&an.tile.y == an.ai.path[0].y) {
+          an.ai.path.shift()
+        }
+      }
+    }
     var obj = { // Zonder sides
       x: ter.block.width,
       y: ter.block.width,
@@ -27,22 +40,17 @@ Create.animals = function () {
     }
     if (!isHitbox(an, obj)) {an.dont()} // Als hij zijkant raakt, doe het niet
     if (an.ai.runFromPlayer) {
-      var x = an.degToPlayer()
       if (!an.hostile) { // Als beestje je niet wil aanvallen rent hij weg
+        var x = an.degToPlayer()
         x+=180
+        an.rotation = x
+        an.setAngle(x)
+      } else {
+        an.goToPlayer()
       }
-      an.rotation = x
-      an.setAngle(x)
     } else {
       if (hotbarKeys[player.selected]==an.bait&&an.distToPlayer()<ter.block.width*5) {
-        var x = an.degToPlayer()
-        if (an.distToPlayer()>ter.block.width) {
-          an.setAngle(x, 3)
-        } else {
-          an.ai.speed = {x:0,y:0}
-        }
-        an.rotation = x
-        an.ai.time = new Date()
+        an.goToPlayer()
       }
     }
     if (!an.ai.speed.x&&!an.ai.speed.y&&!x) {

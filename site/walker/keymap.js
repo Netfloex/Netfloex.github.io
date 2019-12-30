@@ -38,6 +38,9 @@ aEL("mouseup", animalsClick)
 aEL("wheel", scroll)
 
 function keydown(e) {
+  if (typeof inventoryOpen == undefined) {
+    return
+  }
   if (inventoryOpen||marketOpen) {
     return
   }
