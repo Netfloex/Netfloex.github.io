@@ -22,14 +22,19 @@ Create.animals = function () {
     if (an.ai.path) {
       if (an.ai.path[0]) {
         var x = toCoords(an.ai.path[0])
+        var b = toCoords(an.ai.tile)
         var deg = Math.atan2(x.y - an.y,x.x - an.x)*180/Math.PI;
         deg += 90
         arc(x.x + player.pos.x, x.y + player.pos.y, 10, "orange")
-        an.setAngle(deg)
+        arc(b.x + player.pos.x, b.y + player.pos.y, 10, "green")
+        an.setAngle(deg, 3)
         an.rotation = deg
         if (an.tile.x == an.ai.path[0].x&&an.tile.y == an.ai.path[0].y) {
           an.ai.path.shift()
         }
+      }
+      else {
+        an.randomAi()
       }
     }
     var obj = { // Zonder sides

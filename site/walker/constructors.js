@@ -268,29 +268,37 @@ function Animal(type, pos) {
       this.ai.speed = {x:0,y:0}
       return
     }
-    if (this.ai.tile.x!==player.tile.x||this.ai.tile.y!==player.tile.y) {
+    this.goToTile(player.tile)
+  }
+  this.goToTile = function (tile) {
+    if (!tile) {
+      console.error("Geen tile hierzo")
+      return false
+    }
+    if (this.ai.tile.x!==tile.x||this.ai.tile.y!==tile.y) {
       this.ai.time = new Date()
-      Path(this.tile, player.tile).then(path => {
-        this.ai.tile = player.tile
+      Path(this.tile, tile).then(path => {
+        if (!path) {
+          console.log("Geen toegang", tile);
+          return false
+        }
+        this.ai.tile = tile
         this.ai.path = path
+        return true
       })
+    }
+    if (this.ai.tile.x) {
+      if (this.ai.path.length==0) {
+        // this.randomAi()
+      }
     }
   }
   this.randomAi = function () {
-    var idle = false
-    if (!idle) {
-      this.ai.speed = {
-        x: random(-2, 2),
-        y: random(-2, 2)
-      }
-      this.rotation = this.getAngle()
-    } else {
-      this.ai.speed = {
-        x: 0,
-        y: 0
-      }
-      this.ai.rotateSpeed = random(-100,100)/100
+    var ob = {
+      x: random(1,ter.width-2),
+      y: random(1,ter.height-2)
     }
+    this.goToTile(ob)
     this.ai.time = new Date()
   }
   this.kill = function () {
@@ -340,7 +348,7 @@ function Animal(type, pos) {
     this.rotation = degrees
     this.ai.runFromPlayer = false
     this.lastDont = new Date()
-    this.ai.time = new Date()*2
+    this.ai.time = new Date()
   }
 }
 function Bubble(pos) {
