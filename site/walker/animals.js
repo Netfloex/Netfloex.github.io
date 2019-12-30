@@ -1,7 +1,13 @@
+
+for (var i = 0; i < 4; i++) {
+  animals.push(new Animal("sheep"))
+  animals.push(new Animal("cow"))
+}
+
 Create.animals = function () {
   var w = ter.block.width * 1.5
   animals.forEach(an=>{
-    if (overworldAnimals.includes(an.type)&&terrain.type!=="overworld") {
+    if (an.world!==terrain.type&&an.world!==false) {
       return
     }
     an.updateTile()
@@ -24,7 +30,9 @@ Create.animals = function () {
       var x = Math.atan2(((player.rpos.y+can.height/2- player.pos.y)-an.y),
                         ((player.rpos.x+can.width/2 - player.pos.x)-an.x))*180/Math.PI
       x+=90
-      x+=180
+      if (!an.hostile) { // Als beestje je niet wil aanvallen rent hij weg
+        x+=180
+      }
       an.rotation = x
       an.setAngle(x)
     }

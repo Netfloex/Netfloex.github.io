@@ -149,7 +149,10 @@ function terrainClick(e) {
         terrain[mouse.select.x][mouse.select.y] = new Tile(bgname, {noHp:true})
         if (ter.spawnOres) {
           var r = random(0, 100)
-          if (r>80) {
+          if (r>70) {
+            animals.push(new Animal("zombie", {x:mouse.screenX, y:mouse.screenY}))
+          }
+          else if (r>80) {
             terrain[mouse.select.x][mouse.select.y] = new Tile("diaOre")
             return
           }

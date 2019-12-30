@@ -15,6 +15,26 @@ var overworldAnimals = [
   "cow",
   "sheep"
 ]
+var hostileAnimals = [
+  "zombie"
+]
+var animalDrops = {
+  cow : [
+    {
+      type: "beef"
+    }
+  ],
+  sheep : [
+    {
+      type: "sheep"
+    }
+  ],
+  zombie : [
+    {
+      type: "beef"
+    }
+  ]
+}
 var unwalkableTiles = [
   "wood",
   "stoneTop",

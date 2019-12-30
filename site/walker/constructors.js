@@ -176,6 +176,7 @@ function Item(x, y, type) {
   this.y = y + random(-25, 25)
   this.type = type
   this.img = img[type]
+  this.world = terrain.type
   this.rotation = 0
   this.collect = function () {
     var diz = this
@@ -199,25 +200,32 @@ function Item(x, y, type) {
     },1000)
   }
 }
-function Animal(type) {
-  this.x = random(100, ww-100)
-  this.y = random(100, ww-100)
+function Animal(type, pos) {
+  if (pos) {
+    var x = pos.x
+    var y = pos.y
+  }
+  this.x = x ||random(100, ww-100)
+  this.y = y ||random(100, ww-100)
+  if (overworldAnimals.includes(type)) {
+    this.world = terrain.type
+  } else {
+    this.world = "underworld"
+  }
+  if (hostileAnimals.includes(type)) {
+    this.hostile = true
+  } else {
+    this.hostile = false
+  }
   this.rotation = random(0,360)
   this.hp = 5
   this.type = type
   this.img = img[type]
-  if (type== "cow") {
-    this.drops = [
-      {
-        type: "beef"
-      }
-    ]
+  if (animalDrops[type]) {
+    this.drops = animalDrops[type]
   } else {
-    this.drops = [
-      {
-        type: this.type
-      }
-    ]
+    this.drops = false
+    console.error(`${type} zit niet in animalDrops (variables.js)`);
   }
   this.ai = {
     runFromPlayer : false,
@@ -259,7 +267,7 @@ function Animal(type) {
     this.ai.time = new Date()
   }
   this.kill = function () {
-    animals[animals.indexOf(this)] = new Animal(this.type)
+    animals.splice(animals.indexOf(this), 1)
     this.drops.forEach(drop => {
       addItem(drop.type)
     })

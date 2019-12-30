@@ -2,8 +2,8 @@ var img = {
   player: newImage("img/player"),
 
   cow: newImage("img/cow"),
-  beef: newImage("img/beef"),
   sheep: newImage("img/sheep"),
+  zombie: newImage("img/zombie"),
 
   tree: newImage("img/tree"),
   cobble: newImage("img/cobble"),
@@ -37,6 +37,7 @@ var img = {
   hoe: newImage("img/hoe"),
   seeds: newImage("img/wheat_seeds"),
   wheat: newImage("img/wheat"),
+  beef: newImage("img/beef"),
 
   market: newImage("img/market"),
   sign: newImage("img/sign"),

@@ -1,6 +1,9 @@
 Create.items = function () {
-  var w = ter.block.width
+  var w = ter.block.width *.8
   items.forEach((i, index) => {
+    if (i.world!==terrain.type) {
+      return
+    }
     c.save()
       c.translate(i.x + player.pos.x, i.y + player.pos.y + Math.sin(i.rotation/10)*30)
       rotate(i.rotation)

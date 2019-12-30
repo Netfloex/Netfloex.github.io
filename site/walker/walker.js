@@ -7,10 +7,6 @@ var game = {
 
 
 var animals = []
-for (var i = 0; i < 4; i++) {
-  animals.push(new Animal("sheep"))
-  animals.push(new Animal("cow"))
-}
 var items = []
 var bubbles = []
 
