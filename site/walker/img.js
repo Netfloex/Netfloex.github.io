@@ -29,10 +29,14 @@ var img = {
   waterCornerDLev: newImage("img/water/waterReversedDL"),
   waterCornerDRev: newImage("img/water/waterReversed"),
 
-  log: newImage("img/log"),
   bubble: newImage("img/bubble"),
-  stick: newImage("img/stick"),
+  heart: newImage("img/heart"),
+
   arrow: newImage("img/arrow"),
+
+  log: newImage("img/log"),
+  stick: newImage("img/stick"),
+  wool: newImage("img/wool"),
   axe: newImage("img/axe"),
   hoe: newImage("img/hoe"),
   seeds: newImage("img/wheat_seeds"),
@@ -47,5 +51,4 @@ var img = {
     newImage("img/wheatTile"),
   ],
 
-  heart: newImage("img/heart"),
 }

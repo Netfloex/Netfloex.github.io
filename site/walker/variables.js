@@ -26,7 +26,10 @@ var animalDrops = {
   ],
   sheep : [
     {
-      type: "sheep"
+      type: "wool"
+    },
+    {
+      type: "beef"
     }
   ],
   zombie : [
@@ -151,6 +154,10 @@ var itemsList = {
     hotbar: true,
     placable: false
   },
+  wool: {
+    hotbar: true,
+    placable:true
+  }
 }
 var market = {
   sells: [
