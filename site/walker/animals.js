@@ -40,6 +40,11 @@ Create.animals = function () {
         an.randomAi()
       }
     }
+    if (an.hostile) {
+      if (an.distToPlayer()<ter.block.width*5) {
+        an.ai.runFromPlayer = true
+      }
+    }
     if (an.follow) {
       an.goToTile(an.follow.tile)
       bubbles.push(new Bubble(an, {heart:true}))
