@@ -194,12 +194,21 @@ function mousehold() {
   }
 }
 function animalsClick(e) {
-  if (mouse.which !== 1) {
-    return
-  }
   animals.forEach((an, i)=>{
     if (dist(mouse.x,mouse.y,an.x,an.y)<ter.block.width) {
-      an.damage("player")
+      if (mouse.which == 1) {
+        an.damage("player")
+      }
+      if (mouse.which == 3) {
+        if (hotbarKeys[player.selected]==an.bait) {
+          if (game.inventory[an.bait]>0) {
+            if (!an.fed&&!an.baby&&new Date() - an.lastFed>10000) {
+              give(an.bait, -1)
+              an.feed()
+            }
+          }
+        }
+      }
     }
   })
 }

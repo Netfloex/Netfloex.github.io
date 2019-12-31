@@ -201,13 +201,14 @@ function Item(x, y, type) {
     },1000)
   }
 }
-function Animal(type, pos) {
+function Animal(type, pos, opt) {
   if (pos) {
     var x = pos.x
     var y = pos.y
   }
   this.x = x ||random(100, ww-100)
   this.y = y ||random(100, ww-100)
+  Object.assign(this, opt)
   if (overworldAnimals.includes(type)) {
     this.world = terrain.type
   } else {
@@ -264,12 +265,17 @@ function Animal(type, pos) {
     return dist(player.absPos.x, player.absPos.y, this.x, this.y)
   }
   this.goToPlayer = function () {
+    if (this.follow) {
+      return
+    }
     if (this.distToPlayer()<ter.block.width) {
       this.ai.speed = {x:0,y:0}
       return
     }
     this.goToTile(player.tile)
   }
+  this.lastFed = 0
+  this.follow = null
   this.goToTile = function (tile) {
     if (!tile) {
       console.error("Geen tile hierzo")
@@ -279,18 +285,12 @@ function Animal(type, pos) {
       this.ai.time = new Date()
       Path(this.tile, tile).then(path => {
         if (!path) {
-          console.log("Geen toegang", tile);
           return false
         }
         this.ai.tile = tile
         this.ai.path = path
         return true
       })
-    }
-    if (this.ai.tile.x) {
-      if (this.ai.path.length==0) {
-        // this.randomAi()
-      }
     }
   }
   this.randomAi = function () {
@@ -321,6 +321,23 @@ function Animal(type, pos) {
     }
     this.ai.time = new Date()
   }
+  this.feed = function () {
+    if (this.hp<4) {
+      this.hp++
+    }
+    this.ai.runFromPlayer = false
+    this.ai.time = new Date() *2
+    this.ai.path = []
+    this.ai.tile = []
+    this.fed = true
+
+    var othAn = animals.filter(an=>an.type==this.type&&an.fed&&an!==this)
+    if (othAn[0]) {
+      othAn[0].follow = this
+      this.follow = othAn[0]
+    }
+  }
+  this.fed = false
   this.lastDont = 0
   this.timesDont = 0
   this.dont = function () {
@@ -351,13 +368,19 @@ function Animal(type, pos) {
     this.ai.time = new Date()
   }
 }
-function Bubble(pos) {
+function Bubble(pos, opt) {
   this.x = pos.x + random(-ter.block.width/10,+ter.block.width/10)|| 0
   this.y = pos.y + random(-ter.block.width/10,+ter.block.width/10)|| 0
   this.rotation = 0
   this.born = new Date()
   this.speed = random(50,150)/100
   this.size = random(10, 50) * ter.block.width/100
+  this.img = img.bubble
+  if (opt) {
+    if (opt.heart) {
+      this.img = img.heart
+    }
+  }
   this.draw = function () {
     if (new Date()- this.born>1000) {
       bubbles.splice(bubbles.indexOf(this),1)
@@ -370,7 +393,7 @@ function Bubble(pos) {
       this.y + player.pos.y - this.rotation
     )
     rotate(this.rotation)
-    image(img.bubble,-this.size/2,-this.size/2 , this.size, this.size)
+    image(this.img,-this.size/2,-this.size/2 , this.size, this.size)
     c.restore()
   }
 }

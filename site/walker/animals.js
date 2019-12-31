@@ -5,10 +5,13 @@ for (var i = 0; i < 4; i++) {
 }
 
 Create.animals = function () {
-  var w = ter.block.width * 1.5
   animals.forEach(an=>{
+    var w = ter.block.width * 1.5
     if (an.world!==terrain.type&&an.world!==false) {
       return
+    }
+    if (an.baby) {
+      w /= 2
     }
     an.updateTile()
     c.save()
@@ -17,16 +20,16 @@ Create.animals = function () {
     rotate(an.rotation)
     image(an.img, -w/2, -w/2, w, w)
     c.restore()
-    an.x+=an.ai.speed.x * ter.block.width/100
-    an.y+=an.ai.speed.y * ter.block.width/100
+    if (new Date() - an.lastFed>5000) { // Eerste seconde na seks zijn de dieren moe
+      an.x+=an.ai.speed.x * ter.block.width/100
+      an.y+=an.ai.speed.y * ter.block.width/100
+    }
     if (an.ai.path) {
       if (an.ai.path[0]) {
         var x = toCoords(an.ai.path[0])
         var b = toCoords(an.ai.tile)
         var deg = Math.atan2(x.y - an.y,x.x - an.x)*180/Math.PI;
         deg += 90
-        arc(x.x + player.pos.x, x.y + player.pos.y, 10, "orange")
-        arc(b.x + player.pos.x, b.y + player.pos.y, 10, "green")
         an.setAngle(deg, 3)
         an.rotation = deg
         if (an.tile.x == an.ai.path[0].x&&an.tile.y == an.ai.path[0].y) {
@@ -35,6 +38,23 @@ Create.animals = function () {
       }
       else {
         an.randomAi()
+      }
+    }
+    if (an.follow) {
+      an.goToTile(an.follow.tile)
+      bubbles.push(new Bubble(an, {heart:true}))
+      if (!an.follow.fed) { // Voorkomt een tweeling
+
+        an.follow = false
+        an.lastFed = new Date()
+        an.fed = false // Voorkomt de tweeling hierboven
+        return
+      }
+      if (dist(an.x, an.y, an.follow.x, an.follow.y)<100) {
+        animals.push(new Animal(an.type, {x: an.x, y: an.y}, {baby:true}))
+        an.follow = false
+        an.lastFed = new Date()
+        an.fed = false // Voorkomt de tweeling hierboven
       }
     }
     var obj = { // Zonder sides

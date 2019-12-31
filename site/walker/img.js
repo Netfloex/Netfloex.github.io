@@ -45,5 +45,7 @@ var img = {
   wheatTile: [
     newImage("img/wheatSmall"),
     newImage("img/wheatTile"),
-  ]
+  ],
+
+  heart: newImage("img/heart"),
 }
