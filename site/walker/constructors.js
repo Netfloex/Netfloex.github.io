@@ -338,6 +338,8 @@ function Animal(type, pos, opt) {
     }
   }
   this.fed = false
+  this.screenRotation = 0
+
   this.lastDont = 0
   this.timesDont = 0
   this.dont = function () {

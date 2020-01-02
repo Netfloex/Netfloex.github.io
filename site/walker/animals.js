@@ -3,7 +3,13 @@ for (var i = 0; i < 4; i++) {
   animals.push(new Animal("sheep"))
   animals.push(new Animal("cow"))
 }
-
+function fixDeg(deg) {
+  deg %= 360
+  if (deg<0) {
+    deg = 360 - Math.abs(deg)
+  }
+  return deg
+}
 Create.animals = function () {
   animals.forEach(an=>{
     var w = ter.block.width * 1.5
@@ -17,7 +23,11 @@ Create.animals = function () {
     c.save()
     c.globalAlpha= an.hp/10 + .5
     c.translate(an.x + player.pos.x, an.y + player.pos.y)
-    rotate(an.rotation)
+    if (an.screenRotation!==an.rotation) {
+      var dif = fixDeg(an.rotation) - fixDeg(an.screenRotation)
+      an.screenRotation += dif/10
+    }
+    rotate(an.screenRotation)
     image(an.img, -w/2, -w/2, w, w)
     c.restore()
     if (new Date() - an.lastFed>5000) { // Eerste seconde na seks zijn de dieren moe
@@ -45,9 +55,12 @@ Create.animals = function () {
         an.ai.runFromPlayer = true
       }
     }
+    if (an.fed) {
+
+      bubbles.push(new Bubble(an, {heart:true}))
+    }
     if (an.follow) {
       an.goToTile(an.follow.tile)
-      bubbles.push(new Bubble(an, {heart:true}))
       if (!an.follow.fed) { // Voorkomt een tweeling
 
         an.follow = false
