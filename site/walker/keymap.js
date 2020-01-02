@@ -131,6 +131,7 @@ function terrainClick(e) {
           if (game.inventory[ps]>0) {
             give(ps, -1)
             terrain[mouse.select.x][mouse.select.y] = new Tile(ps, opt)
+            updateAnimalPaths({x:mouse.select.x,y:mouse.select.y})
           }
         }
       }
@@ -168,11 +169,11 @@ function terrainClick(e) {
         if (ter.type !== "tree") {
           addItem(ter.type)
         } else {
-          var oter = window["ter"]
-          var boom = new Tree()
+          var boom = new Tree() // Maak nieuwe boom als je er een hebt gehakt
           objects.push(boom)
           terrain[boom.x][boom.y] = boom
         }
+        updateAnimalPaths({x:mouse.select.x,y:mouse.select.y})
 
       }
       if (ter.hp>=0&&ter.type=="tree") {

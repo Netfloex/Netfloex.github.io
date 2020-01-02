@@ -126,3 +126,18 @@ Create.animals = function () {
     }
   })
 }
+function updateAnimalPaths(tile) {
+  animals.forEach(an => {
+    if (!an.ai.path) {
+      return
+    }
+    if (!an.ai.path[0]||!an.ai.tile) {
+      return
+    }
+    if (dist(an.tile.x, an.tile.y, tile.x, tile.y)>5) {
+      return
+    }
+    console.log("Changed paths");
+    an.goToTile(an.ai.tile, {forceNew:true})
+  })
+}

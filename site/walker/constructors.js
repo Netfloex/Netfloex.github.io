@@ -276,21 +276,36 @@ function Animal(type, pos, opt) {
   }
   this.lastFed = 0
   this.follow = null
-  this.goToTile = function (tile) {
+  this.goToTile = function (tile, opt) {
     if (!tile) {
       console.error("Geen tile hierzo")
       return false
     }
-    if (this.ai.tile.x!==tile.x||this.ai.tile.y!==tile.y) {
+    var forceNew = false
+    if (opt) {
+      if (opt.forceNew) {
+        forceNew = true
+        console.log("Forcenwe");
+      }
+    }
+    if (this.ai.tile.x!==tile.x||this.ai.tile.y!==tile.y||forceNew) {
       this.ai.time = new Date()
-      Path(this.tile, tile).then(path => {
-        if (!path) {
-          return false
-        }
-        this.ai.tile = tile
-        this.ai.path = path
-        return true
-      })
+      var diz = this
+      return new Promise(function(resolve, reject) {
+        Path(diz.tile, tile).then(path => {
+          if (!path) {
+            resolve({noPath:true})
+            diz.ai.speed = {x:0,y:0}
+            diz.ai.tile = {}
+            diz.ai.path = []
+          }
+          diz.ai.tile = tile
+          diz.ai.path = path
+          resolve(path)
+        })
+      });
+    } else {
+      return false
     }
   }
   this.randomAi = function () {
@@ -405,6 +420,19 @@ function Path(startTile, endTile) {
     console.error(`Geen startTile ${arguments}`)
     return new Promise(function(resolve, reject) {
       reject("Geen tiles")
+    });
+  }
+  if (startTile.x||endTile.x) {
+    if (startTile.x<=0||endTile.x<=0||startTile.y<=0||endTile.y<=0||startTile.x>ter.width||endTile.x>ter.width||startTile.y>ter.height||endTile.y>ter.height) {
+      console.error("Geen goede starttile")
+      return new Promise(function(resolve, reject) {
+        reject("Geen goede starttile")
+      });
+    }
+  } else {
+    console.error("Geen goede starttile")
+    return new Promise(function(resolve, reject) {
+      reject("Geen goede starttile")
     });
   }
   var easystar = new EasyStar.js();
