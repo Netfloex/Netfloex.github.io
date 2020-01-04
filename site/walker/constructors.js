@@ -173,8 +173,9 @@ function Tile(type, opt) {
   }
 }
 function Item(x, y, type) {
-  this.x = x + random(-25, 25)
-  this.y = y + random(-25, 25)
+  var offset = ter.block.width / 25
+  this.x = x + random(-offset, offset)
+  this.y = y + random(-offset, offset)
   this.type = type
   this.img = img[type]
   this.world = terrain.type
