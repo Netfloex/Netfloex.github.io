@@ -81,7 +81,7 @@ Create.animals = function () {
       width: ww - ter.block.width*2,
       height: ww - ter.block.width*2
     }
-    if (!isHitbox(an, obj)) {an.dont()} // Als hij zijkant raakt, doe het niet
+    if (!isHitbox(an, obj)) {an.dont({sides:true})} // Als hij zijkant raakt, doe het niet
     if (an.ai.runFromPlayer) {
       if (!an.hostile) { // Als beestje je niet wil aanvallen rent hij weg
         var x = an.degToPlayer()

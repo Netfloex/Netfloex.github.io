@@ -299,6 +299,11 @@ function Animal(type, pos, opt) {
             diz.ai.speed = {x:0,y:0}
             diz.ai.tile = {}
             diz.ai.path = []
+            diz.unavailableTiles.push(tile)
+            if (diz.bait!==hotbarKeys[player.selected]) {
+              diz.randomAi()
+            }
+            console.count("NEw path");
           }
           diz.ai.tile = tile
           diz.ai.path = path
@@ -309,12 +314,15 @@ function Animal(type, pos, opt) {
       return false
     }
   }
+  this.unavailableTiles = []
   this.randomAi = function () {
     var ob = {
       x: random(1,ter.width-2),
       y: random(1,ter.height-2)
     }
-    this.goToTile(ob)
+    if (!this.unavailableTiles.filter(t=>t.x==ob.x&&t.y==ob.y).length) {
+      this.goToTile(ob)
+    }
     this.ai.time = new Date()
   }
   this.kill = function () {
@@ -358,7 +366,7 @@ function Animal(type, pos, opt) {
 
   this.lastDont = 0
   this.timesDont = 0
-  this.dont = function () {
+  this.dont = function (opt) {
     if (new Date()-this.lastDont<400) {
       this.timesDont++
       if (this.timesDont>50) {
@@ -368,6 +376,29 @@ function Animal(type, pos, opt) {
     } else {
       this.timesDont = 0
     }
+
+    // Beta
+    var newWay = true
+    if (opt) {
+      if (opt.sides) {
+        newWay = false
+      }
+    }
+    if (this.ai.tile&&newWay&& false) { // Moet iets dat current tile niet meetelt
+      var done = this.goToTile(this.ai.tile)
+      if (done) {
+        done.then(p=> {
+          // console.log(p, true);
+        }).catch(p=> {
+          // console.error(p, false);
+        })
+      } else {
+        // console.error(done)
+      }
+      return
+    }
+    // End Beta
+
     // this.ai.speed.x = M.sign(this.ai.speed.x) * -1
     // this.ai.speed.y = M.sign(this.ai.speed.y) * -1
     var tileCenter = toCoords(this.tile)
@@ -443,6 +474,7 @@ function Path(startTile, endTile) {
   easystar.setAcceptableTiles([true])
   easystar.enableDiagonals()
   easystar.disableCornerCutting()
+  console.log("PAth");
   return new Promise(function(resolve, reject) {
     easystar.findPath(startTile.x, startTile.y, endTile.x, endTile.y, function( path ) { // X en Y is omgewisseld omdat ik dat eigenlijk verkeerd heb gedaan bij terrain maar boeie
       resolve(path)

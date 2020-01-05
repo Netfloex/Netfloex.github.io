@@ -14,6 +14,12 @@ aEL("resize", function () {
   ter.block.width = can.width/16
   player.rpos = {x:0,y:0}
   ww = (blocks)*ter.block.width
+
+  animals.forEach(an => {
+    var c = toCoords(an.tile)
+    an.x = c.x
+    an.y = c.y
+  })
 })
 function loop() {
   if (Object.keys(Create).length<8) {
