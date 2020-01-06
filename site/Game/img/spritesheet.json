@@ -1,0 +1,415 @@
+{
+	"frames": {
+		"survivor-idle_knife_0.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_1.png": {
+			"frame": {
+				"x": 292,
+				"y": 1,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_10.png": {
+			"frame": {
+				"x": 583,
+				"y": 1,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_11.png": {
+			"frame": {
+				"x": 1,
+				"y": 227,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_12.png": {
+			"frame": {
+				"x": 292,
+				"y": 227,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_13.png": {
+			"frame": {
+				"x": 583,
+				"y": 227,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_14.png": {
+			"frame": {
+				"x": 1,
+				"y": 453,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_15.png": {
+			"frame": {
+				"x": 292,
+				"y": 453,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_16.png": {
+			"frame": {
+				"x": 583,
+				"y": 453,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_17.png": {
+			"frame": {
+				"x": 1,
+				"y": 679,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_18.png": {
+			"frame": {
+				"x": 292,
+				"y": 679,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_19.png": {
+			"frame": {
+				"x": 583,
+				"y": 679,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_2.png": {
+			"frame": {
+				"x": 1,
+				"y": 905,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_3.png": {
+			"frame": {
+				"x": 292,
+				"y": 905,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_4.png": {
+			"frame": {
+				"x": 583,
+				"y": 905,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_5.png": {
+			"frame": {
+				"x": 874,
+				"y": 1,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_6.png": {
+			"frame": {
+				"x": 874,
+				"y": 227,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_7.png": {
+			"frame": {
+				"x": 874,
+				"y": 453,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_8.png": {
+			"frame": {
+				"x": 874,
+				"y": 679,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		},
+		"survivor-idle_knife_9.png": {
+			"frame": {
+				"x": 874,
+				"y": 905,
+				"w": 289,
+				"h": 224
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 289,
+				"h": 224
+			},
+			"sourceSize": {
+				"w": 289,
+				"h": 224
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1164,
+			"h": 1130
+		},
+		"scale": "1"
+	}
+}
