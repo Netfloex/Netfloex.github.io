@@ -37,4 +37,5 @@ function create () {
     repeat: -1
   });
   player.play("idle")
+  console.log(this)
 }
