@@ -25,7 +25,12 @@ Header = [
       {
         title: "Walker",
         link: "#walker",
-        desc: "Walker, sla koeien in elkaar en hak bomen. NIEUW"
+        desc: "Walker, sla koeien in elkaar en hak bomen. Hak steen en bouw tools, verbouw wheat en produceer meer beesten."
+      },
+      {
+        title: "Superflat",
+        link: "#superflat",
+        desc: "Walker 2.0, word nog beter"
       }
     ]
   },

@@ -55,6 +55,11 @@ Pages = [
   {
     href: "/walker",
     name: "Walker",
-    help: `Jaja, dit is goed spel. Gebruik "AWSD" of de pijltjes toetsen om te lopen. "E" voor inventory. Hak eerst bomen om stokjes te maken, daarmee kan je een axe bouwen, zo kan je sneller bomen neerslaan. Ook mag je best een paar schapen of koeien slopen!`
+    help: `Gebruik "AWSD" om te lopen. "E" voor inventory. Hak eerst bomen om stokjes te maken, daarmee kan je een axe bouwen, zo kan je sneller bomen neerslaan. Ook mag je best een paar schapen of koeien slopen! Met een hoe kan je wheat verbouwen`
+  },
+  {
+    href: "/superflat",
+    name: "Superflat",
+    help: "Dit word nog beter snel."
   }
 ]
