@@ -1,6 +1,9 @@
 function update () {
   var acc = player.body.velocity
-  var speed = 30
+  var speed = 50
+  if (cursors.ctrl.isDown||cursors.shift.isDown) {
+    speed*=2.5
+  }
   if (cursors.left.isDown||cursors.a.isDown) {
       acc.x += -speed
   }

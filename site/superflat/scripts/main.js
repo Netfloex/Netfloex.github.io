@@ -2,7 +2,7 @@ var ter = {
   width: 50,
   height: 50,
   block: {
-    width: 32
+    width: 128
   }
 }
 

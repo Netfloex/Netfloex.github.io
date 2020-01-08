@@ -60,6 +60,6 @@ Pages = [
   {
     href: "/superflat",
     name: "Superflat",
-    help: "Dit word nog beter snel."
+    help: "Dit word nog beter snel. Walker 2.0"
   }
 ]

@@ -1,8 +1,13 @@
 function preload () {
 
-  this.load.image('bomb', 'img/bomb.png');
-
-  this.load.image('grass', 'img/grass.png');
-  this.load.spritesheet('dude', 'img/survivor idle.png', { frameWidth: 289, frameHeight: 224 });
-  this.load.multiatlas('textures', 'img/textures.json', 'img');
+  this.load.path = "img/"
+  this.load.spritesheet('dude', 'survivor idle.png', {
+    frameWidth: 289,
+    frameHeight: 224
+  });
+  // this.load.multiatlas('textures', 'textures.json', 'img');
+  this.load.spritesheet('tiles', 'tiles.png', {
+    frameWidth: 128,
+    frameHeight: 128
+  });
 }
