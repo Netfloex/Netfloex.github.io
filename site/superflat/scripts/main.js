@@ -1,11 +1,12 @@
 var ter = {
-  width: 50,
-  height: 50,
+  width: 30,
+  height: 30,
   block: {
     width: 128
   }
 }
-
+ter.ww = ter.width * ter.block.width
+ter.hw = ter.height * ter.block.width
 var config = {
 	type: Phaser.AUTO,
 	backgroundColor: '#fff',
@@ -16,12 +17,9 @@ var config = {
 	},
 	physics: {
 		default: 'arcade',
-		arcade: {
-			gravity: {
-				y: 0
-			},
-			debug: false
-		}
+		// arcade: {
+		// 	debug: true
+		// }
 	},
 
 	scene: {
@@ -32,9 +30,13 @@ var config = {
 };
 var M = Math
 var floor = M.floor
-var map,player,cursors,camera,graphics;
 
-var game = new Phaser.Game(config);
+var P = Phaser
+var PM = P.Math
+var PMA = PM.Angle
+var map,player,cursors,camera,marker;
+
+var game = new P.Game(config);
 addEventListener('contextmenu', function (e) {
   e.preventDefault()
 })
