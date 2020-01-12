@@ -10,4 +10,8 @@ function preload () {
     frameWidth: 128,
     frameHeight: 128
   });
+  this.load.path = "scripts/lib/"
+  if (game.device.input.touch) {
+    this.load.plugin('rexvirtualjoystickplugin', "rexvirtualjoystickplugin.min.js", true);
+  }
 }

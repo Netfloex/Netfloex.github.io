@@ -1,6 +1,6 @@
 var ter = {
-  width: 30,
-  height: 30,
+  width: 50,
+  height: 50,
   block: {
     width: 128
   }
@@ -16,17 +16,21 @@ var config = {
 		height: innerHeight
 	},
 	physics: {
-		default: 'arcade',
-		// arcade: {
-		// 	debug: true
-		// }
+		default: 'matter',
+		matter: {
+			debug: true,
+      gravity: {
+        y:0
+      }
+		}
 	},
 
 	scene: {
 		preload: preload,
 		create: create,
 		update: update
-	}
+	},
+  banner: false
 };
 var M = Math
 var floor = M.floor
@@ -34,7 +38,7 @@ var floor = M.floor
 var P = Phaser
 var PM = P.Math
 var PMA = PM.Angle
-var map,player,cursors,camera,marker;
+var map,player,cursors,camera,marker,joyStick;
 
 var game = new P.Game(config);
 addEventListener('contextmenu', function (e) {
