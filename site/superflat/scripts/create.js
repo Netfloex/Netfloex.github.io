@@ -25,6 +25,7 @@ function create () {
   marker.cameraFilter = 1
 
   player = this.matter.add.sprite(1000,1000,"dude")
+        .setRectangle(130,130)
         .setScale(.6)
         .setFriction(.4, .07)
         // .setSize(130,130)
@@ -34,7 +35,15 @@ function create () {
   this.cameras.main.startFollow(player, true, 0.1, 0.1)
                    .setBounds(0, 0, ter.ww+ ter.block.width, ter.hw+ ter.block.width);
   this.matter.world.setBounds(ter.block.width, ter.block.width, ter.ww - ter.block.width, ter.hw - ter.block.width);
-
+  for (var i = 0; i < 8; i++) {
+    var an = this.matter.add.sprite(1000,1000, "animals")
+    .setScale(.5)
+    .setFriction(.4, .07)
+    .setFrame(PM.RND.between(0,1))
+    .setAngle(PM.RND.angle())
+    animals.push(an)
+  }
+  P.Actions.RandomRectangle(animals, gameRect)
   // animals = this.matter.world.nextGroup({
   //   key: 'animals',
   //   repeat: 11,
@@ -44,7 +53,6 @@ function create () {
   //     y: .5
   //   },
   // })
-  // P.Actions.RandomRectangle(animals.getChildren(), gameRect)
   // animals.children.entries.forEach(an=>an.setCollideWorldBounds(true))
   // this.matter.add.collider(animals, animals)
   // this.matter.add.collider(player, animals)

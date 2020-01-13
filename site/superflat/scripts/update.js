@@ -26,23 +26,29 @@ function update () {
   var m = game.input.activePointer
   if (m.x!==0||m.y!==0) {
     marker.cameraFilter = 0
-  } else {
-    return
+
+    m = {
+      x: m.x + camera.worldView.x,
+      y: m.y + camera.worldView.y
+    }
+    marker.x = floor(m.x/ter.block.width)*ter.block.width
+    marker.y = floor(m.y/ter.block.width)*ter.block.width
+    if (!keyPressed) {
+      var rad = PMA.Between(player.x, player.y, m.x, m.y)
+    } else {
+      var rad = new PM.Vector2(acc).angle()
+    }
+    player.toRotation = rad
+    player.screenRotation = PMA.RotateTo(player.screenRotation, player.toRotation, .1)
+    player.setAngle(player.screenRotation*180/M.PI)
+
   }
-  m = {
-    x: m.x + camera.worldView.x,
-    y: m.y + camera.worldView.y
-  }
-  marker.x = floor(m.x/ter.block.width)*ter.block.width
-  marker.y = floor(m.y/ter.block.width)*ter.block.width
-  if (!keyPressed) {
-    var rad = PMA.Between(player.x, player.y, m.x, m.y)
-  } else {
-    var rad = new PM.Vector2(acc).angle()
-  }
-  player.toRotation = rad
-  player.screenRotation = PMA.RotateTo(player.screenRotation, player.toRotation, .1)
-  player.setAngle(player.screenRotation*180/M.PI)
+
+
+  animals.forEach(an=> {
+    an.thrust(.1)
+    an.rotation += .05
+  })
 }
 function joyStickUpdate() {
   player.toRotation = PM.DegToRad(joyStick.angle)
