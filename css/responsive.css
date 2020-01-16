@@ -19,7 +19,8 @@
 #menuBox:hover + #headerLinksNav {
   display: block!important;
 }
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 870px) {
+  /* +100 */
   #headertitle {
     display: none;
   }
@@ -36,13 +37,15 @@
     display: none;
   }
 }
-@media only screen and (max-width: 430px) {
+@media only screen and (max-width: 530px) {
+  /* +100 */
   #headertitle, #headertitleshort {
     display: none;
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 650px) {
+  /* +100 */
   #headertitle, #headertitleshort, #headerLinksNav {
     display: none;
   }

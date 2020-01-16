@@ -1,5 +1,25 @@
 Header = [
   {
+    title: "Informatica",
+    menu:  [
+      {
+        title: "Wireframe",
+        link: "#wireframe",
+        desc: "Bekijk de layout van de pagina"
+      },
+      {
+        title: "Contact",
+        link: "#contact",
+        desc: "Contacteer mij"
+      },
+      {
+        title: "Feedback",
+        link: "#feedback",
+        desc: "Bekijk feedback"
+      }
+    ]
+  },
+  {
     title: "Games",
     menu:  [
       {

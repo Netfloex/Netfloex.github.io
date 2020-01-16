@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149926670-1"></script>
+  <script src="/js/google-tag.js"></script>
+  <title>Wireframe</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/scrollbar.css">
+  <link rel="stylesheet" href="/css/000webhostapp.css">
+  <meta name="theme-color" content="#s6779e3">
+  <meta name="description" content="Site met allemaal verschillende dingen. Gemaakt door Sam Taen.">
+  <style>
+    body {
+      background: unset;
+        color: white;
+    }
+    .container {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="display-3">Contact</h1>
+    <form action="#" method="get">
+      <input class="form-control mb-1" type="text" placeholder="Naam">
+      <input class="form-control mb-1" type="email" placeholder="Emailaddres">
+      <select placeholder="Soort feedback" class="form-control mb-1" name="">
+        <option>Soort feedback</option>
+        <option>Tips</option>
+        <option>Idee</option>
+        <option>Anders...</option>
+      </select>
+      <textarea placeholder="Bericht..." class="form-control mb-1" rows="4" cols="80"></textarea>
+      <div id="text"></div>
+      <input type="submit" value="Submit" class="form-control btn btn-info">
+    </form>
+  </div>
+  <script src="/js/ez.js" charset="utf-8"></script>
+  <script>
+    d(`input[type="submit"]`).addEventListener("click", function () {
+      d("#text").innerHTML = "Bericht onsuccesvol zeker niet verzonden"
+    })
+  </script>
+</body>
+</html>

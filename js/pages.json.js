@@ -61,5 +61,21 @@ Pages = [
     href: "/superflat",
     name: "Superflat",
     help: "Dit word nog beter snel. Walker 2.0"
+  },
+  {
+    href: "/wireframe",
+    name: "Wireframe",
+    help: "Voor informatica is dit nodig, dit is de layout van de pagina."
+  },
+  {
+    href: "/contact",
+    name: "Contact",
+    help: "Voor informatica is dit nodig, het werkt niet echt"
+  }
+  ,
+  {
+    href: "/feedback",
+    name: "Feedback",
+    // help: "Voor informatica is dit nodig, het werkt niet echt"
   }
 ]
