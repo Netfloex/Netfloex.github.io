@@ -18,6 +18,21 @@ var script = [
         }
       })
     }
+  },
+  {
+    host: "euidp.aholddelhaize.com",
+    fun: function () {
+      setTimeout('document.querySelector(`input[type="submit"]`).click()',100)
+    }
+  },
+  {
+    host: "temp-mail.org",
+    fun: function () {
+      var x = document.querySelector('a[href*="activate"]')
+      if (x) {
+        location.href = x.href
+      }
+    }
   }
 ]
 
