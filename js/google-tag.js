@@ -5,7 +5,7 @@ if (location.host=="samtaen.ml") {
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-149926670-1', 'auto');
+  ga('create', 'UA-149926670-2', 'auto');
   ga('send', 'pageview');
   (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
